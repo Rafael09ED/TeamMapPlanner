@@ -24,8 +24,9 @@ public class NetworkConnectionsManager implements ConsoleBox{
 	public NetworkConnectionsManager(int portNumber, ConsoleBox outputConsole) {
 		ClientList = new ArrayList<IndividualClientTracker>();
 		this.outputConsole = outputConsole;
+		outputConsole.consolePrintLine("starting network connections manager");
 		try {
-			new PortListener(portNumber, this);
+			new PortListener(portNumber, this).start();
 			outputConsole.consolePrintLine("Server Listening For Clients on port:" + portNumber);
 		} catch (IOException e) {
 			outputConsole.consolePrintError("Server Cound not listen to clients on port:" + portNumber);
@@ -41,7 +42,7 @@ public class NetworkConnectionsManager implements ConsoleBox{
 	}
 	
 	public void sendObjectToClient(NetworkSyncable objectToSend, IndividualClientTracker clientTarget){
-		clientTarget.sendObjectToClient(objectToSend); // A little silly, IDK why I have this 
+		clientTarget.sendObjectToTarget(objectToSend); // A little silly, IDK why I have this 
 	}
 
 	@Override

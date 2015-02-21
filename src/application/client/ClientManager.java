@@ -1,5 +1,6 @@
 package application.client;
 
+import networking.client.ConnectionToServerManager;
 import launcher.ConsoleBox;
 
 public class ClientManager implements ConsoleBox{
@@ -12,12 +13,13 @@ public class ClientManager implements ConsoleBox{
 	private ConsoleBox outputConsole;
 	private String userName;
 	private String clientName;
+	private ConnectionToServerManager communications;
 	
 	public ClientManager(String host, int port, ConsoleBox clientConsole) {
 		this.host = host;
 		this.port = port;
 		setOutputConsole(clientConsole);
-		
+		communications = new ConnectionToServerManager(host, port, this);
 		outputConsole.consolePrintLine("Client Manager Created");
 	}
 	public ClientManager(String host, int port) {
