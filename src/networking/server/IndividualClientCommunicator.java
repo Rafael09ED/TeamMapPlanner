@@ -1,38 +1,46 @@
 package networking.server;
 //http://stackoverflow.com/questions/19217420/sending-an-object-through-a-socket-in-java
 import java.net.*;
+import java.util.LinkedList;
 import java.io.*;
 
+import launcher.ConsoleBox;
 import networking.NetworkSyncable;
 
 public class IndividualClientCommunicator extends Thread {
+	@SuppressWarnings("unused")
 	private Socket clientSocket;
 	private ObjectOutputStream outToClient;
 	private ObjectInputStream inFromClient;
+	private ConsoleBox outputConsole;
+	private LinkedList<NetworkSyncable> serverMailboxForClient;
+	private IndividualClientTracker clientOfCommunicator;
 	
-	public IndividualClientCommunicator(Socket clientSocket) throws IOException{
-		this.clientSocket = clientSocket;
-		inFromClient  	= new ObjectInputStream(clientSocket.getInputStream());
-		outToClient 	= new ObjectOutputStream(clientSocket.getOutputStream());
+	public IndividualClientCommunicator(Socket clientSocket, LinkedList<NetworkSyncable> objectInboxFromClient, IndividualClientTracker clientOfCommunicator) throws IOException{
+		this.clientSocket 			= clientSocket;
+		this.clientOfCommunicator	= clientOfCommunicator;
+		
+		serverMailboxForClient 		= objectInboxFromClient;
+		inFromClient  				= new ObjectInputStream(clientSocket.getInputStream());
+		outToClient 				= new ObjectOutputStream(clientSocket.getOutputStream());
 	}
-
 	@Override
 	public void run() {
 		while (true) {
-
 			try {
-				inFromClient.readObject();
+				 serverMailboxForClient.add((NetworkSyncable) inFromClient.readObject());
+				 clientOfCommunicator.notifyInbox();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				System.err.println("Object type from client was not recognized");
 				e.printStackTrace();
 			}
 		}
 	}
-	public void sendObjectToClient(NetworkSyncable objectToSend){
-		
+	public void sendObjectToClient(NetworkSyncable objectToSend) throws IOException{
+		outToClient.writeObject(objectToSend);
+		outToClient.flush();
 	}
+	
 }

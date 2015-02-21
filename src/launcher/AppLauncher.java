@@ -35,6 +35,7 @@ import java.awt.Component;
 
 import javax.swing.Box;
 
+import application.client.ClientManager;
 import application.server.ServerManager;
 
 import java.awt.Dimension;
@@ -44,10 +45,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
 
+
 public class AppLauncher extends JFrame {
 
-	/**
-	 * 
+	/** A program that will be like Google Documents with drawing and pictures.
+	 * 	After thinking about the program, I realize that it might have been a better Idea to 
 	 */
 	private static final long serialVersionUID = -8214547356453125098L;
 	private JPanel contentPane;
@@ -57,11 +59,11 @@ public class AppLauncher extends JFrame {
 	final public String appVersion = "0.0.0.0.2 a";
 	final public String[] authors = {"Rafael09ED"};
 	private JTextField connectionKeyField;
-	private JTextField hostField;
-	private JFormattedTextField  portField;
+	private JTextField tf_SessionHost;
+	private JFormattedTextField  tf_SessionPort;
 	private JFormattedTextField  tf_Port;
-	private JTextField textField_1;
-	private JTextField tf_SessionName;
+	private JTextField tf_SessionUserName;
+	private JTextField tf_ServerName;
 	private NumberFormatter portTextboxFormat;
 	private int serverCounter, ClientCounter = 0;
 	/**
@@ -196,14 +198,14 @@ public class AppLauncher extends JFrame {
 		gbc_lblSessionName.gridy = 3;
 		hostingPanel.add(lblSessionName, gbc_lblSessionName);
 		
-		tf_SessionName = new JTextField();
-		GridBagConstraints gbc_tf_SessionName = new GridBagConstraints();
-		gbc_tf_SessionName.insets = new Insets(0, 0, 5, 0);
-		gbc_tf_SessionName.fill = GridBagConstraints.HORIZONTAL;
-		gbc_tf_SessionName.gridx = 2;
-		gbc_tf_SessionName.gridy = 3;
-		hostingPanel.add(tf_SessionName, gbc_tf_SessionName);
-		tf_SessionName.setColumns(10);
+		tf_ServerName = new JTextField();
+		GridBagConstraints gbc_tf_ServerName = new GridBagConstraints();
+		gbc_tf_ServerName.insets = new Insets(0, 0, 5, 0);
+		gbc_tf_ServerName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tf_ServerName.gridx = 2;
+		gbc_tf_ServerName.gridy = 3;
+		hostingPanel.add(tf_ServerName, gbc_tf_ServerName);
+		tf_ServerName.setColumns(10);
 		
 		JLabel lblPort_1 = new JLabel("Port:");
 		GridBagConstraints gbc_lblPort_1 = new GridBagConstraints();
@@ -240,9 +242,9 @@ public class AppLauncher extends JFrame {
 		btnHost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Call to create the server
-				ConsoleBox serverConsole = createServerTab(tf_SessionName.getText());
+				ConsoleBox serverConsole = createServerTab(tf_ServerName.getText());
 				ServerManager server = createServer(serverConsole, (int) tf_Port.getValue());
-				server.setSessionName(tf_SessionName.getText());
+				server.setSessionName(tf_ServerName.getText());
 				
 				//Not needed since console created before server : server.setServerConsole(serverConsole);
 			}
@@ -285,14 +287,14 @@ public class AppLauncher extends JFrame {
 		gbc_lblUserName.gridy = 3;
 		connectingPanel.add(lblUserName, gbc_lblUserName);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 2;
-		gbc_textField_1.gridy = 3;
-		connectingPanel.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		tf_SessionUserName = new JTextField();
+		GridBagConstraints gbc_tf_SessionUserName = new GridBagConstraints();
+		gbc_tf_SessionUserName.insets = new Insets(0, 0, 5, 5);
+		gbc_tf_SessionUserName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tf_SessionUserName.gridx = 2;
+		gbc_tf_SessionUserName.gridy = 3;
+		connectingPanel.add(tf_SessionUserName, gbc_tf_SessionUserName);
+		tf_SessionUserName.setColumns(10);
 		
 		JLabel lblConnectionKey = new JLabel("Connection Key:");
 		GridBagConstraints gbc_lblConnectionKey = new GridBagConstraints();
@@ -319,14 +321,14 @@ public class AppLauncher extends JFrame {
 		gbc_lblHost.gridy = 7;
 		connectingPanel.add(lblHost, gbc_lblHost);
 		
-		hostField = new JTextField();
-		GridBagConstraints gbc_hostField = new GridBagConstraints();
-		gbc_hostField.insets = new Insets(0, 0, 5, 5);
-		gbc_hostField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_hostField.gridx = 2;
-		gbc_hostField.gridy = 7;
-		connectingPanel.add(hostField, gbc_hostField);
-		hostField.setColumns(10);
+		tf_SessionHost = new JTextField();
+		GridBagConstraints gbc_tf_SessionHost = new GridBagConstraints();
+		gbc_tf_SessionHost.insets = new Insets(0, 0, 5, 5);
+		gbc_tf_SessionHost.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tf_SessionHost.gridx = 2;
+		gbc_tf_SessionHost.gridy = 7;
+		connectingPanel.add(tf_SessionHost, gbc_tf_SessionHost);
+		tf_SessionHost.setColumns(10);
 		
 		JLabel lblPort = new JLabel("Port:");
 		GridBagConstraints gbc_lblPort = new GridBagConstraints();
@@ -336,22 +338,39 @@ public class AppLauncher extends JFrame {
 		gbc_lblPort.gridy = 8;
 		connectingPanel.add(lblPort, gbc_lblPort);
 		
-		portField = new JFormattedTextField(portTextboxFormat);
-		portField.setColumns(10);
-		GridBagConstraints gbc_portField = new GridBagConstraints();
-		gbc_portField.anchor = GridBagConstraints.WEST;
-		gbc_portField.insets = new Insets(0, 0, 5, 5);
-		gbc_portField.gridx = 2;
-		gbc_portField.gridy = 8;
-		connectingPanel.add(portField, gbc_portField);
+		tf_SessionPort = new JFormattedTextField(portTextboxFormat);
+		tf_SessionPort.setColumns(10);
+		GridBagConstraints gbc_tf_SessionPort = new GridBagConstraints();
+		gbc_tf_SessionPort.anchor = GridBagConstraints.WEST;
+		gbc_tf_SessionPort.insets = new Insets(0, 0, 5, 5);
+		gbc_tf_SessionPort.gridx = 2;
+		gbc_tf_SessionPort.gridy = 8;
+		connectingPanel.add(tf_SessionPort, gbc_tf_SessionPort);
 		
 		JButton btnConnect = new JButton("Connect");
+		btnConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Action for connecting to a session goes here
+				
+				ConsoleBox clientConsole = joiningSessionTab(tf_SessionUserName.getText());
+				ClientManager client = createClient(tf_SessionHost.getText(), (int) tf_SessionPort.getValue(), clientConsole);
+				client.setClientName(parsedTitle);
+			}
+		});
 		GridBagConstraints gbc_btnConnect = new GridBagConstraints();
 		gbc_btnConnect.insets = new Insets(0, 0, 0, 5);
 		gbc_btnConnect.gridx = 1;
 		gbc_btnConnect.gridy = 13;
 		connectingPanel.add(btnConnect, gbc_btnConnect);
 	}
+	private ConsoleBox joiningSessionTab(String ClientName) {
+		ServerPanel clientPanelBox = new ServerPanel();
+		tabbedPane.addTab("Session #" + ClientCounter, clientPanelBox);
+		tabbedPane.setSelectedIndex(tabbedPane.indexOfTab("Session #" + ClientCounter));
+		ClientCounter++;
+		return clientPanelBox;
+	}
+
 	private ServerManager createServer(ConsoleBox serverConsole, int port){
 		ServerManager server = new ServerManager(port, serverConsole);
 		return server;
@@ -361,12 +380,16 @@ public class AppLauncher extends JFrame {
 		return server;
 	}
 	private ConsoleBox createServerTab(String sessionName){
+		//SessionName not used
 		ServerPanel serverPanelBox = new ServerPanel();
 		tabbedPane.addTab("Server #" + serverCounter, serverPanelBox);
 		tabbedPane.setSelectedIndex(tabbedPane.indexOfTab("Server #" + serverCounter));
 		serverCounter++;
 		return serverPanelBox;
-
+	}
+	private ClientManager createClient(String host, int port, ConsoleBox clientConsole){
+		ClientManager client = new ClientManager(host, port, clientConsole);
+		return client;
 	}
 	
 

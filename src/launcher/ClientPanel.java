@@ -23,28 +23,28 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class ServerPanel extends JPanel implements ConsoleBox{
+public class ClientPanel extends JPanel implements ConsoleBox{
 	
 	private static final long serialVersionUID = -2630398121425039827L;
-	private JTextArea ServerConsoleTextArea;
+	private JTextArea clientConsoleTextArea;
 	
-	public ServerPanel() {
+	public ClientPanel() {
 		super();
 		setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar, BorderLayout.NORTH);
 		
-		JMenu mnServerActions = new JMenu("Server Actions");
-		menuBar.add(mnServerActions);
+		JMenu mnclientActions = new JMenu("Client Actions");
+		menuBar.add(mnclientActions);
 		
-		JMenuItem mntmChangeSessionName = new JMenuItem("Change Session Name");
+		JMenuItem mntmChangeSessionName = new JMenuItem("Change User Name");
 		mntmChangeSessionName.setEnabled(false);
-		mnServerActions.add(mntmChangeSessionName);
+		mnclientActions.add(mntmChangeSessionName);
 		
-		JMenuItem mntmEndSession = new JMenuItem("End Session");
-		mntmEndSession.setEnabled(false);
-		mnServerActions.add(mntmEndSession);
+		JMenuItem mntmDisconnect = new JMenuItem("Disconnect");
+		mntmDisconnect.setEnabled(false);
+		mnclientActions.add(mntmDisconnect);
 		
 		JMenu mnClientsConnected = new JMenu("Clients");
 		menuBar.add(mnClientsConnected);
@@ -58,21 +58,13 @@ public class ServerPanel extends JPanel implements ConsoleBox{
 		mnClientList.setEnabled(false);
 		mnClientsConnected.add(mnClientList);
 		
-		JMenuItem mntmKickAClient = new JMenuItem("Kick a Client");
-		mntmKickAClient.setEnabled(false);
-		mnClientsConnected.add(mntmKickAClient);
-		
-		JMenuItem mntmBanAClient = new JMenuItem("Ban a Client");
-		mntmBanAClient.setEnabled(false);
-		mnClientsConnected.add(mntmBanAClient);
-		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		ServerConsoleTextArea = new JTextArea();
+		clientConsoleTextArea = new JTextArea();
 		
-		JScrollPane scrollPane = new JScrollPane(ServerConsoleTextArea);
+		JScrollPane scrollPane = new JScrollPane(clientConsoleTextArea);
 		panel.add(scrollPane);
 		
 		JLabel lblConsole = new JLabel("Console:");
@@ -82,13 +74,13 @@ public class ServerPanel extends JPanel implements ConsoleBox{
 
 	@Override
 	public void consolePrintError(String txtErrorIn) {
-		ServerConsoleTextArea.append("ERROR:\t" + txtErrorIn + "\n");
+		clientConsoleTextArea.append("ERROR:\t" + txtErrorIn + "\n");
 		
 	}
 
 	@Override
 	public void consolePrintLine(String txtLineIn) {
-		ServerConsoleTextArea.append(txtLineIn + "\n");		
+		clientConsoleTextArea.append(txtLineIn + "\n");		
 	}
 
 }

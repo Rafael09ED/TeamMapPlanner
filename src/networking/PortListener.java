@@ -11,13 +11,13 @@ import java.net.*;
 import java.util.ArrayList;
 import java.io.*;
 
-import networking.server.ClientConnectionManager;
+import networking.server.NetworkConnectionsManager;
 
 public class PortListener extends Thread {
 	
 	private int portNumber;
-	private ClientConnectionManager clientManager;
-	public PortListener(int portNumber, ClientConnectionManager clientManager) throws IOException{
+	private NetworkConnectionsManager clientManager;
+	public PortListener(int portNumber, NetworkConnectionsManager clientManager) throws IOException{
 		this.portNumber = portNumber;
 		this.clientManager = clientManager;
 	}
@@ -31,7 +31,6 @@ public class PortListener extends Thread {
 	        }
 	    } catch (IOException e) {
             System.err.println("Could not listen on port " + portNumber);
-            System.out.println();
             System.exit(-1);
         }
 	}
