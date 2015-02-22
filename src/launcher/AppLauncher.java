@@ -199,6 +199,7 @@ public class AppLauncher extends JFrame {
 		hostingPanel.add(lblSessionName, gbc_lblSessionName);
 		
 		tf_ServerName = new JTextField();
+		tf_ServerName.setText("Name");
 		GridBagConstraints gbc_tf_ServerName = new GridBagConstraints();
 		gbc_tf_ServerName.insets = new Insets(0, 0, 5, 0);
 		gbc_tf_ServerName.fill = GridBagConstraints.HORIZONTAL;
@@ -230,6 +231,7 @@ public class AppLauncher extends JFrame {
 	    
 	    
 		tf_Port = new JFormattedTextField(portTextboxFormat);
+		tf_Port.setText("22102");
 		GridBagConstraints gbc_tf_Port = new GridBagConstraints();
 		gbc_tf_Port.insets = new Insets(0, 0, 5, 0);
 		gbc_tf_Port.anchor = GridBagConstraints.WEST;
@@ -288,6 +290,7 @@ public class AppLauncher extends JFrame {
 		connectingPanel.add(lblUserName, gbc_lblUserName);
 		
 		tf_SessionUserName = new JTextField();
+		tf_SessionUserName.setText("User");
 		GridBagConstraints gbc_tf_SessionUserName = new GridBagConstraints();
 		gbc_tf_SessionUserName.insets = new Insets(0, 0, 5, 5);
 		gbc_tf_SessionUserName.fill = GridBagConstraints.HORIZONTAL;
@@ -322,6 +325,7 @@ public class AppLauncher extends JFrame {
 		connectingPanel.add(lblHost, gbc_lblHost);
 		
 		tf_SessionHost = new JTextField();
+		tf_SessionHost.setText("127.0.0.1");
 		GridBagConstraints gbc_tf_SessionHost = new GridBagConstraints();
 		gbc_tf_SessionHost.insets = new Insets(0, 0, 5, 5);
 		gbc_tf_SessionHost.fill = GridBagConstraints.HORIZONTAL;
@@ -339,6 +343,7 @@ public class AppLauncher extends JFrame {
 		connectingPanel.add(lblPort, gbc_lblPort);
 		
 		tf_SessionPort = new JFormattedTextField(portTextboxFormat);
+		tf_SessionPort.setText("22102");
 		tf_SessionPort.setColumns(10);
 		GridBagConstraints gbc_tf_SessionPort = new GridBagConstraints();
 		gbc_tf_SessionPort.anchor = GridBagConstraints.WEST;

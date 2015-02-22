@@ -26,6 +26,8 @@ public class IndividualClientTracker {
 		clientCommunicator = new IndividualCommunicator(clientSocket, objectInboxFromClient);
 		
 		outputConsole.consolePrintLine("An Individual Client Tracker was created");
+		
+		
 	}
 	public void setTargetIdentifier(String targetName){
 		targetIdentifier = targetName;

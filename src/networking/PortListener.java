@@ -29,7 +29,6 @@ public class PortListener extends Thread {
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
             while (listening) {
             	clientManager.createClientTracker(serverSocket.accept());
-            	System.out.println("I accepted someone's connection");
 	        }
 	    } catch (IOException e) {
             System.err.println("Could not listen on port " + portNumber);

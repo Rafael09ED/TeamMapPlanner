@@ -24,7 +24,7 @@ public class ServerManager implements ConsoleBox{
 	}
 	
 	public ServerManager(int port, ConsoleBox outputConsole){
-		this.port = port;
+		this.port = port;	
 		setServerConsole(outputConsole);
 		outputConsole.consolePrintLine("Server Manager Created");
 		networkingManager = new NetworkConnectionsManager(port, this);

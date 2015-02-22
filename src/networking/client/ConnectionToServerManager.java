@@ -27,16 +27,11 @@ public class ConnectionToServerManager extends Thread{
 		
         try {
         	InetAddress hostAddress = InetAddress.getByName(host);
-        	outputConsole.consolePrintLine("Host Address Parsed");
-        	socketToServer = new Socket();
-        	System.out.println("ABOUT TO FREEZEZEZE! ");
-	        	socketToServer.connect(new InetSocketAddress(host, 22102), 100);
-        	
-        	outputConsole.consolePrintLine("DID IT ONCE");
+        	outputConsole.consolePrintLine("Host Address Parsed, Target: " + hostAddress.getHostAddress());
         	socketToServer = new Socket(hostAddress,port);
         	outToServer = new ObjectOutputStream(socketToServer.getOutputStream());
 			inFromServer = new ObjectInputStream(socketToServer.getInputStream());
-			outputConsole.consolePrintLine("ConnectionManager created object streams");
+			outputConsole.consolePrintLine("ConnectionManager can now send objects");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -47,8 +42,9 @@ public class ConnectionToServerManager extends Thread{
 		
 	}
 	
-	public void sendObjectToServer(NetworkSyncable objectToSend){
-		
+	public void sendObjectToServer(NetworkSyncable objectToSend) throws IOException{
+		outToServer.writeObject(objectToSend);
+		outToServer.flush();
 	}
 
 }

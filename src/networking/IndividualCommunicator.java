@@ -28,6 +28,7 @@ public class IndividualCommunicator extends Thread {
 		while (true) {
 			try {
 				 serverMailboxForClient.add((NetworkSyncable) inFromClient.readObject());
+				 outputConsole.consolePrintLine("Object Recieved");
 				 //clientOfCommunicator.notifyInbox();
 			} catch (IOException e) {
 				e.printStackTrace();
