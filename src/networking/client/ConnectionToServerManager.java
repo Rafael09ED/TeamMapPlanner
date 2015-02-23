@@ -44,6 +44,7 @@ public class ConnectionToServerManager extends Thread{
 	
 	public void sendObjectToServer(NetworkSyncable objectToSend) throws IOException{
 		outToServer.writeObject(objectToSend);
+		System.out.println("Writing out to interent");
 		outToServer.flush();
 	}
 

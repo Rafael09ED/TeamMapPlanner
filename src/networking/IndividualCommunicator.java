@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.LinkedList;
 import java.io.*;
 
+import networking.sendableObjects.NS_ClientInformation;
 import launcher.ConsoleBox;
 
 public class IndividualCommunicator extends Thread {
@@ -15,8 +16,9 @@ public class IndividualCommunicator extends Thread {
 	private LinkedList<NetworkSyncable> serverMailboxForClient;
 	//private IndividualClientTracker clientOfCommunicator;
 	
-	public IndividualCommunicator(Socket clientSocket, LinkedList<NetworkSyncable> objectInboxFromClient) throws IOException{
+	public IndividualCommunicator(Socket clientSocket, LinkedList<NetworkSyncable> objectInboxFromClient, ConsoleBox outputConsole) throws IOException{
 		this.clientSocket 			= clientSocket;
+		this.outputConsole 			= outputConsole;
 		//this.clientOfCommunicator	= clientOfCommunicator;
 		
 		serverMailboxForClient 		= objectInboxFromClient;
@@ -30,6 +32,9 @@ public class IndividualCommunicator extends Thread {
 				 serverMailboxForClient.add((NetworkSyncable) inFromClient.readObject());
 				 outputConsole.consolePrintLine("Object Recieved");
 				 //clientOfCommunicator.notifyInbox();
+				 if (serverMailboxForClient.get(0) instanceof NS_ClientInformation) {
+					 outputConsole.consolePrintLine("New Object from: " + ((NS_ClientInformation) serverMailboxForClient.get(0)).getAuthor());
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {

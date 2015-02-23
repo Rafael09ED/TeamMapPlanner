@@ -43,7 +43,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.lang.reflect.Array;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 
 public class AppLauncher extends JFrame {
@@ -66,6 +68,9 @@ public class AppLauncher extends JFrame {
 	private JTextField tf_ServerName;
 	private NumberFormatter portTextboxFormat;
 	private int serverCounter, ClientCounter = 0;
+	
+	private ArrayList<ServerManager> serversList;
+	private ArrayList<ClientManager> sessionsList;
 	/**
 	 * Launch the application.
 	 */
@@ -87,6 +92,11 @@ public class AppLauncher extends JFrame {
 	 * Create the frame.
 	 */
 	public AppLauncher() {
+		//declare arrays
+		sessionsList = new ArrayList<ClientManager>();
+		serversList = new ArrayList<ServerManager>();
+		
+		
 		setTitle("Team Map Planner");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 514);
@@ -358,8 +368,8 @@ public class AppLauncher extends JFrame {
 				// Action for connecting to a session goes here
 				
 				ConsoleBox clientConsole = joiningSessionTab(tf_SessionUserName.getText());
-				ClientManager client = createClient(tf_SessionHost.getText(), (int) tf_SessionPort.getValue(), clientConsole);
-				client.setClientName(parsedTitle);
+				ClientManager client = createClient(tf_SessionHost.getText(), (int) tf_SessionPort.getValue(), clientConsole, tf_SessionUserName.getText());
+				sessionsList.add(client);
 			}
 		});
 		GridBagConstraints gbc_btnConnect = new GridBagConstraints();
@@ -392,8 +402,8 @@ public class AppLauncher extends JFrame {
 		serverCounter++;
 		return serverPanelBox;
 	}
-	private ClientManager createClient(String host, int port, ConsoleBox clientConsole){
-		ClientManager client = new ClientManager(host, port, clientConsole);
+	private ClientManager createClient(String host, int port, ConsoleBox clientConsole, String clientName){
+		ClientManager client = new ClientManager(host, port, clientConsole, clientName);
 		return client;
 	}
 	

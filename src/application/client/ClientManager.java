@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import networking.NetworkSyncable;
 import networking.client.ConnectionToServerManager;
+import networking.sendableObjects.NS_ClientInformation;
 import launcher.ConsoleBox;
 
 public class ClientManager implements ConsoleBox{
@@ -16,34 +17,17 @@ public class ClientManager implements ConsoleBox{
 	private int port;
 	private ConsoleBox outputConsole;
 	private String userName;
-	private String clientName;
 	private ConnectionToServerManager communications;
 	
-	public ClientManager(String host, int port, ConsoleBox clientConsole) {
+	public ClientManager(String host, int port, ConsoleBox clientConsole, String userName) {
 		this.host = host;
 		this.port = port;
+		setUserName(userName);
 		setOutputConsole(clientConsole);
 		communications = new ConnectionToServerManager(host, port, this);
 		outputConsole.consolePrintLine("Client Manager Created");
 		try {
-			communications.sendObjectToServer(new NetworkSyncable() {
-				@Override
-				public UUID getUniqueID() {
-					return UUID.randomUUID();
-				}
-				@Override
-				public String getType() {
-					return "InformationOnClient";
-				}
-				@Override
-				public String getAuthor() {
-					return "Client";
-				}
-				@Override
-				public String getAction() {
-					return "";
-				}
-			});
+			communications.sendObjectToServer(new NS_ClientInformation(userName));
 			outputConsole.consolePrintLine("Test Object Sent");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -66,8 +50,8 @@ public class ClientManager implements ConsoleBox{
 			outputConsole.consolePrintLine(txtLineIn);
 		}
 	}
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
+	public void setUserName(String clientName) {
+		this.userName = clientName;
 		
 	}
 	public void setOutputConsole(ConsoleBox consoleIn){

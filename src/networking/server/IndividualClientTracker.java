@@ -23,10 +23,9 @@ public class IndividualClientTracker {
 		this.outputConsole = outputConsole;
 		targetIdentifier = "Unknown Target";
 		objectInboxFromClient = new LinkedList<NetworkSyncable>();
-		clientCommunicator = new IndividualCommunicator(clientSocket, objectInboxFromClient);
-		
+		clientCommunicator = new IndividualCommunicator(clientSocket, objectInboxFromClient, outputConsole);
 		outputConsole.consolePrintLine("An Individual Client Tracker was created");
-		
+		clientCommunicator.start();
 		
 	}
 	public void setTargetIdentifier(String targetName){
