@@ -8,18 +8,17 @@ package networking;
  */
 
 import java.net.*;
-import java.util.ArrayList;
 import java.io.*;
 
-import networking.server.NetworkConnectionsManager;
+import networking.interfaces.ConnectionAcceptor;
 
 public class PortListener extends Thread {
 	
 	private int portNumber;
-	private NetworkConnectionsManager clientManager;
-	public PortListener(int portNumber, NetworkConnectionsManager clientManager) throws IOException{
+	private ConnectionAcceptor clientAcceptor;
+	public PortListener(int portNumber, ConnectionAcceptor clientAcceptor) throws IOException{
 		this.portNumber = portNumber;
-		this.clientManager = clientManager;
+		this.clientAcceptor = clientAcceptor;
 	}
 
 	@Override
@@ -28,7 +27,8 @@ public class PortListener extends Thread {
 		boolean listening = true;
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
             while (listening) {
-            	clientManager.createClientTracker(serverSocket.accept());
+            	clientAcceptor.acceptConnection(serverSocket.accept());
+            	System.out.println("I accepted someone's connection");
 	        }
 	    } catch (IOException e) {
             System.err.println("Could not listen on port " + portNumber);

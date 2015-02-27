@@ -2,14 +2,14 @@ package networking.sendableObjects;
 
 import java.io.Serializable;
 import java.util.UUID;
+import networking.interfaces.NetworkSyncable;
 
-import networking.NetworkSyncable;
 
 public class NS_ClientInformation implements NetworkSyncable, Serializable{
 
 	private UUID uniqueID;
 	private static final long serialVersionUID = -1541740741183709714L;
-	private String Author;
+	private String Author = "Unknown User";
 
 	public NS_ClientInformation(String author) {
 		uniqueID = UUID.randomUUID();
@@ -18,19 +18,11 @@ public class NS_ClientInformation implements NetworkSyncable, Serializable{
 
 	@Override
 	public String getAuthor() {
-		// TODO Auto-generated method stub
 		return Author;
 	}
-
-	@Override
-	public String getAction() {
-		// TODO Auto-generated method stub
-		return "No Action";
-	}
-
+	
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
 		return "ClientInformation";
 	}
 
