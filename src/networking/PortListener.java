@@ -16,6 +16,7 @@ public class PortListener extends Thread {
 	
 	private int portNumber;
 	private ConnectionAcceptor clientAcceptor;
+
 	public PortListener(int portNumber, ConnectionAcceptor clientAcceptor) throws IOException{
 		this.portNumber = portNumber;
 		this.clientAcceptor = clientAcceptor;
@@ -28,7 +29,7 @@ public class PortListener extends Thread {
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
             while (listening) {
             	clientAcceptor.acceptConnection(serverSocket.accept());
-            	System.out.println("I accepted someone's connection");
+                System.out.println("Connection Accepted");
 	        }
 	    } catch (IOException e) {
             System.err.println("Could not listen on port " + portNumber);
