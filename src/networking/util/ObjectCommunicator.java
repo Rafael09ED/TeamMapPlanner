@@ -4,11 +4,11 @@ import java.net.*;
 import java.util.LinkedList;
 import java.io.*;
 
-import networking.sendableObjects.NS_AntiTimeout;
+import networking.interfaces.sendableObjects.NS_AntiTimeout;
 import utilities.console.ConsoleOutput;
 import utilities.console.Console;
 import networking.interfaces.NetworkSyncable;
-import networking.sendableObjects.NS_ClientInformation;
+import networking.interfaces.sendableObjects.NS_ClientInformation;
 
 public class ObjectCommunicator extends Thread {
 	@SuppressWarnings("unused")

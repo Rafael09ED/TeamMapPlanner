@@ -1,4 +1,4 @@
-package networking.sendableObjects;
+package networking.interfaces.sendableObjects;
 
 import networking.interfaces.NetworkSyncable;
 

@@ -1,5 +1,6 @@
 package GUI;
 
+import application.client.Client;
 import utilities.console.ConsoleOutput;
 
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ public class ClientPanel extends JPanel implements ConsoleOutput{
 	
 	private static final long serialVersionUID = -2630398121425039827L;
 	private JTextArea clientConsoleTextArea;
+    private Client client;
 	
 	public ClientPanel() {
 		super();
@@ -79,7 +81,11 @@ public class ClientPanel extends JPanel implements ConsoleOutput{
 		
 	}
 
-	@Override
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    @Override
 	public void consolePrintError(String txtErrorIn) {
 		clientConsoleTextArea.append("ERROR:\t" + txtErrorIn + "\n");
 		

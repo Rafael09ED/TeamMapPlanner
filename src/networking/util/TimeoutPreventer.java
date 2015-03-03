@@ -1,7 +1,6 @@
 package networking.util;
 
-import networking.sendableObjects.NS_AntiTimeout;
-import org.apache.sanselan.formats.tiff.constants.TagInfo;
+import networking.interfaces.sendableObjects.NS_AntiTimeout;
 
 import java.io.IOException;
 import java.util.Timer;

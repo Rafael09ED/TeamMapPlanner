@@ -243,17 +243,7 @@ public class AppLauncher extends JFrame {
 		tf_Port.setColumns(10);
 		
 		JButton btnHost = new JButton("Host");
-		btnHost.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Call to create the server
-				ConsoleOutput serverConsole = createServerTab(tf_ServerName.getText());
-                Server server = new Server((int) tf_Port.getValue());
-                server.setConsole(serverConsole);
-				server.setSessionName(tf_ServerName.getText());
-				
-				//Not needed since console created before server : server.setServerConsole(serverConsole);
-			}
-		});
+
 		GridBagConstraints gbc_btnHost = new GridBagConstraints();
 		gbc_btnHost.insets = new Insets(0, 0, 0, 5);
 		gbc_btnHost.gridx = 1;
@@ -356,14 +346,29 @@ public class AppLauncher extends JFrame {
 		connectingPanel.add(tf_SessionPort, gbc_tf_SessionPort);
 		
 		JButton btnConnect = new JButton("Connect");
+
+        btnHost.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Call to create the server
+                ServerPanel serverConsole = createServerTab(tf_ServerName.getText());
+                Server server = new Server((int) tf_Port.getValue());
+                server.setConsole( (ConsoleOutput) serverConsole);
+                serverConsole.setServer(server);
+                server.setSessionName(tf_ServerName.getText());
+
+                //Not needed since console created before server : server.setServerConsole(serverConsole);
+            }
+        });
+
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Action for connecting to a session goes here
-				
-				ConsoleOutput clientConsole = joiningSessionTab(tf_SessionUserName.getText());
+
+                ClientPanel clientConsole = joiningSessionTab(tf_SessionUserName.getText());
                 Client client = new Client(tf_SessionHost.getText(), (int) tf_SessionPort.getValue(), tf_SessionUserName.getText());
 				sessionsList.add(client);
-                client.setConsole(clientConsole);
+                clientConsole.setClient(client);
+                client.setConsole( (ConsoleOutput) clientConsole);
 			}
 		});
 		GridBagConstraints gbc_btnConnect = new GridBagConstraints();
@@ -372,15 +377,15 @@ public class AppLauncher extends JFrame {
 		gbc_btnConnect.gridy = 13;
 		connectingPanel.add(btnConnect, gbc_btnConnect);
 	}
-	private ConsoleOutput joiningSessionTab(String ClientName) {
-		ServerPanel clientPanelBox = new ServerPanel();
+	private ClientPanel joiningSessionTab(String ClientName) {
+		ClientPanel clientPanelBox = new ClientPanel();
 		tabbedPane.addTab("Session #" + ClientCounter, clientPanelBox);
 		tabbedPane.setSelectedIndex(tabbedPane.indexOfTab("Session #" + ClientCounter));
 		ClientCounter++;
 		return clientPanelBox;
 	}
 
-    private ConsoleOutput createServerTab(String sessionName){
+    private ServerPanel createServerTab(String sessionName){
         //SessionName not used
         ServerPanel serverPanelBox = new ServerPanel();
         tabbedPane.addTab("Server #" + serverCounter, serverPanelBox);

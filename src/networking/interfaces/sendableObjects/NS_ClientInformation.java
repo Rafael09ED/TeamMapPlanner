@@ -1,4 +1,4 @@
-package networking.sendableObjects;
+package networking.interfaces.sendableObjects;
 
 import java.io.Serializable;
 import java.util.UUID;

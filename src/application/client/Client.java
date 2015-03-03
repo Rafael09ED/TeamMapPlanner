@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import application.MapPlanner;
 import networking.client.ConnectionToServerManager;
-import networking.sendableObjects.NS_ClientInformation;
+import networking.interfaces.sendableObjects.NS_ClientInformation;
 
 
 public class Client extends MapPlanner{

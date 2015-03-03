@@ -1,5 +1,6 @@
 package GUI;
 
+import application.server.Server;
 import utilities.console.Console;
 import utilities.console.ConsoleOutput;
 
@@ -24,6 +25,7 @@ public class ServerPanel extends JPanel implements ConsoleOutput {
 	
 	private static final long serialVersionUID = -2630398121425039827L;
 	private JTextArea ServerConsoleTextArea;
+    private Server server;
 	
 	public ServerPanel() {
 		super();
@@ -72,7 +74,11 @@ public class ServerPanel extends JPanel implements ConsoleOutput {
 		
 	}
 
-	@Override
+    public void setServer(Server server) {
+        this.server = server;
+    }
+
+    @Override
 	public void consolePrintError(String txtErrorIn) {
 		ServerConsoleTextArea.append("ERROR:\t" + txtErrorIn + "\n");
 	}
