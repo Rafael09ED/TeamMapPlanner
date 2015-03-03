@@ -1,4 +1,4 @@
-package networking;
+package networking.util;
 //http://stackoverflow.com/questions/19217420/sending-an-object-through-a-socket-in-java
 import java.net.*;
 import java.util.LinkedList;
@@ -32,17 +32,16 @@ public class ObjectCommunicator extends Thread {
 		while (true) {
 			try {
 				 serverMailboxForClient.add((NetworkSyncable) inFromTarget.readObject());
-				 outputConsole.consolePrintLine("Object Received");
+				 outputConsole.consolePrintLine("Object Received from:" + ((NetworkSyncable) serverMailboxForClient.get(0)).getAuthor());
 				 //clientOfCommunicator.notifyInbox();
 				 if (serverMailboxForClient.get(0) instanceof NS_ClientInformation) {
-					 outputConsole.consolePrintLine("New Object from: " + ((NS_ClientInformation) serverMailboxForClient.get(0)).getAuthor());
+					 outputConsole.consolePrintLine("ClientInfo Updated: " + ((NS_ClientInformation) serverMailboxForClient.get(0)).getAuthor());
 				} else if (serverMailboxForClient.get(0) instanceof NS_AntiTimeout) {
                      System.out.println("Still Here");
                      serverMailboxForClient.remove();
                  }
             } catch (SocketTimeoutException e){
-
-
+                e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {

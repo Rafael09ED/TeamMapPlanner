@@ -1,12 +1,10 @@
 package application.client;
 
-import java.io.IOException;
 import java.util.LinkedList;
 
 import application.MapPlanner;
+import networking.client.ConnectionToServerManager;
 import networking.sendableObjects.NS_ClientInformation;
-import utilities.console.Console;
-import utilities.console.ConsoleOutput;
 
 
 public class Client extends MapPlanner{
@@ -20,13 +18,15 @@ public class Client extends MapPlanner{
 	private LinkedList<String> toOutput;
 
 	public Client(String host, int port, String userName) {
-        super();
+        super(); // creates console
 		this.host = host;
 		this.port = port;
 		setUserName(userName);
 
 		communications = new ConnectionToServerManager(host, port);
+        communications.setUserName(userName);
         communications.sendObjectToServer(new NS_ClientInformation(userName));
+        communications.setOutputConsole(outputConsole);
     }
 
 	public void setUserName(String clientName) {

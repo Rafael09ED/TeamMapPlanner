@@ -1,15 +1,12 @@
-package application.client;
+package networking.client;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import networking.ObjectCommunicator;
-import networking.TimeoutPreventer;
+import networking.util.ObjectCommunicator;
+import networking.util.TimeoutPreventer;
 import utilities.console.Console;
 import networking.interfaces.NetworkSyncable;
-import utilities.console.Console;
 
 public class ConnectionToServerManager{
 //Handles the client's communications to the server
@@ -18,8 +15,9 @@ public class ConnectionToServerManager{
 	private Socket socketToServer;
     private ObjectCommunicator objectCommunicator;
     private Console outputConsole;
-    
+    private TimeoutPreventer timeoutPreventer;
 	public ConnectionToServerManager(String host, int port) {
+
 		this.host = host;
 		this.port = port;
 		this.outputConsole = new Console();
@@ -27,15 +25,22 @@ public class ConnectionToServerManager{
         try {
         	socketToServer = new Socket(host,port);
             objectCommunicator = new ObjectCommunicator(socketToServer);
+            objectCommunicator.setOutputConsole(outputConsole);
             objectCommunicator.start();
-			outputConsole.consolePrintLine("ConnectionManager created object streams");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        TimeoutPreventer timeoutPreventer = new TimeoutPreventer(objectCommunicator);
-	}
+        timeoutPreventer = new TimeoutPreventer(objectCommunicator);
+    }
+    public void setUserName(String nameIn){
+        timeoutPreventer.setParent(nameIn);
+    }
+    public void setOutputConsole(Console outputConsole) {
+        this.outputConsole.setConsoleOutput(outputConsole);
+        outputConsole.consolePrintLine("Console Connected to ConnectToServerManager");
+    }
 
-	public void sendObjectToServer(NetworkSyncable objectToSend){
+    public void sendObjectToServer(NetworkSyncable objectToSend){
         try {
             objectCommunicator.sendObject(objectToSend);
         } catch (IOException e) {

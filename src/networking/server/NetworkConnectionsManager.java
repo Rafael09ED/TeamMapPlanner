@@ -8,7 +8,8 @@ package networking.server;
 
 import networking.interfaces.ConnectionAcceptor;
 import networking.interfaces.NetworkSyncable;
-import networking.PortListener;
+import networking.util.PortListener;
+import networking.util.TimeoutPreventer;
 import utilities.console.Console;
 
 
@@ -23,24 +24,29 @@ public class NetworkConnectionsManager implements ConnectionAcceptor{
 	private Console outputConsole;
 	
 	public NetworkConnectionsManager(int portNumber) {
+
 		ClientList = new ArrayList<ConnectedClient>();
-		this.outputConsole = new Console();
+
+		outputConsole = new Console();
+
 		outputConsole.consolePrintLine("Starting Network Connections Manager");
 		try {
-			new PortListener(portNumber, this).start();;
+			new PortListener(portNumber, this).start();
 			outputConsole.consolePrintLine("Server Listening For Clients on port:" + portNumber);
 		} catch (IOException e) {
 			outputConsole.consolePrintError("Server Could not listen to clients on port:" + portNumber);
 			System.err.println("Server Port Error: Exception in NetworkConnectionsManager");
 			e.printStackTrace();
 		}
+
 	}
 
 	public void acceptConnection(Socket clientSocket){
-        ConnectedClient clientToAdd = null;
+        ConnectedClient clientToAdd;
         try {
             clientToAdd = new ConnectedClient(clientSocket);
             ClientList.add(clientToAdd);
+            clientToAdd.setOutputConsole(outputConsole);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +54,7 @@ public class NetworkConnectionsManager implements ConnectionAcceptor{
 	}
 
     public void setOutputConsole(Console outputConsole) {
-        this.outputConsole = outputConsole;
+        this.outputConsole.setConsoleOutput(outputConsole);
     }
 
     public void sendObjectToClient(NetworkSyncable objectToSend, ConnectedClient clientTarget){

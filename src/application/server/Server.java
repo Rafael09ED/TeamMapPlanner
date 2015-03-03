@@ -17,12 +17,14 @@ public class Server extends MapPlanner {
 	private String sessionName;
 	private int port;
 	private ArrayList<ConnectedClient> connectedClients;
-	private Console outputConsole;
 	private NetworkConnectionsManager networkingManager;
+
 	public Server(int port) {
-        super();
+        super(); // creates Console
 		this.port = port;
+
         networkingManager = new NetworkConnectionsManager(port);
+        networkingManager.setOutputConsole(outputConsole);
 
 	}
 	
