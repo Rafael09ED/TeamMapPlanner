@@ -6,6 +6,7 @@ package networking.server;
  * http://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html
  */
 
+import application.logic.Line;
 import networking.interfaces.ConnectionAcceptor;
 import networking.interfaces.NetworkSyncable;
 import networking.util.PortListener;
@@ -16,6 +17,7 @@ import utilities.console.Console;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 //Keeps track of clients connected, and the port listening for new clients
@@ -61,4 +63,9 @@ public class NetworkConnectionsManager implements ConnectionAcceptor{
 		clientTarget.sendObjectToTarget(objectToSend); // A little silly, IDK why I have this 
 	}
 
+    public void sendObjectsToClient(LinkedList<Line> objectsToSend) {
+        for (ConnectedClient connectedClient : ClientList) {
+            connectedClient.sendObjectsToTarget(objectsToSend);
+        }
+    }
 }

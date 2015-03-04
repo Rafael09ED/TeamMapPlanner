@@ -1,24 +1,14 @@
 package GUI;
 
+import application.MapPlannerGUI;
 import application.client.Client;
+import application.logic.Map;
 import utilities.console.ConsoleOutput;
 
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JLabel;
-
-import java.awt.FlowLayout;
-import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -78,7 +68,26 @@ public class ClientPanel extends JPanel implements ConsoleOutput{
 		
 		JLabel lblConsole = new JLabel("Console:");
 		panel.add(lblConsole, BorderLayout.NORTH);
-		
+
+        // Copied from the Map Planner GUI main
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
+        MapPlannerGUI frame = new MapPlannerGUI();
+        frame.setVisible(true);
+        frame.requestFocusInWindow();
+        frame.getInBox();
+
 	}
 
     public void setClient(Client client) {

@@ -2,12 +2,16 @@ package application.client;
 
 import java.util.LinkedList;
 
-import application.MapPlanner;
+import application.MapPlannerGUI;
+import application.logic.Line;
+import application.logic.MapPlanner;
 import networking.client.ConnectionToServerManager;
+import networking.interfaces.NetworkSendable;
+import networking.interfaces.NetworkSyncable;
 import networking.interfaces.sendableObjects.NS_ClientInformation;
 
 
-public class Client extends MapPlanner{
+public class Client extends MapPlanner implements NetworkSendable{
 /*
  * This class is the essence of the client. Everything that the client uses goes here.
  * The ClientManager will connect with a communicator, a console, and eventually a GUI.
@@ -16,6 +20,7 @@ public class Client extends MapPlanner{
 	private String userName;
 	private ConnectionToServerManager communications;
 	private LinkedList<String> toOutput;
+    private MapPlannerGUI mapPlanner;
 
 	public Client(String host, int port, String userName) {
         super(); // creates console
@@ -27,11 +32,24 @@ public class Client extends MapPlanner{
         communications.setUserName(userName);
         communications.sendObjectToServer(new NS_ClientInformation(userName));
         communications.setOutputConsole(outputConsole);
-    }
+        mapPlanner = new MapPlannerGUI();
+        setInbox(mapPlanner.getInBox());
+        mapPlanner.setSendable(this);
+        mapPlanner.startSending();
 
+    }
+    public void setInbox(LinkedList<Line> lineInBox){
+        communications.setInbox(lineInBox);
+    }
 	public void setUserName(String clientName) {
 		this.userName = clientName;
 		
 	}
+
+    @Override
+    public void ObjectsToSend(LinkedList<Line> ObjectsToSend) {
+        communications.sendObjectsToServer(ObjectsToSend);
+    }
+
 
 }

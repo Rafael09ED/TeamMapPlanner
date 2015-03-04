@@ -1,5 +1,6 @@
 package networking.server;
 
+import application.logic.Line;
 import networking.util.ObjectCommunicator;
 import networking.util.TimeoutPreventer;
 import networking.interfaces.NetworkSyncable;
@@ -7,6 +8,7 @@ import utilities.console.Console;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ConnectedClient {
@@ -54,4 +56,7 @@ public class ConnectedClient {
 		}
     }
 
+    public void sendObjectsToTarget(LinkedList<Line> objectsToSend) {
+        clientCommunicator.setInbox(objectsToSend);
+    }
 }

@@ -2,7 +2,9 @@ package networking.client;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.LinkedList;
 
+import application.logic.Line;
 import networking.util.ObjectCommunicator;
 import networking.util.TimeoutPreventer;
 import utilities.console.Console;
@@ -48,4 +50,11 @@ public class ConnectionToServerManager{
         }
     }
 
+    public void setInbox(LinkedList<Line> lineInBox) {
+        objectCommunicator.setInbox(lineInBox);
+    }
+
+    public void sendObjectsToServer(LinkedList<Line> objectsToSend) {
+        objectCommunicator.sendObjects(objectsToSend);
+    }
 }

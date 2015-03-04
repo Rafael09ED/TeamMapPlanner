@@ -1,12 +1,12 @@
 package application.server;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
-import application.MapPlanner;
+import application.logic.Line;
+import application.logic.MapPlanner;
 import networking.server.ConnectedClient;
 import networking.server.NetworkConnectionsManager;
-import utilities.console.Console;
-import utilities.console.ConsoleOutput;
 
 /* This Class is the essence of the server.
  * It will be connected to the console, the NetworkConnectionsManager and the syncing manager.
@@ -32,4 +32,8 @@ public class Server extends MapPlanner {
 		this.sessionName = sessionName;
 	}
 
+    @Override
+    public void ObjectsToSend(LinkedList<Line> ObjectsToSend) {
+        networkingManager.sendObjectsToClient(ObjectsToSend);
+    }
 }

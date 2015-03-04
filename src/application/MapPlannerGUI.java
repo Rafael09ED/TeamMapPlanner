@@ -1,17 +1,14 @@
 package application;
 
+import application.logic.Line;
+import application.logic.Map;
+import networking.interfaces.NetworkSendable;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
-import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -24,7 +21,7 @@ import javax.swing.border.EmptyBorder;
 public class MapPlannerGUI extends JFrame {
 
 	private JPanel contentPane;
-	private Canvas drawingPanel;
+	protected Canvas drawingPanel;
 
 	/**
 	 * Launch the application.
@@ -48,7 +45,6 @@ public class MapPlannerGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MapPlannerGUI() {
-		
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,5 +83,18 @@ public class MapPlannerGUI extends JFrame {
 		drawingPanel.requestFocus();
 		
 	}
+
+    public LinkedList<Line> getInBox() {
+        return ((Map)drawingPanel).getLineInBox();
+
+    }
+
+    public void setSendable(NetworkSendable sendable){
+        ((Map)drawingPanel).setOutBoxSender(sendable);
+    }
+    public void startSending(){
+        ((Map)drawingPanel).startOutputBox();
+    }
+
 
 }
