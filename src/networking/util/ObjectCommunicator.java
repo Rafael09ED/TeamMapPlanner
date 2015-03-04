@@ -2,6 +2,7 @@ package networking.util;
 //http://stackoverflow.com/questions/19217420/sending-an-object-through-a-socket-in-java
 
 import java.net.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.io.*;
 
@@ -18,8 +19,8 @@ public class ObjectCommunicator extends Thread {
     private ObjectOutputStream outToTarget;
     private ObjectInputStream inFromTarget;
     private Console outputConsole;
-    private LinkedList<Object> communicatorInbox;
-    private LinkedList<Line> inbox;
+    private ArrayList<Object> communicatorInbox;
+    private ArrayList<Line> inbox;
     //private ConnectedClient clientOfCommunicator;
 
     public ObjectCommunicator(Socket clientSocket) throws IOException {
@@ -27,7 +28,7 @@ public class ObjectCommunicator extends Thread {
         outToTarget = new ObjectOutputStream(clientSocket.getOutputStream());
         inFromTarget = new ObjectInputStream(clientSocket.getInputStream());
         clientSocket.setSoTimeout(10000);
-        communicatorInbox = new LinkedList<Object>();
+        communicatorInbox = new ArrayList<Object>();
         outputConsole = new Console();
     }
 
@@ -41,11 +42,11 @@ public class ObjectCommunicator extends Thread {
                 if (communicatorInbox.get(0) instanceof NS_ClientInformation) {
                     outputConsole.consolePrintLine("ClientInfo Updated: " + ((NS_ClientInformation) communicatorInbox.get(0)).getAuthor());
                 } else if (communicatorInbox.get(0) instanceof NS_AntiTimeout) {
-                    System.out.println("Still Here");
+                   // System.out.println("Still Here");
                 } else if (communicatorInbox.get(0) instanceof Line && inbox != null) {
                     inbox.add((Line)communicatorInbox.get(0));
                 }
-                communicatorInbox.remove();
+                communicatorInbox.remove(communicatorInbox.size()-1);
             } catch (SocketTimeoutException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -66,7 +67,7 @@ public class ObjectCommunicator extends Thread {
         this.outputConsole.setConsoleOutput(outputConsole);
     }
 
-    public void sendObjects(LinkedList<Line> objectsToSend) {
+    public void sendObjects(ArrayList<Line> objectsToSend) {
         try {
             for (Line line : objectsToSend) {
                 outToTarget.writeObject((NetworkSyncable) line);
@@ -79,7 +80,7 @@ public class ObjectCommunicator extends Thread {
         }
     }
 
-    public void setInbox(LinkedList<Line> inbox) {
+    public void setInbox(ArrayList<Line> inbox) {
         this.inbox = inbox;
     }
 }

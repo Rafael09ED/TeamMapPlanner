@@ -1,6 +1,7 @@
 package networking.server;
 
 import application.logic.Line;
+import networking.interfaces.NetworkSendable;
 import networking.util.ObjectCommunicator;
 import networking.util.TimeoutPreventer;
 import networking.interfaces.NetworkSyncable;
@@ -56,7 +57,11 @@ public class ConnectedClient {
 		}
     }
 
-    public void sendObjectsToTarget(LinkedList<Line> objectsToSend) {
-        clientCommunicator.setInbox(objectsToSend);
+    public void sendObjectsToTarget(ArrayList<Line> objectsToSend) {
+        clientCommunicator.sendObjects(objectsToSend);
+    }
+
+    public void setInBox(ArrayList<Line> inBox) {
+        clientCommunicator.setInbox(inBox);
     }
 }

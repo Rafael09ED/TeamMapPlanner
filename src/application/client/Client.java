@@ -1,5 +1,7 @@
 package application.client;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import application.MapPlannerGUI;
@@ -38,7 +40,7 @@ public class Client extends MapPlanner implements NetworkSendable{
         mapPlanner.startSending();
 
     }
-    public void setInbox(LinkedList<Line> lineInBox){
+    public void setInbox(ArrayList<Line> lineInBox){
         communications.setInbox(lineInBox);
     }
 	public void setUserName(String clientName) {
@@ -47,7 +49,7 @@ public class Client extends MapPlanner implements NetworkSendable{
 	}
 
     @Override
-    public void ObjectsToSend(LinkedList<Line> ObjectsToSend) {
+    public void ObjectsToSend(ArrayList<Line> ObjectsToSend) {
         communications.sendObjectsToServer(ObjectsToSend);
     }
 

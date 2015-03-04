@@ -2,6 +2,7 @@ package networking.client;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import application.logic.Line;
@@ -50,11 +51,11 @@ public class ConnectionToServerManager{
         }
     }
 
-    public void setInbox(LinkedList<Line> lineInBox) {
+    public void setInbox(ArrayList<Line> lineInBox) {
         objectCommunicator.setInbox(lineInBox);
     }
 
-    public void sendObjectsToServer(LinkedList<Line> objectsToSend) {
+    public void sendObjectsToServer(ArrayList<Line> objectsToSend) {
         objectCommunicator.sendObjects(objectsToSend);
     }
 }

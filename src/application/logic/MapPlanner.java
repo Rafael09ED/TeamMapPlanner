@@ -3,6 +3,7 @@ package application.logic;
 import utilities.console.Console;
 import utilities.console.ConsoleOutput;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -15,7 +16,7 @@ public abstract class  MapPlanner {
     public MapPlanner() {
         outputConsole = new Console();
     }
-    public abstract void ObjectsToSend(LinkedList<Line> ObjectsToSend);
+    public abstract void ObjectsToSend(ArrayList<Line> ObjectsToSend);
 
     public void setConsole(ConsoleOutput outputConsole){
         this.outputConsole.setConsoleOutput(outputConsole);

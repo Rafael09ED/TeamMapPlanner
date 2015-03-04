@@ -2,6 +2,7 @@ package application.logic;
 
 import networking.interfaces.NetworkSyncable;
 
+
 import java.awt.*;
 import java.util.UUID;
 
@@ -54,7 +55,10 @@ public class Line implements NetworkSyncable{
         }
         return false;
     }
-
+    public Line Clone(){
+        Line tempLine = new Line(startPoint, endPoint);
+        return tempLine;
+    }
     @Override
     public String getAuthor() {
         return "Unknown";

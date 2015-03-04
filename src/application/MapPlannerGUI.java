@@ -7,6 +7,7 @@ import networking.interfaces.NetworkSendable;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;
@@ -21,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 public class MapPlannerGUI extends JFrame {
 
 	private JPanel contentPane;
-	protected Canvas drawingPanel;
+	protected Map drawingPanel;
 
 	/**
 	 * Launch the application.
@@ -84,16 +85,17 @@ public class MapPlannerGUI extends JFrame {
 		
 	}
 
-    public LinkedList<Line> getInBox() {
-        return ((Map)drawingPanel).getLineInBox();
+    public ArrayList<Line> getInBox() {
+        return (drawingPanel).getLineInBox();
 
     }
 
     public void setSendable(NetworkSendable sendable){
         ((Map)drawingPanel).setOutBoxSender(sendable);
     }
+
     public void startSending(){
-        ((Map)drawingPanel).startOutputBox();
+        (drawingPanel).startOutputBox();
     }
 
 

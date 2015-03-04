@@ -8,12 +8,16 @@ package networking.server;
 
 import application.logic.Line;
 import networking.interfaces.ConnectionAcceptor;
+import networking.interfaces.NetworkSendable;
 import networking.interfaces.NetworkSyncable;
 import networking.util.PortListener;
 import networking.util.TimeoutPreventer;
 import utilities.console.Console;
 
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -21,13 +25,16 @@ import java.util.LinkedList;
 
 
 //Keeps track of clients connected, and the port listening for new clients
-public class NetworkConnectionsManager implements ConnectionAcceptor{
+public class NetworkConnectionsManager implements ConnectionAcceptor, NetworkSendable{
 	private ArrayList<ConnectedClient> ClientList;
 	private Console outputConsole;
-	
-	public NetworkConnectionsManager(int portNumber) {
 
-		ClientList = new ArrayList<ConnectedClient>();
+	private ArrayList<Line> Inbox;
+    private ActionListener outBoxLoop;
+    private NetworkSendable networkSender;
+
+	public NetworkConnectionsManager(int portNumber) {
+        ClientList = new ArrayList<ConnectedClient>();
 
 		outputConsole = new Console();
 
@@ -40,14 +47,36 @@ public class NetworkConnectionsManager implements ConnectionAcceptor{
 			System.err.println("Server Port Error: Exception in NetworkConnectionsManager");
 			e.printStackTrace();
 		}
+        networkSender = this;
 
 	}
 
+    public void startOutputBox() {
+
+        outBoxLoop = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                if (networkSender != null && Inbox != null && Inbox.size() > 0) {
+                    networkSender.ObjectsToSend(Inbox);
+                    Inbox = new ArrayList<>();
+                    for (ConnectedClient connectedClient : ClientList) {
+                        connectedClient.setInBox(Inbox);
+                    }
+                }
+                //System.out.println("lol");
+            }
+        };
+        new Timer(1000, outBoxLoop).start();
+
+    }
 	public void acceptConnection(Socket clientSocket){
         ConnectedClient clientToAdd;
         try {
             clientToAdd = new ConnectedClient(clientSocket);
             ClientList.add(clientToAdd);
+            clientToAdd.setInBox(Inbox);
             clientToAdd.setOutputConsole(outputConsole);
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,7 +92,8 @@ public class NetworkConnectionsManager implements ConnectionAcceptor{
 		clientTarget.sendObjectToTarget(objectToSend); // A little silly, IDK why I have this 
 	}
 
-    public void sendObjectsToClient(LinkedList<Line> objectsToSend) {
+    @Override
+    public void ObjectsToSend(ArrayList<Line> objectsToSend) {
         for (ConnectedClient connectedClient : ClientList) {
             connectedClient.sendObjectsToTarget(objectsToSend);
         }

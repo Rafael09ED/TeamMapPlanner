@@ -1,38 +1,22 @@
 package application.logic;
 
-import application.client.Client;
 import networking.interfaces.NetworkSendable;
+import networking.util.OutBoxLoop;
 
-import java.awt.Canvas;
-import java.awt.Graphics;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.PointerInfo;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferStrategy;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-import javax.swing.Timer;
 
 public class Map extends Canvas implements KeyListener, MouseListener {
     private boolean mouseDown = false;
     private ArrayList<Integer> activeKeys;
     private Point previousPoint;
     private ArrayList<Line> lines;
-    private LinkedList<Line> lineOutBox;
-    private LinkedList<Line> lineInBox;
-    private ActionListener outBoxLoop;
-
-    public void setOutBoxSender(NetworkSendable outBoxSender) {
-        this.outBoxSender = outBoxSender;
-    }
-
+    protected ArrayList<Line> lineOutBox;
+    private ArrayList<Line> lineInBox;
+    private OutBoxLoop outBoxLoop;
     private NetworkSendable outBoxSender;
 
 
@@ -41,10 +25,10 @@ public class Map extends Canvas implements KeyListener, MouseListener {
         addKeyListener(this);
         addMouseListener(this);
         activeKeys = new ArrayList<Integer>();
-        lineOutBox = new LinkedList<Line>();
-        lineInBox = new LinkedList<Line>();
+        lineOutBox = new ArrayList<Line>();
+        lineInBox = new ArrayList<Line>();
 
-
+        outBoxLoop = new OutBoxLoop();
         lines = new ArrayList<Line>();
 
         ActionListener action = new ActionListener() {
@@ -64,20 +48,15 @@ public class Map extends Canvas implements KeyListener, MouseListener {
 
 
     }
-    public void startOutputBox(){
-         outBoxLoop = new ActionListener() {
+    public void setOutBoxSender(NetworkSendable outBoxSender) {
+        this.outBoxSender = outBoxSender;
+    }
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                if (outBoxSender != null && lineOutBox !=null && lineOutBox.size()>0){
-                    outBoxSender.ObjectsToSend(lineOutBox);
-                    lineOutBox = new LinkedList<Line>();
-                }
-                //System.out.println("lol");
-            }
-        };
-        new Timer(1000, outBoxLoop).start();
+
+    public void startOutputBox(){
+        outBoxLoop.setNetworkSender(outBoxSender);
+        java.util.Timer timer = new java.util.Timer();
+        timer.schedule(outBoxLoop, 2 * 1 * 1000, 2* 1 *1000);
     }
     @Override
     public void paint(Graphics g) {
@@ -107,29 +86,39 @@ public class Map extends Canvas implements KeyListener, MouseListener {
         }
     }
 
-    public LinkedList<Line> getLineInBox() {
+    public ArrayList<Line> getLineInBox() {
         return lineInBox;
     }
 
     private void updateDrawing() {
 
+
+        //System.out.println(lineOutBox.size());
+        //System.out.println(lineOutBox.toString());
         if (mouseDown) {
+
             PointerInfo a = MouseInfo.getPointerInfo();
             Point currentPoint = new Point(a.getLocation().x - this.getLocationOnScreen().x, a.getLocation().y - this.getLocationOnScreen().y);
 
             if (previousPoint != null) {
                 if ((previousPoint.equals(currentPoint))) {
                     //getGraphics().drawLine(previousPoint.x, previousPoint.y, a.getLocation().x - this.getLocationOnScreen().x, a.getLocation().y - this.getLocationOnScreen().y);
-                } else
-                if (lines.size() > 2 && lines.get(lines.size() - 1).equalsSlope(currentPoint)) {
+                } else if (lines.size() > 2 && lines.get(lines.size() - 1).equalsSlope(currentPoint)) {
                     //getGraphics().drawLine(previousPoint.x, previousPoint.y, currentPoint.x, currentPoint.y);
                     lines.add(new Line(lines.get(lines.size() - 1).getStartPoint(), currentPoint));
                     lines.remove(lines.size() - 2);
-                    System.out.println(lines.size());
+
+                    if (outBoxLoop!=null) {
+                        outBoxLoop.setLineOutBox(lines.get(lines.size() - 1).Clone());
+
+                    }
                 } else {
                     Line tempLine = new Line(previousPoint, currentPoint);
                     lines.add(tempLine);
-                    //tempLine.draw(getGraphics());
+                        if (outBoxLoop != null) {
+                            outBoxLoop.setLineOutBox(lines.get(lines.size() - 1).Clone());
+                        }
+                        //tempLine.draw(getGraphics());
                 }
 
             }
@@ -189,7 +178,7 @@ public class Map extends Canvas implements KeyListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         mouseDown = true;
-        System.out.println("MouseOut");
+        //System.out.println("MouseOut");
     }
 
     @Override
