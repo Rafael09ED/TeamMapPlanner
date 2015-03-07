@@ -22,18 +22,22 @@ public class OutBoxLoop extends TimerTask {
     public void run() {
         System.out.println((outBoxSender != null) + " " + (lineOutBox != null) + " " + (lineOutBox.size() > 0));
         System.out.println(lineOutBox.size());
-            if (outBoxSender != null && lineOutBox != null && lineOutBox.size() > 0) {
-                outBoxSender.ObjectsToSend(new ArrayList<Line>(lineOutBox));
-                //lineOutBox = new ArrayList<Line>();
-                System.out.println("Sending List");
-            }
-
+        if (outBoxSender != null && lineOutBox != null && lineOutBox.size() > 0) {
+            outBoxSender.ObjectsToSend(new ArrayList<Line>(lineOutBox));
+            //lineOutBox = new ArrayList<Line>();
+            System.out.println("Sending List");
+        }
+        
+        System.out.println("run ID: " + System.identityHashCode(this.lineOutBox));
 
     }
     public void setLineOutBox(Line lineIn){
-        System.out.println("List Recived " + lineIn.toString());
+        System.out.println("! List Recived " + lineIn.toString());
         lineOutBox.add(lineIn);
         System.out.println(lineOutBox.size());
+        
+        System.out.println("set ID: " + System.identityHashCode(this.lineOutBox));
+        
     }
     public void setNetworkSender(NetworkSendable outBoxSender){
         this.outBoxSender = outBoxSender;
