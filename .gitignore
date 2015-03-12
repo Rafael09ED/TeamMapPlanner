@@ -45,6 +45,9 @@ Temporary Items
 # Compiled Java files
 *.class
 
+#Idea Stuff
+.idea/
+
 # Eclipse stuff
 .metadata
 .gradle

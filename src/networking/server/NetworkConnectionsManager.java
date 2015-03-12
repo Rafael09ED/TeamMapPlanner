@@ -11,17 +11,13 @@ import networking.interfaces.ConnectionAcceptor;
 import networking.interfaces.NetworkSendable;
 import networking.interfaces.NetworkSyncable;
 import networking.util.PortListener;
-import networking.util.TimeoutPreventer;
 import utilities.console.Console;
 
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.TimerTask;
 
 
 //Keeps track of clients connected, and the port listening for new clients
@@ -35,8 +31,9 @@ public class NetworkConnectionsManager implements ConnectionAcceptor, NetworkSen
 
 	public NetworkConnectionsManager(int portNumber) {
         ClientList = new ArrayList<ConnectedClient>();
-
+        Inbox = new ArrayList<>();
 		outputConsole = new Console();
+
 
 		outputConsole.consolePrintLine("Starting Network Connections Manager");
 		try {
@@ -53,25 +50,26 @@ public class NetworkConnectionsManager implements ConnectionAcceptor, NetworkSen
 
     public void startOutputBox() {
 
-        outBoxLoop = new ActionListener() {
-
+        java.util.Timer timer = new java.util.Timer();
+        timer.schedule(new TimerTask() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                if (networkSender != null && Inbox != null && Inbox.size() > 0) {
-                    networkSender.ObjectsToSend(Inbox);
-                    Inbox = new ArrayList<>();
-                    for (ConnectedClient connectedClient : ClientList) {
-                        connectedClient.setInBox(Inbox);
-                    }
-                }
-                //System.out.println("lol");
+            public void run() {
+                sendObjects();
             }
-        };
-        new Timer(1000, outBoxLoop).start();
+        }, 2 * 1 * 1000, 2 * 1 * 1000);
 
     }
-	public void acceptConnection(Socket clientSocket){
+
+    private void sendObjects() {
+        if (Inbox.size() > 0){
+            ObjectsToSend(new ArrayList<Line>(Inbox));
+            System.out.println("Server Sending Inbox Objects");
+        } else {
+            System.out.println("Server did not send Inbox Objects, inbox is 0");
+        }
+    }
+
+    public void acceptConnection(Socket clientSocket){
         ConnectedClient clientToAdd;
         try {
             clientToAdd = new ConnectedClient(clientSocket);

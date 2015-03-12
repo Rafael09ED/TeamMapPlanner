@@ -4,20 +4,10 @@ import application.logic.Line;
 import application.logic.Map;
 import networking.interfaces.NetworkSendable;
 
-import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.EventQueue;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.util.ArrayList;
 
 public class MapPlannerGUI extends JFrame {
 
@@ -86,16 +76,16 @@ public class MapPlannerGUI extends JFrame {
 	}
 
     public ArrayList<Line> getInBox() {
-        return (drawingPanel).getLineInBox();
+        return drawingPanel.getLineInBox();
 
     }
 
     public void setSendable(NetworkSendable sendable){
-        ((Map)drawingPanel).setOutBoxSender(sendable);
+        drawingPanel.setOutBoxSender(sendable);
     }
 
     public void startSending(){
-        (drawingPanel).startOutputBox();
+        drawingPanel.startOutputBox();
     }
 
 

@@ -1,15 +1,14 @@
 package networking.client;
 
-import java.io.IOException;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 import application.logic.Line;
+import networking.interfaces.NetworkSyncable;
 import networking.util.ObjectCommunicator;
 import networking.util.TimeoutPreventer;
 import utilities.console.Console;
-import networking.interfaces.NetworkSyncable;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
 
 public class ConnectionToServerManager{
 //Handles the client's communications to the server
@@ -56,6 +55,7 @@ public class ConnectionToServerManager{
     }
 
     public void sendObjectsToServer(ArrayList<Line> objectsToSend) {
+        System.out.println(objectsToSend.size() + "is the size");
         objectCommunicator.sendObjects(objectsToSend);
     }
 }

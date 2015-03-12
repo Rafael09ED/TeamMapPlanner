@@ -1,16 +1,14 @@
 package application.client;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 import application.MapPlannerGUI;
 import application.logic.Line;
 import application.logic.MapPlanner;
 import networking.client.ConnectionToServerManager;
 import networking.interfaces.NetworkSendable;
-import networking.interfaces.NetworkSyncable;
 import networking.interfaces.sendableObjects.NS_ClientInformation;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Client extends MapPlanner implements NetworkSendable{
@@ -50,6 +48,7 @@ public class Client extends MapPlanner implements NetworkSendable{
 
     @Override
     public void ObjectsToSend(ArrayList<Line> ObjectsToSend) {
+        System.out.println("The Size is: " + ObjectsToSend.size());
         communications.sendObjectsToServer(ObjectsToSend);
     }
 

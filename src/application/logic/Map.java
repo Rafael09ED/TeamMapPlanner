@@ -1,24 +1,28 @@
 package application.logic;
 
 import networking.interfaces.NetworkSendable;
-import networking.util.OutBoxLoop;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.TimerTask;
+import java.util.Timer;
 
 
 public class Map extends Canvas implements KeyListener, MouseListener {
     private boolean mouseDown = false;
     private ArrayList<Integer> activeKeys;
     private Point previousPoint;
-    private ArrayList<Line> lines;
+    protected List<Line> lines;
     protected ArrayList<Line> lineOutBox;
     private ArrayList<Line> lineInBox;
-    private OutBoxLoop outBoxLoop;
     private NetworkSendable outBoxSender;
-
+    private static final int RenderEveryNms = 10;
 
     public Map() {
 
@@ -28,20 +32,17 @@ public class Map extends Canvas implements KeyListener, MouseListener {
         lineOutBox = new ArrayList<Line>();
         lineInBox = new ArrayList<Line>();
 
-        outBoxLoop = new OutBoxLoop();
-        lines = new ArrayList<Line>();
+        lines = Collections.synchronizedList(new ArrayList<Line>());
 
-        ActionListener action = new ActionListener() {
-
+        Timer timer = new java.util.Timer();
+        timer.schedule(new TimerTask() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
+            public void run() {
+                System.out.println("Running ID:" + System.identityHashCode(this));
                 updateDrawing();
                 paint();
-                //System.out.println("lol");
             }
-        };
-        new Timer(6, action).start();
+        }, RenderEveryNms, RenderEveryNms);
 
         this.setVisible(true);
         this.requestFocusInWindow();
@@ -52,31 +53,53 @@ public class Map extends Canvas implements KeyListener, MouseListener {
         this.outBoxSender = outBoxSender;
     }
 
+    public void sendObjects(){
+        ArrayList tmpList = new ArrayList<Line>(lines);
+        System.out.println("When Trying to Send, Lines is Size :" + lines.size());
+        outBoxSender.ObjectsToSend(tmpList);
+    }
 
     public void startOutputBox(){
-        outBoxLoop.setNetworkSender(outBoxSender);
         java.util.Timer timer = new java.util.Timer();
-        timer.schedule(outBoxLoop, 2 * 1 * 1000, 2* 1 *1000);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                sendObjects();
+            }
+        }, 2 * 1 * 1000, 2 * 1 * 1000);
     }
     @Override
     public void paint(Graphics g) {
+        if (g == null)
+            return;
+
         g.clearRect(0,0,getWidth(),getHeight());
         g.drawString("Rafael09ED", 20, 20);
-
         for (Line line : lines) {
+
             line.draw(g);
         }
+        System.out.println("When Trying to paint w/ g, Lines is Size :" + lines.size());
        // g.dispose();
     }
+
     public void paint() {
 
         Graphics g = getGraphics();
        // g.clearRect(0, 0, getWidth(), getHeight());
-
+        System.out.println("When Trying to paint, Lines is Size :" + lines.size());
+        System.out.println(System.identityHashCode(this));
         for (Line line : lines) {
             line.draw(g);
         }
 
+    }
+	public List<Line> getListToSend() {
+        java.util.List<Line> tempList =  Collections.synchronizedList(new ArrayList<Line>(lines));
+        return tempList;
+	}
+    public String getARandomeString(){
+        return  "LOLCODE";
     }
     private void checkInbox(){
         if (lineInBox.size() > 0){
@@ -87,13 +110,14 @@ public class Map extends Canvas implements KeyListener, MouseListener {
     }
 
     public ArrayList<Line> getLineInBox() {
-        return lineInBox;
+   
+    	//tem.out.println( "suzise :" + lineInBox.size()); //  this was the wrong one
+        return (ArrayList<Line>) lineInBox.clone();
     }
 
     private void updateDrawing() {
 
 
-        //System.out.println(lineOutBox.size());
         //System.out.println(lineOutBox.toString());
         if (mouseDown) {
 
@@ -107,17 +131,9 @@ public class Map extends Canvas implements KeyListener, MouseListener {
                     //getGraphics().drawLine(previousPoint.x, previousPoint.y, currentPoint.x, currentPoint.y);
                     lines.add(new Line(lines.get(lines.size() - 1).getStartPoint(), currentPoint));
                     lines.remove(lines.size() - 2);
-
-                    if (outBoxLoop!=null) {
-                        outBoxLoop.setLineOutBox(lines.get(lines.size() - 1).Clone());
-
-                    }
                 } else {
                     Line tempLine = new Line(previousPoint, currentPoint);
                     lines.add(tempLine);
-                        if (outBoxLoop != null) {
-                            outBoxLoop.setLineOutBox(lines.get(lines.size() - 1).Clone());
-                        }
                         //tempLine.draw(getGraphics());
                 }
 
@@ -136,7 +152,6 @@ public class Map extends Canvas implements KeyListener, MouseListener {
                     break;
             }
         }
-        //paint(getGraphics());
     }
 
     @Override
@@ -178,7 +193,6 @@ public class Map extends Canvas implements KeyListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         mouseDown = true;
-        //System.out.println("MouseOut");
     }
 
     @Override

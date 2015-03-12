@@ -1,17 +1,19 @@
 package networking.util;
 //http://stackoverflow.com/questions/19217420/sending-an-object-through-a-socket-in-java
 
-import java.net.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.io.*;
-
 import application.logic.Line;
-import networking.interfaces.sendableObjects.NS_AntiTimeout;
-import utilities.console.ConsoleOutput;
-import utilities.console.Console;
 import networking.interfaces.NetworkSyncable;
+import networking.interfaces.sendableObjects.NS_AntiTimeout;
 import networking.interfaces.sendableObjects.NS_ClientInformation;
+import utilities.console.Console;
+import utilities.console.ConsoleOutput;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 
 public class ObjectCommunicator extends Thread {
     @SuppressWarnings("unused")
@@ -45,6 +47,7 @@ public class ObjectCommunicator extends Thread {
                    // System.out.println("Still Here");
                 } else if (communicatorInbox.get(0) instanceof Line && inbox != null) {
                     inbox.add((Line)communicatorInbox.get(0));
+                    System.out.println("Added Object to inbox");
                 }
                 communicatorInbox.remove(communicatorInbox.size()-1);
             } catch (SocketTimeoutException e) {
@@ -70,7 +73,8 @@ public class ObjectCommunicator extends Thread {
     public void sendObjects(ArrayList<Line> objectsToSend) {
         try {
             for (Line line : objectsToSend) {
-                outToTarget.writeObject((NetworkSyncable) line);
+                outToTarget.writeObject(line);
+                System.out.println("Printing Batch");
             }
             outToTarget.flush();
             outputConsole.consolePrintLine("Batch Sent");
