@@ -1,4 +1,4 @@
-import utilities.console.Console;
+import version1.console.Console;
 
 import java.awt.*;
 import java.io.IOException;
