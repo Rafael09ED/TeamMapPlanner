@@ -79,7 +79,6 @@ public class Map extends Canvas implements KeyListener, MouseListener {
         g.clearRect(0,0,getWidth(),getHeight());
         g.drawString("Rafael09ED", 20, 20);
         for (Line line : lines) {
-
             line.draw(g);
         }
         System.out.println("When Trying to paint w/ g, Lines is Size :" + lines.size());

@@ -1,5 +1,6 @@
 package version2.mapDrawer.tools;
 
+import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
 import version2.mapDrawer.util.MouseEventPasser;
 
@@ -12,14 +13,17 @@ public class ToolsManager {
 	private List<MapDrawerTool> mapDrawerTools;
     private MouseEventPasser mouseEventPasser;
     private GraphicsObjectTracker graphicsObjectTracker;
+    private DrawingCanvas drawingCanvas;
 
-    public ToolsManager(GraphicsObjectTracker graphicsObjectTracker) {
+    public ToolsManager(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
+        // store passed values
         this.graphicsObjectTracker = graphicsObjectTracker;
-
+        this.drawingCanvas = drawingCanvas;
+        // initialize the tool list
         mapDrawerTools = new ArrayList<MapDrawerTool>();
 
-        //Mouse tool is always created, and is always created first
-		activeTool = new Mouse(graphicsObjectTracker);
+        //Mouse tool is always created upfront, and is always created first
+		activeTool = new Mouse(graphicsObjectTracker, drawingCanvas);
         mouseEventPasser = new MouseEventPasser(activeTool);
 		mapDrawerTools.add(activeTool);	
 	}
@@ -28,7 +32,7 @@ public class ToolsManager {
     }
 
     public void createTools() {
-        mapDrawerTools.add(new Pen(graphicsObjectTracker));
+        mapDrawerTools.add(new Pen(graphicsObjectTracker , drawingCanvas ));
     }
 
     public MapDrawerTool getTool(int index){
@@ -55,6 +59,10 @@ public class ToolsManager {
                 return;
             }
         }
+    }
+
+    public void updateCurrentTool() {
+        activeTool.update();
     }
 
     private enum ToolsEnum {

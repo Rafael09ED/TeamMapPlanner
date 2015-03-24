@@ -1,6 +1,7 @@
 package version2.mapDrawer.tools;
 
 import testingTools.printEverySec;
+import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
 
 import java.awt.event.MouseEvent;
@@ -10,8 +11,8 @@ public class Mouse extends MapDrawerTool {
     private boolean mouseDown = false;
 
 
-    public Mouse(GraphicsObjectTracker graphicsObjectTracker) {
-        super(graphicsObjectTracker);
+    public Mouse(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
+        super(graphicsObjectTracker, drawingCanvas);
         printer = new printEverySec("Mouse Status:");
     }
 

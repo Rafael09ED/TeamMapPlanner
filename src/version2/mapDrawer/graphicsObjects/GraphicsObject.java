@@ -1,11 +1,11 @@
 package version2.mapDrawer.graphicsObjects;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 public abstract class GraphicsObject {
 
-	protected GraphicsObject() {
-		
+	public GraphicsObject() {
+
 	}
 	
 	public abstract void paint(Graphics g);

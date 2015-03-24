@@ -1,8 +1,11 @@
 package version2.mapDrawer.tools;
 
 import testingTools.printEverySec;
+import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
+import version2.mapDrawer.graphicsObjects.Line;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 /**
@@ -12,12 +15,24 @@ public class Pen extends MapDrawerTool {
 
     private boolean mouseDown = false;
     private printEverySec printer;
+    private Line currentLine;
+    private Color currentColor;
+    private int currentStroke;
 
-    public Pen(GraphicsObjectTracker graphicsObjectTracker) {
-        super(graphicsObjectTracker);
-
+    public Pen(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
+        super(graphicsObjectTracker, drawingCanvas);
         printer = new printEverySec("Pen Status:");
+        currentColor = Color.BLACK;
+        currentStroke = 1;
 
+    }
+
+    public void setCurrentStroke(int currentStroke) {
+        this.currentStroke = currentStroke;
+    }
+
+    public void setCurrentColor(Color currentColor) {
+        this.currentColor = currentColor;
     }
 
     @Override
@@ -32,7 +47,6 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public void toolSelected() {
-
     }
 
     @Override
@@ -42,7 +56,44 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public void update() {
+        // if the mouse is pressed down
+        if (mouseDown){
+            // get the mouse position
+            PointerInfo a = MouseInfo.getPointerInfo();
+            Point mousePoint = new Point(a.getLocation().x - drawingCanvas.getLocationOnScreen().x,
+                    a.getLocation().y - drawingCanvas.getLocationOnScreen().y);
 
+            // if there is a current line that we are working with
+            if (currentLine != null){
+
+                // if the new point is an extension of the line
+                if (currentLine.isPointCollinear(mousePoint)){
+                    // extend the line to include the point
+                    currentLine.changeEndPoint(mousePoint);
+                    System.out.println("The Line changed!");
+                    //render the line for the current frame
+                    graphicsObjectTracker.addCurrentFrameObject(currentLine);
+                } else { // if it isn't a continuation of the line
+                    // add the old line and create a new one
+                    graphicsObjectTracker.addGraphicsObject(currentLine);
+                    currentLine = newLineFromPoint(mousePoint);
+                }
+            } else { // or if we are creating a new line
+                // create a new line
+                currentLine = newLineFromPoint(mousePoint);
+                graphicsObjectTracker.addCurrentFrameObject(currentLine);
+            }
+
+
+        } else if (currentLine != null){  // or if the mouse was released and we had a line we were working with
+            // add the last line as a permanent line
+            graphicsObjectTracker.addGraphicsObject(currentLine);
+            currentLine = null;
+        }
+    }
+
+    private Line newLineFromPoint(Point pointToPass) {
+        return new Line(pointToPass, pointToPass, currentColor, currentStroke);
     }
 
     @Override

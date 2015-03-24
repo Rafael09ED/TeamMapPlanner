@@ -1,15 +1,19 @@
 package version2.mapDrawer.tools;
 
 import testingTools.printEverySec;
+import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
 import version2.mapDrawer.util.MouseInput;
 
 public abstract class MapDrawerTool implements MouseInput{
     protected GraphicsObjectTracker graphicsObjectTracker;
     protected printEverySec printer;
+    protected DrawingCanvas drawingCanvas;
 	
-	public MapDrawerTool(GraphicsObjectTracker graphicsObjectTracker){
+	public MapDrawerTool(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas ){
+
         this.graphicsObjectTracker = graphicsObjectTracker;
+        this.drawingCanvas = drawingCanvas;
 
         printEverySec.setGlobalPrintStatus(false);
     }

@@ -38,16 +38,22 @@ public class DrawingCanvas extends Canvas {
 				
 			}
 		}, BUFFER_CREATION_DELAY_TIME);
-        
+
         // Sets up rendering loop
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-            	update();
-            	render();
+                update();
+                render();
             }
         }, BUFFER_CREATION_DELAY_TIME * 2, (long) (1.0 * 1000.0 / 60));
+
 	}
+
+    public void setToolsManager(ToolsManager toolsManager) {
+        this.toolsManager = toolsManager;
+    }
+
     public void addMouseInput(ToolsManager toolsManager){
         // Listens to the Mouse and keyboard
         this.addMouseListener(toolsManager.getMouseEventPasser());
@@ -68,6 +74,7 @@ public class DrawingCanvas extends Canvas {
 	};
 
 	public void update() {
+        toolsManager.updateCurrentTool();
 	}
 
 }

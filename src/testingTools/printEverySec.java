@@ -12,6 +12,7 @@ public class printEverySec {
     private boolean print = true;
     private static boolean printGlobal = true;
 
+
     public printEverySec(final String textToPrint) {
 
         this.textToPrint = textToPrint;

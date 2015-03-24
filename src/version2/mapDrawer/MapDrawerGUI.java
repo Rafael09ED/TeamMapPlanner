@@ -58,9 +58,13 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 		activeKeys = new ArrayList<Integer>();
 		toolToggleButtons = new ArrayList<JToggleButton>();
 
+        // creates the graphics object tracker
         graphicsObjectTracker = new GraphicsObjectTracker();
-		toolsManager = new ToolsManager(graphicsObjectTracker);
-		
+        // creates the Drawing Canvas
+        drawingCanvas = new DrawingCanvas(graphicsObjectTracker);
+        // creates the tool manager
+		toolsManager = new ToolsManager(graphicsObjectTracker,drawingCanvas);
+		drawingCanvas.setToolsManager(toolsManager);
 		// GUI built with Eclipse's window builder
 
 		setTitle("Map Planner");
@@ -88,8 +92,8 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
-		// Creates and adds the drawing canvas
-		drawingCanvas = new DrawingCanvas(graphicsObjectTracker);
+		// Adds the drawing canvas
+
 		contentPane.add(drawingCanvas);
         drawingCanvas.addMouseInput(toolsManager);
 
