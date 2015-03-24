@@ -38,7 +38,7 @@ public class GraphicsObjectTracker {
         for (GraphicsObject graphicsObject : graphicsObjects) {
             graphicsObject.paint(g);
         }
-        System.out.println("Printing current Frame");
+        //System.out.println("Printing current Frame");
         for (Iterator<GraphicsObject> iterator = currentFrameGraphicsObjects.iterator(); iterator.hasNext(); ) {
 
             iterator.next().paint(g);

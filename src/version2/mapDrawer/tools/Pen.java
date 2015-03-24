@@ -51,7 +51,8 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public void toolDeSelected() {
-
+        mouseDown = false;
+        currentLine = null;
     }
 
     @Override
@@ -70,13 +71,18 @@ public class Pen extends MapDrawerTool {
                 if (currentLine.isPointCollinear(mousePoint)){
                     // extend the line to include the point
                     currentLine.changeEndPoint(mousePoint);
-                    System.out.println("The Line changed!");
+                    //System.out.println("The Line changed!");
                     //render the line for the current frame
                     graphicsObjectTracker.addCurrentFrameObject(currentLine);
                 } else { // if it isn't a continuation of the line
                     // add the old line and create a new one
                     graphicsObjectTracker.addGraphicsObject(currentLine);
-                    currentLine = newLineFromPoint(mousePoint);
+
+                    // create a new line that extends from the last point
+                    currentLine = newLineFromLastPoint(mousePoint);
+
+                    // render the new line for the current frame
+                    graphicsObjectTracker.addCurrentFrameObject(currentLine);
                 }
             } else { // or if we are creating a new line
                 // create a new line
@@ -90,6 +96,10 @@ public class Pen extends MapDrawerTool {
             graphicsObjectTracker.addGraphicsObject(currentLine);
             currentLine = null;
         }
+    }
+
+    private Line newLineFromLastPoint(Point mousePoint) {
+        return new Line(currentLine.getLastPoint(), mousePoint, currentColor, currentStroke);
     }
 
     private Line newLineFromPoint(Point pointToPass) {
@@ -125,7 +135,7 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        update();
     }
 
     @Override
