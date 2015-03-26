@@ -6,7 +6,7 @@ import java.awt.*;
  * Created by Rafael on 3/23/2015.
  */
 public class Line extends GraphicsObject {
-    private final double EPSILON = .00000001;
+    private final double EPSILON = .00001;
 
 
     private Color lineColor;
@@ -14,12 +14,15 @@ public class Line extends GraphicsObject {
     private Point lineStartPoint, lineEndPoint;
     private double lineSlope;
     private double slopeDifference = 0;
+    private BasicStroke jStroke;
 
     public Line(Point startPoint, Point endPoint) {
         this.lineStartPoint = startPoint;
         this.lineEndPoint = endPoint;
         lineColor       =   Color.BLACK;
         lineStroke      =   1;
+        //jStroke = new BasicStroke((float)lineStroke);
+        jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
     }
     public Line(Point startPoint, Point endPoint, Color lineColor, double lineStroke){
         this.lineStartPoint = startPoint;
@@ -27,6 +30,8 @@ public class Line extends GraphicsObject {
 
         this.lineColor      =   lineColor;
         this.lineStroke     =   lineStroke;
+
+        jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
     }
     public static double solveSlope(Point startPointIn, Point endPointIn){
         double slope;
@@ -37,7 +42,7 @@ public class Line extends GraphicsObject {
         } else {
             slope = ((((double) (endPointIn.y - startPointIn.y))/((double) (endPointIn.x - startPointIn.x))));
         }
-        System.out.println(slope);
+        //System.out.println(slope);
         return slope;
     }
 
@@ -56,12 +61,12 @@ public class Line extends GraphicsObject {
             return true;
         }
 
-        System.out.println(( Math.abs(solveSlope(pointIn, lineEndPoint)) - lineSlope ) * (distanceFormula(lineStartPoint, pointIn)));
+        //System.out.println(( Math.abs(solveSlope(pointIn, lineEndPoint)) - lineSlope ) * (distanceFormula(lineStartPoint, pointIn)));
         // if the slope is close to each other, and the distance does not effect the slope difference,
         if (slopeDifference>EPSILON){
             return false;
         }
-        if ( ( Math.abs(solveSlope(pointIn, lineEndPoint)) - lineSlope ) * (distanceFormula(lineStartPoint, pointIn) + 1) < EPSILON){
+        if ( ( Math.abs(solveSlope(pointIn, lineEndPoint) - lineSlope )) * (distanceFormula(lineStartPoint, pointIn) + 1) < EPSILON){
             return true;
         }
         return false;
@@ -87,6 +92,8 @@ public class Line extends GraphicsObject {
 
     @Override
     public void paint(Graphics g) {
+        g.setColor(lineColor);
+        ((Graphics2D) g).setStroke(jStroke);
         g.drawLine(lineStartPoint.x, lineStartPoint.y, lineEndPoint.x, lineEndPoint.y);
     }
 

@@ -34,9 +34,17 @@ public class GraphicsObjectTracker {
     public boolean removeGraphicsObject(GraphicsObject graphicsObjectIn){
         return graphicsObjects.remove(graphicsObjectIn);
     }
+
     public void renderGraphicsObjects(Graphics g){
+        Graphics2D g2 = (Graphics2D)g;
+        g2.setRenderingHint
+                (RenderingHints.KEY_ANTIALIASING,
+                        RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+
         for (GraphicsObject graphicsObject : graphicsObjects) {
-            graphicsObject.paint(g);
+            graphicsObject.paint(g2);
         }
         //System.out.println("Printing current Frame");
         for (Iterator<GraphicsObject> iterator = currentFrameGraphicsObjects.iterator(); iterator.hasNext(); ) {

@@ -3,6 +3,7 @@ package version2.mapDrawer.tools;
 import testingTools.printEverySec;
 import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
+import version2.mapDrawer.tools.toolBars.ToolToolBar;
 import version2.mapDrawer.util.MouseInput;
 
 public abstract class MapDrawerTool implements MouseInput{
@@ -23,4 +24,5 @@ public abstract class MapDrawerTool implements MouseInput{
 	public abstract void toolSelected();
 	public abstract void toolDeSelected();
 	public abstract void update();
+    public abstract ToolToolBar getToolbar();
 }

@@ -4,6 +4,8 @@ import testingTools.printEverySec;
 import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
 import version2.mapDrawer.graphicsObjects.Line;
+import version2.mapDrawer.tools.toolBars.PenToolBar;
+import version2.mapDrawer.tools.toolBars.ToolToolBar;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -13,21 +15,26 @@ import java.awt.event.MouseEvent;
  */
 public class Pen extends MapDrawerTool {
 
+    private static final String TOOL_NAME_STRING= "Pen";
     private boolean mouseDown = false;
     private printEverySec printer;
     private Line currentLine;
     private Color currentColor;
     private int currentStroke;
+    private ToolToolBar toolBar;
 
     public Pen(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
         super(graphicsObjectTracker, drawingCanvas);
         printer = new printEverySec("Pen Status:");
         currentColor = Color.BLACK;
         currentStroke = 1;
-
+        toolBar = new PenToolBar(this);
     }
 
     public void setCurrentStroke(int currentStroke) {
+        if (currentStroke <= 0){
+            return;
+        }
         this.currentStroke = currentStroke;
     }
 
@@ -37,7 +44,7 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public String getToolString() {
-        return "Pen";
+        return TOOL_NAME_STRING;
     }
 
     @Override
@@ -98,6 +105,11 @@ public class Pen extends MapDrawerTool {
         }
     }
 
+    @Override
+    public ToolToolBar getToolbar() {
+        return toolBar;
+    }
+
     private Line newLineFromLastPoint(Point mousePoint) {
         return new Line(currentLine.getLastPoint(), mousePoint, currentColor, currentStroke);
     }
@@ -135,7 +147,7 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        update();
+        //update();
     }
 
     @Override

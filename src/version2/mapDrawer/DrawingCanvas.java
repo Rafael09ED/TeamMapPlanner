@@ -1,6 +1,7 @@
 package version2.mapDrawer;
 
 import version2.mapDrawer.tools.ToolsManager;
+import version2.mapDrawer.tools.toolBars.ToolToolBar;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -15,10 +16,12 @@ public class DrawingCanvas extends Canvas {
 	private BufferedImage blankImage = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
 	private ToolsManager toolsManager;
     private GraphicsObjectTracker graphicsObjects;
+    private MapDrawerGUI mapDrawerGUI;
 
-	public DrawingCanvas(GraphicsObjectTracker graphicsObjectsTracker) {
+	public DrawingCanvas(GraphicsObjectTracker graphicsObjectsTracker, MapDrawerGUI mapDrawerGUI) {
 		// Initializes Arrays and Objects
         graphicsObjects = graphicsObjectsTracker;
+        this.mapDrawerGUI = mapDrawerGUI;
 
 		// creates a blank background to render to
 		Graphics2D g2 = blankImage.createGraphics();
@@ -77,4 +80,8 @@ public class DrawingCanvas extends Canvas {
         toolsManager.updateCurrentTool();
 	}
 
+    public void addToolBar(ToolToolBar toolToolBar) {
+        mapDrawerGUI.add(toolToolBar, BorderLayout.NORTH);
+        mapDrawerGUI.revalidate();
+    }
 }

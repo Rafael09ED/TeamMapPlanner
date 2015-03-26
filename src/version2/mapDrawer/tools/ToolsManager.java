@@ -2,6 +2,7 @@ package version2.mapDrawer.tools;
 
 import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
+import version2.mapDrawer.tools.toolBars.ToolToolBar;
 import version2.mapDrawer.util.MouseEventPasser;
 
 import java.util.ArrayList;
@@ -56,9 +57,19 @@ public class ToolsManager {
                 activeTool = mapDrawerTool;
                 mouseEventPasser.setToolToSendTo(activeTool);
                 activeTool.toolSelected();
+                checkForToolbar();
                 return;
             }
         }
+    }
+    private void checkForToolbar(){
+        ToolToolBar toolBar = activeTool.getToolbar();
+
+        if (toolBar == null){ return; }
+
+        drawingCanvas.addToolBar(toolBar);
+        toolBar.setEnabled(true);
+        toolBar.setVisible(true);
     }
 
     public void updateCurrentTool() {

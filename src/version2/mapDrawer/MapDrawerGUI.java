@@ -61,7 +61,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
         // creates the graphics object tracker
         graphicsObjectTracker = new GraphicsObjectTracker();
         // creates the Drawing Canvas
-        drawingCanvas = new DrawingCanvas(graphicsObjectTracker);
+        drawingCanvas = new DrawingCanvas(graphicsObjectTracker, this);
         // creates the tool manager
 		toolsManager = new ToolsManager(graphicsObjectTracker,drawingCanvas);
 		drawingCanvas.setToolsManager(toolsManager);
@@ -104,7 +104,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 				if (e.getSource() instanceof JToggleButton) {
 					selectOneTool.setSelectedTool((JToggleButton) e.getSource());
                     toolsManager.setTool(e.getActionCommand());
-				}
+                }
 			}
 		};
 
@@ -115,7 +115,6 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 		contentPane.add(toolBar, BorderLayout.EAST);
 
 		// creates Tools
-
 
         toolsManager.createTools();
         newToolButton(toolsManager.getTool(0));
@@ -173,6 +172,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 		// activeKeys.remove((Object) e.getKeyCode());
 		// TODO: Change this for lower fps
 	}
+
 
 	// Class that is used only here to keep only one selectedtoolbar:
 	private class selectOnlyOneToolbar {
