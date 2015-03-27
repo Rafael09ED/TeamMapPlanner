@@ -21,7 +21,7 @@ public class Pen extends MapDrawerTool {
     private Line currentLine;
     private Color currentColor;
     private int currentStroke;
-    private ToolToolBar toolBar;
+    private PenToolBar toolBar;
 
     public Pen(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
         super(graphicsObjectTracker, drawingCanvas);
@@ -54,12 +54,14 @@ public class Pen extends MapDrawerTool {
 
     @Override
     public void toolSelected() {
+        //toolBar.showColorPicker(true);
     }
 
     @Override
     public void toolDeSelected() {
         mouseDown = false;
         currentLine = null;
+        toolBar.showColorPicker(false);
     }
 
     @Override
@@ -153,5 +155,13 @@ public class Pen extends MapDrawerTool {
     @Override
     public void mouseMoved(MouseEvent e) {
 
+    }
+
+    public Color getCurrentColor() {
+        return currentColor;
+    }
+
+    public int getCurrentStroke() {
+        return currentStroke;
     }
 }

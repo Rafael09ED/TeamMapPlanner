@@ -3,6 +3,7 @@ package version2.mapDrawer.tools.toolBars;
 import version2.mapDrawer.tools.Pen;
 
 import javax.swing.*;
+import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
@@ -15,12 +16,10 @@ import java.util.Hashtable;
  */
 public class PenToolBar extends ToolToolBar{
     private Pen penTool;
-    private int Size = 1;
-    private Color color = Color.BLACK;
     private final static String
         SET_COLOR = "SetColor";
+    private JFrame colorPickerFrame;
     private ActionListener buttonListener;
-
     private ChangeListener changeListener;
 
     public PenToolBar(Pen penTool) {
@@ -54,9 +53,19 @@ public class PenToolBar extends ToolToolBar{
 
         jSliderStroke.setValue(1);
 
+        final JColorChooser colorChooser = new JColorChooser(Color.black);
+        ColorSelectionModel model = colorChooser.getSelectionModel();
+        model.addChangeListener(changeListener);
 
+        colorPickerFrame = new JFrame("Color Picker");
+        colorPickerFrame.setDefaultCloseOperation(colorPickerFrame.HIDE_ON_CLOSE);
+        colorPickerFrame.getContentPane().add(colorChooser);
+        colorPickerFrame.pack();
+        //colorPickerFrame.setVisible(true);
+    }
 
-
+    public void showColorPicker(boolean showFrame){
+        colorPickerFrame.setVisible(showFrame);
     }
 
    private void createActionListeners() {
@@ -67,7 +76,7 @@ public class PenToolBar extends ToolToolBar{
                     String command = e.getActionCommand();
                     switch (command){
                         case SET_COLOR:
-                            penTool.setCurrentColor(Color.BLACK);
+                            colorPickerFrame.setVisible(!colorPickerFrame.isVisible());
                             break;
 
                         default:
@@ -81,9 +90,11 @@ public class PenToolBar extends ToolToolBar{
        changeListener = new ChangeListener() {
            @Override
            public void stateChanged(ChangeEvent e) {
-               if (e.getSource() instanceof JSlider) {
-                   penTool.setCurrentStroke(((JSlider) e.getSource()).getValue());
-                   System.out.println(((double)((JSlider) e.getSource()).getValue()));
+               Object eSource = e.getSource();
+               if (eSource instanceof JSlider) {
+                   penTool.setCurrentStroke(((JSlider) eSource).getValue());
+               } else if (eSource instanceof ColorSelectionModel){
+                   penTool.setCurrentColor(((ColorSelectionModel) eSource).getSelectedColor());
                }
            }
        };

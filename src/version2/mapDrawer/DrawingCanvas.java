@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 public class DrawingCanvas extends Canvas {
 	private static final long serialVersionUID = -2889984729709356980L;
-    private static final int BUFFER_CREATION_DELAY_TIME = 100;
+    private static final int BUFFER_CREATION_DELAY_TIME = 10;
 	private BufferStrategy strategy;
 	private BufferedImage blankImage = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
 	private ToolsManager toolsManager;
@@ -36,9 +36,18 @@ public class DrawingCanvas extends Canvas {
         timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				createBufferStrategy(2);
-				strategy = getBufferStrategy();
-				
+                if (isDisplayable()) {
+                    createBufferStrategy(2);
+                    strategy = getBufferStrategy();
+                }else{
+                    try {
+                        Thread.sleep(BUFFER_CREATION_DELAY_TIME);
+                        run();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
 			}
 		}, BUFFER_CREATION_DELAY_TIME);
 
