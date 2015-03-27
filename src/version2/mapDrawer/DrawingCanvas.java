@@ -58,7 +58,7 @@ public class DrawingCanvas extends Canvas {
                 update();
                 render();
             }
-        }, BUFFER_CREATION_DELAY_TIME * 2, (long) (1.0 * 1000.0 / 60));
+        }, BUFFER_CREATION_DELAY_TIME * 2, (long) (1.0 * 1000.0 / 60 ));
 
 	}
 

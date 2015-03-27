@@ -77,7 +77,7 @@ public class Pen extends MapDrawerTool {
             if (currentLine != null){
 
                 // if the new point is an extension of the line
-                if (currentLine.isPointCollinear(mousePoint)){
+                if (currentLine.isPointAnExtension(mousePoint)){
                     // extend the line to include the point
                     currentLine.changeEndPoint(mousePoint);
                     //System.out.println("The Line changed!");

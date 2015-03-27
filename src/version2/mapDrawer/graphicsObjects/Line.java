@@ -15,18 +15,22 @@ public class Line extends GraphicsObject {
     private double lineSlope;
     private double slopeDifference = 0;
     private BasicStroke jStroke;
+    private double length = 0;
 
     public Line(Point startPoint, Point endPoint) {
         this.lineStartPoint = startPoint;
         this.lineEndPoint = endPoint;
         lineColor       =   Color.BLACK;
         lineStroke      =   1;
+        length = distanceFormula(startPoint,endPoint);
+
         //jStroke = new BasicStroke((float)lineStroke);
         jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
     }
     public Line(Point startPoint, Point endPoint, Color lineColor, double lineStroke){
         this.lineStartPoint = startPoint;
         this.lineEndPoint = endPoint;
+        length = distanceFormula(startPoint,endPoint);
 
         this.lineColor      =   lineColor;
         this.lineStroke     =   lineStroke;
@@ -46,7 +50,12 @@ public class Line extends GraphicsObject {
         return slope;
     }
 
-    public boolean isPointCollinear(Point pointIn) {
+    public boolean isPointAnExtension(Point pointIn) {
+
+        // if it makes the line shorter:
+        if (length > distanceFormula(lineStartPoint, pointIn)) {
+            return false;
+        }
 
         //if the point is a dot
         if (lineStartPoint.x == lineEndPoint.x && lineStartPoint.y == lineEndPoint.y) {
@@ -75,13 +84,14 @@ public class Line extends GraphicsObject {
         this.lineEndPoint = endPoint;
         slopeDifference += Math.abs(solveSlope(lineStartPoint, lineEndPoint)-lineSlope);
         lineSlope = solveSlope(lineStartPoint, lineEndPoint);
+        length = distanceFormula(lineStartPoint,endPoint);
     }
 
     public static double distanceFormula(Point pointOne, Point pointTwo){
         if (pointOne.x == pointTwo.x)
-            return pointOne.y - pointTwo.y;
+            return Math.abs(pointOne.y - pointTwo.y);
         if (pointOne.y == pointTwo.y)
-            return pointOne.x - pointTwo.x;
+            return Math.abs(pointOne.x - pointTwo.x);
 
         double distance = Math.sqrt(Math.pow((double)(pointOne.x - pointTwo.x), 2)
                 + Math.pow((double)(pointOne.y - pointTwo.y), 2) );
