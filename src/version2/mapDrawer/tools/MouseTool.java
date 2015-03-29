@@ -7,12 +7,12 @@ import version2.mapDrawer.tools.toolBars.ToolToolBar;
 
 import java.awt.event.MouseEvent;
 
-public class Mouse extends MapDrawerTool {
+public class MouseTool extends MapDrawerTool {
 
     private boolean mouseDown = false;
 
 
-    public Mouse(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
+    public MouseTool(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
         super(graphicsObjectTracker, drawingCanvas);
         printer = new printEverySec("Mouse Status:");
     }

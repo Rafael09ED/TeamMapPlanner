@@ -24,7 +24,7 @@ public class ToolsManager {
         mapDrawerTools = new ArrayList<MapDrawerTool>();
 
         //Mouse tool is always created upfront, and is always created first
-		activeTool = new Mouse(graphicsObjectTracker, drawingCanvas);
+		activeTool = new MouseTool(graphicsObjectTracker, drawingCanvas);
         mouseEventPasser = new MouseEventPasser(activeTool);
 		mapDrawerTools.add(activeTool);	
 	}
@@ -33,7 +33,7 @@ public class ToolsManager {
     }
 
     public void createTools() {
-        mapDrawerTools.add(new Pen(graphicsObjectTracker , drawingCanvas ));
+        mapDrawerTools.add(new PenTool(graphicsObjectTracker , drawingCanvas ));
     }
 
     public MapDrawerTool getTool(int index){

@@ -6,6 +6,8 @@ import version2.mapDrawer.GraphicsObjectTracker;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
 import version2.mapDrawer.util.MouseInput;
 
+import java.awt.*;
+
 public abstract class MapDrawerTool implements MouseInput{
     protected GraphicsObjectTracker graphicsObjectTracker;
     protected printEverySec printer;
@@ -18,7 +20,12 @@ public abstract class MapDrawerTool implements MouseInput{
 
         printEverySec.setGlobalPrintStatus(false);
     }
-
+    public Point getMousePoint() {
+        PointerInfo a = MouseInfo.getPointerInfo();
+        Point mousePoint = new Point(a.getLocation().x - drawingCanvas.getLocationOnScreen().x,
+                a.getLocation().y - drawingCanvas.getLocationOnScreen().y);
+        return mousePoint;
+    }
     public abstract String getToolString();
     public abstract String getToolDisplayName();
 	public abstract void toolSelected();
