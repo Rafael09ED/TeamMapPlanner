@@ -1,6 +1,6 @@
 package version2.mapDrawer.tools.toolBars;
 
-import version2.mapDrawer.tools.Pen;
+import version2.mapDrawer.tools.interfaces.StrokeAndColor;
 
 import javax.swing.*;
 import javax.swing.colorchooser.ColorSelectionModel;
@@ -15,15 +15,15 @@ import java.util.Hashtable;
  * Created by Rafael on 3/25/2015.
  */
 public class PenToolBar extends ToolToolBar{
-    private Pen penTool;
+    private StrokeAndColor penToolTool;
     private final static String
         SET_COLOR = "SetColor";
     private JFrame colorPickerFrame;
     private ActionListener buttonListener;
     private ChangeListener changeListener;
 
-    public PenToolBar(Pen penTool) {
-        this.penTool = penTool;
+    public PenToolBar(StrokeAndColor strokeAndColorer) {
+        this.penToolTool = penToolTool;
         createActionListeners();
         setOrientation(SwingConstants.HORIZONTAL);
 
@@ -92,9 +92,9 @@ public class PenToolBar extends ToolToolBar{
            public void stateChanged(ChangeEvent e) {
                Object eSource = e.getSource();
                if (eSource instanceof JSlider) {
-                   penTool.setCurrentStroke(((JSlider) eSource).getValue());
+                   penToolTool.setCurrentStroke(((JSlider) eSource).getValue());
                } else if (eSource instanceof ColorSelectionModel){
-                   penTool.setCurrentColor(((ColorSelectionModel) eSource).getSelectedColor());
+                   penToolTool.setCurrentColor(((ColorSelectionModel) eSource).getSelectedColor());
                }
            }
        };

@@ -4,6 +4,7 @@ import testingTools.printEverySec;
 import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
 import version2.mapDrawer.graphicsObjects.Line;
+import version2.mapDrawer.tools.interfaces.StrokeAndColor;
 import version2.mapDrawer.tools.toolBars.PenToolBar;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
 
@@ -13,7 +14,7 @@ import java.awt.event.MouseEvent;
 /**
  * Created by Rafael on 3/20/2015.
  */
-public class Pen extends MapDrawerTool {
+public class PenTool extends MapDrawerTool implements StrokeAndColor {
 
     private static final String TOOL_NAME_STRING= "Pen";
     private boolean mouseDown = false;
@@ -23,7 +24,7 @@ public class Pen extends MapDrawerTool {
     private int currentStroke;
     private PenToolBar toolBar;
 
-    public Pen(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
+    public PenTool(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
         super(graphicsObjectTracker, drawingCanvas);
         printer = new printEverySec("Pen Status:");
         currentColor = Color.BLACK;
