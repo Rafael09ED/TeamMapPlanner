@@ -13,18 +13,29 @@ import java.util.List;
  */
 public class GraphicsObjectTracker {
 
-    private List<GraphicsObject> graphicsObjects;
+    private List<List<GraphicsObject>> graphicsObjects;
     private List<GraphicsObject> currentFrameGraphicsObjects;
+    private int activeLayer = 0;
 
     public GraphicsObjectTracker() {
 
-        graphicsObjects = new ArrayList<GraphicsObject>();
-        currentFrameGraphicsObjects = new LinkedList<>();
+        graphicsObjects = new ArrayList<List<GraphicsObject>>();
+        currentFrameGraphicsObjects = new LinkedList<GraphicsObject>();
+        createNewLayer(0);
+    }
 
+    private void createNewLayer(int index){
+        while( graphicsObjects.size()< index + 1 ){
+            graphicsObjects.add(new ArrayList<GraphicsObject>());
+        }
     }
 
     public void addGraphicsObject(GraphicsObject graphicsObjectIn){
-        graphicsObjects.add(graphicsObjectIn);
+        graphicsObjects.get(activeLayer).add(graphicsObjectIn);
+    }
+
+    public void setActiveLayer(int layer){
+        activeLayer = layer;
     }
 
     public void addCurrentFrameObject(GraphicsObject graphicsObjectIn){
@@ -32,7 +43,7 @@ public class GraphicsObjectTracker {
     }
 
     public boolean removeGraphicsObject(GraphicsObject graphicsObjectIn){
-        return graphicsObjects.remove(graphicsObjectIn);
+        return graphicsObjects.get(activeLayer).remove(graphicsObjectIn);
     }
 
     public void renderGraphicsObjects(Graphics g){
@@ -43,15 +54,19 @@ public class GraphicsObjectTracker {
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
                 RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 
-        for (GraphicsObject graphicsObject : graphicsObjects) {
-            graphicsObject.paint(g2);
-        }
-        //System.out.println("Printing current Frame");
-        for (Iterator<GraphicsObject> iterator = currentFrameGraphicsObjects.iterator(); iterator.hasNext(); ) {
+        int currentLayerToRender = 0;
+        for (List<GraphicsObject> graphicsList : graphicsObjects) {
 
-            iterator.next().paint(g);
-            iterator.remove();
-
+            for (GraphicsObject graphicsObject : graphicsList) {
+                graphicsObject.paint(g2);
+            }
+            //System.out.println("Printing current Frame");
+            if (currentLayerToRender == activeLayer) {
+                for (Iterator<GraphicsObject> iterator = currentFrameGraphicsObjects.iterator(); iterator.hasNext(); ) {
+                    iterator.next().paint(g);
+                    iterator.remove();
+                }
+            }
         }
     }
 }
