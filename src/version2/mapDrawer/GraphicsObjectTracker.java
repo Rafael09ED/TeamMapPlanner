@@ -3,9 +3,7 @@ package version2.mapDrawer;
 import version2.mapDrawer.graphicsObjects.GraphicsObject;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -24,30 +22,30 @@ public class GraphicsObjectTracker {
         createNewLayer(0);
     }
 
-    private void createNewLayer(int index){
-        while( graphicsObjects.size()< index + 1 ){
-            graphicsObjects.add(new ArrayList<GraphicsObject>());
+    private void createNewLayer(int index) {
+        while (graphicsObjects.size() < index + 1) {
+            graphicsObjects.add(Collections.synchronizedList(new ArrayList<GraphicsObject>()));
         }
     }
 
-    public void addGraphicsObject(GraphicsObject graphicsObjectIn){
+    public void addGraphicsObject(GraphicsObject graphicsObjectIn) {
         graphicsObjects.get(activeLayer).add(graphicsObjectIn);
     }
 
-    public void setActiveLayer(int layer){
+    public void setActiveLayer(int layer) {
         activeLayer = layer;
     }
 
-    public void addCurrentFrameObject(GraphicsObject graphicsObjectIn){
+    public void addCurrentFrameObject(GraphicsObject graphicsObjectIn) {
         currentFrameGraphicsObjects.add(graphicsObjectIn);
     }
 
-    public boolean removeGraphicsObject(GraphicsObject graphicsObjectIn){
+    public boolean removeGraphicsObject(GraphicsObject graphicsObjectIn) {
         return graphicsObjects.get(activeLayer).remove(graphicsObjectIn);
     }
 
-    public void renderGraphicsObjects(Graphics g){
-        Graphics2D g2 = (Graphics2D)g;
+    public void renderGraphicsObjects(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint
                 (RenderingHints.KEY_ANTIALIASING,
                         RenderingHints.VALUE_ANTIALIAS_ON);
@@ -56,9 +54,11 @@ public class GraphicsObjectTracker {
 
         int currentLayerToRender = 0;
         for (List<GraphicsObject> graphicsList : graphicsObjects) {
+            synchronized (graphicsList) {
 
-            for (GraphicsObject graphicsObject : graphicsList) {
-                graphicsObject.paint(g2);
+                for (GraphicsObject graphicsObject : graphicsList) {
+                    graphicsObject.paint(g2);
+                }
             }
             //System.out.println("Printing current Frame");
             if (currentLayerToRender == activeLayer) {

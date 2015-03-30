@@ -7,14 +7,14 @@ import java.awt.event.MouseMotionListener;
 /**
  * Created by Rafael on 3/20/2015.
  */
-public class MouseEventPasser implements MouseListener, MouseMotionListener {
-    private MouseInput toolToSendTo;
+public class MouseEventPasser implements MouseListener {
+    private MouseListener toolToSendTo;
 
 
-    public MouseEventPasser(MouseInput toolToSendTo){
+    public MouseEventPasser(MouseListener toolToSendTo){
         this.toolToSendTo = toolToSendTo;
     }
-    public void setToolToSendTo(MouseInput toolToSendTo){
+    public void setToolToSendTo(MouseListener toolToSendTo){
         this.toolToSendTo = toolToSendTo;
     }
 
@@ -41,15 +41,5 @@ public class MouseEventPasser implements MouseListener, MouseMotionListener {
     @Override
     public void mouseExited(MouseEvent e) {
         toolToSendTo.mouseExited(e);
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        toolToSendTo.mouseDragged(e);
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        toolToSendTo.mouseMoved(e);
     }
 }

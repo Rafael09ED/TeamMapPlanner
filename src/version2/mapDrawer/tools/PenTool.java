@@ -63,6 +63,9 @@ public class PenTool extends MapDrawerTool implements StrokeAndColor {
         mouseDown = false;
         currentLine = null;
         toolBar.showColorPicker(false);
+        drawingCanvas.SuperGUI().remove(toolBar);
+        drawingCanvas.SuperGUI().validate();
+
     }
 
     @Override
@@ -148,15 +151,6 @@ public class PenTool extends MapDrawerTool implements StrokeAndColor {
 
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        //update();
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
 
     public Color getCurrentColor() {
         return currentColor;

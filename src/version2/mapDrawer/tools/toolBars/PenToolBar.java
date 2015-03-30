@@ -15,7 +15,7 @@ import java.util.Hashtable;
  * Created by Rafael on 3/25/2015.
  */
 public class PenToolBar extends ToolToolBar{
-    private StrokeAndColor penToolTool;
+    private StrokeAndColor strokeAndColorer;
     private final static String
         SET_COLOR = "SetColor";
     private JFrame colorPickerFrame;
@@ -23,8 +23,9 @@ public class PenToolBar extends ToolToolBar{
     private ChangeListener changeListener;
 
     public PenToolBar(StrokeAndColor strokeAndColorer) {
-        this.penToolTool = penToolTool;
+        this.strokeAndColorer = strokeAndColorer;
         createActionListeners();
+
         setOrientation(SwingConstants.HORIZONTAL);
 
         JButton jButtonSizeUp = new JButton("Color Picker");
@@ -92,9 +93,9 @@ public class PenToolBar extends ToolToolBar{
            public void stateChanged(ChangeEvent e) {
                Object eSource = e.getSource();
                if (eSource instanceof JSlider) {
-                   penToolTool.setCurrentStroke(((JSlider) eSource).getValue());
+                   strokeAndColorer.setCurrentStroke(((JSlider) eSource).getValue());
                } else if (eSource instanceof ColorSelectionModel){
-                   penToolTool.setCurrentColor(((ColorSelectionModel) eSource).getSelectedColor());
+                   strokeAndColorer.setCurrentColor(((ColorSelectionModel) eSource).getSelectedColor());
                }
            }
        };

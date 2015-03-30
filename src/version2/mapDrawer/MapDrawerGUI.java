@@ -96,7 +96,15 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 
 		contentPane.add(drawingCanvas);
         drawingCanvas.addMouseInput(toolsManager);
-
+		setVisible(true);
+		
+		while (! isDisplayable() ){
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 
 		// Create Action Listener for JavaButtons
 		toolButtonListener = new ActionListener() {

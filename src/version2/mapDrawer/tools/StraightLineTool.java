@@ -4,6 +4,7 @@ import version2.mapDrawer.DrawingCanvas;
 import version2.mapDrawer.GraphicsObjectTracker;
 import version2.mapDrawer.graphicsObjects.Line;
 import version2.mapDrawer.tools.interfaces.StrokeAndColor;
+import version2.mapDrawer.tools.toolBars.PenToolBar;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
 
 import java.awt.*;
@@ -14,15 +15,21 @@ import java.awt.event.MouseEvent;
  */
 public class StraightLineTool extends MapDrawerTool implements StrokeAndColor {
     private static final String TOOL_NAME_STRING= "StraightLine";
+
+    private PenToolBar toolBar;
     private Line currentLine;
     private int currentStroke;
     private Color currentColor;
+    private boolean readyForSecondPoint;
 
     public StraightLineTool(GraphicsObjectTracker graphicsObjectTracker, DrawingCanvas drawingCanvas) {
         super(graphicsObjectTracker, drawingCanvas);
-        //TODO: Start Coding Class
+
         currentStroke = 1;
         currentColor = Color.BLACK;
+
+        readyForSecondPoint = false;
+        toolBar = new PenToolBar(this);
     }
 
     @Override
@@ -37,12 +44,15 @@ public class StraightLineTool extends MapDrawerTool implements StrokeAndColor {
 
     @Override
     public void toolSelected() {
-
     }
 
     @Override
     public void toolDeSelected() {
         currentLine = null;
+        toolBar.showColorPicker(false);
+        readyForSecondPoint = false;
+        drawingCanvas.SuperGUI().remove(toolBar);
+        drawingCanvas.SuperGUI().validate();
     }
 
     @Override
@@ -55,23 +65,35 @@ public class StraightLineTool extends MapDrawerTool implements StrokeAndColor {
 
     @Override
     public ToolToolBar getToolbar() {
-        return null;
+        return toolBar;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Point mousePoint = getMousePoint();
-        currentLine = new Line(mousePoint,mousePoint);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (readyForSecondPoint){
 
+            currentLine.changeEndPoint(getMousePoint());
+            graphicsObjectTracker.addGraphicsObject(currentLine);
+            currentLine = null;
+            readyForSecondPoint = false;
+
+        } else {
+
+            Point mousePoint = getMousePoint();
+            currentLine = new Line(mousePoint,mousePoint, currentColor, currentStroke);
+
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        if (currentLine != null){
+            readyForSecondPoint = true;
+        }
     }
 
     @Override
@@ -81,17 +103,6 @@ public class StraightLineTool extends MapDrawerTool implements StrokeAndColor {
 
     @Override
     public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
     }
 
     @Override

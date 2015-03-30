@@ -36,17 +36,15 @@ public class DrawingCanvas extends Canvas {
         timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-                if (isDisplayable()) {
-                    createBufferStrategy(2);
-                    strategy = getBufferStrategy();
-                }else{
+                while (!isDisplayable()) {
                     try {
                         Thread.sleep(BUFFER_CREATION_DELAY_TIME);
-                        run();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                createBufferStrategy(2);
+                strategy = getBufferStrategy();
 
 			}
 		}, BUFFER_CREATION_DELAY_TIME);
@@ -69,7 +67,6 @@ public class DrawingCanvas extends Canvas {
     public void addMouseInput(ToolsManager toolsManager){
         // Listens to the Mouse and keyboard
         this.addMouseListener(toolsManager.getMouseEventPasser());
-        this.addMouseMotionListener(toolsManager.getMouseEventPasser());
     }
 	public void render() {
 		// gets buffer strategy to render to
@@ -92,5 +89,9 @@ public class DrawingCanvas extends Canvas {
     public void addToolBar(ToolToolBar toolToolBar) {
         mapDrawerGUI.add(toolToolBar, BorderLayout.NORTH);
         mapDrawerGUI.revalidate();
+    }
+
+    public MapDrawerGUI SuperGUI() {
+        return mapDrawerGUI;
     }
 }

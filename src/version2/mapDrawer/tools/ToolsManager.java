@@ -33,7 +33,9 @@ public class ToolsManager {
     }
 
     public void createTools() {
-        mapDrawerTools.add(new PenTool(graphicsObjectTracker , drawingCanvas ));
+        mapDrawerTools.add(new PenTool(graphicsObjectTracker, drawingCanvas ));
+        mapDrawerTools.add(new StraightLineTool(graphicsObjectTracker, drawingCanvas));
+        mapDrawerTools.add(new PictureTool(graphicsObjectTracker, drawingCanvas));
     }
 
     public MapDrawerTool getTool(int index){
