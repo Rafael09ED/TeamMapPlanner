@@ -1,7 +1,7 @@
 package version2.mapDrawer.tools;
 
 import version2.mapDrawer.DrawingCanvas;
-import version2.mapDrawer.GraphicsObjectTracker;
+import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
 import version2.mapDrawer.util.MouseEventPasser;
 

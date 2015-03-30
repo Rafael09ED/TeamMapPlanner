@@ -1,5 +1,6 @@
 package version2.mapDrawer;
 
+import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.tools.MapDrawerTool;
 import version2.mapDrawer.tools.ToolsManager;
 
@@ -97,7 +98,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 		contentPane.add(drawingCanvas);
         drawingCanvas.addMouseInput(toolsManager);
 		setVisible(true);
-		
+
 		while (! isDisplayable() ){
 			try {
 				Thread.sleep(100);

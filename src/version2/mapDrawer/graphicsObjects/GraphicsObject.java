@@ -9,5 +9,6 @@ public abstract class GraphicsObject {
 	}
 	
 	public abstract void paint(Graphics g);
+	public abstract Point getMaxPoint();
 
 }

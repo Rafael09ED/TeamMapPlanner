@@ -1,4 +1,4 @@
-package version2.mapDrawer;
+package version2.mapDrawer.rendering;
 
 import version2.mapDrawer.graphicsObjects.GraphicsObject;
 
@@ -11,25 +11,25 @@ import java.util.List;
  */
 public class GraphicsObjectTracker {
 
-    private List<List<GraphicsObject>> graphicsObjects;
+    private List<GraphicsObjectLayer> graphicsObjects;
     private List<GraphicsObject> currentFrameGraphicsObjects;
     private int activeLayer = 0;
 
     public GraphicsObjectTracker() {
 
-        graphicsObjects = new ArrayList<List<GraphicsObject>>();
+        graphicsObjects = new ArrayList<GraphicsObjectLayer>();
         currentFrameGraphicsObjects = new LinkedList<GraphicsObject>();
         createNewLayer(0);
     }
 
     private void createNewLayer(int index) {
         while (graphicsObjects.size() < index + 1) {
-            graphicsObjects.add(Collections.synchronizedList(new ArrayList<GraphicsObject>()));
+            graphicsObjects.add(new GraphicsObjectLayer());
         }
     }
 
     public void addGraphicsObject(GraphicsObject graphicsObjectIn) {
-        graphicsObjects.get(activeLayer).add(graphicsObjectIn);
+        graphicsObjects.get(activeLayer).addGraphicsObject(graphicsObjectIn);
     }
 
     public void setActiveLayer(int layer) {
@@ -41,7 +41,7 @@ public class GraphicsObjectTracker {
     }
 
     public boolean removeGraphicsObject(GraphicsObject graphicsObjectIn) {
-        return graphicsObjects.get(activeLayer).remove(graphicsObjectIn);
+        return graphicsObjects.get(activeLayer).removeGraphicsObjects(graphicsObjectIn);
     }
 
     public void renderGraphicsObjects(Graphics g) {
@@ -53,12 +53,10 @@ public class GraphicsObjectTracker {
                 RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 
         int currentLayerToRender = 0;
-        for (List<GraphicsObject> graphicsList : graphicsObjects) {
-            synchronized (graphicsList) {
 
-                for (GraphicsObject graphicsObject : graphicsList) {
-                    graphicsObject.paint(g2);
-                }
+        for (GraphicsObjectLayer graphicsLayer : graphicsObjects) {
+            synchronized (graphicsLayer) {
+                graphicsLayer.render(g);
             }
             //System.out.println("Printing current Frame");
             if (currentLayerToRender == activeLayer) {

@@ -1,5 +1,6 @@
 package version2.mapDrawer;
 
+import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.tools.ToolsManager;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
 

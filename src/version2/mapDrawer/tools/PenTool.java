@@ -2,7 +2,7 @@ package version2.mapDrawer.tools;
 
 import testingTools.printEverySec;
 import version2.mapDrawer.DrawingCanvas;
-import version2.mapDrawer.GraphicsObjectTracker;
+import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.graphicsObjects.Line;
 import version2.mapDrawer.tools.interfaces.StrokeAndColor;
 import version2.mapDrawer.tools.toolBars.PenToolBar;

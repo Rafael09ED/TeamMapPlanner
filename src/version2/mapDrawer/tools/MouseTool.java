@@ -2,7 +2,7 @@ package version2.mapDrawer.tools;
 
 import testingTools.printEverySec;
 import version2.mapDrawer.DrawingCanvas;
-import version2.mapDrawer.GraphicsObjectTracker;
+import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
 
 import java.awt.event.MouseEvent;

@@ -16,27 +16,35 @@ public class Line extends GraphicsObject {
     private double slopeDifference = 0;
     private BasicStroke jStroke;
     private double length = 0;
+    private Point maxPoint;
 
     public Line(Point startPoint, Point endPoint) {
-        this.lineStartPoint = startPoint;
-        this.lineEndPoint = endPoint;
-        lineColor       =   Color.BLACK;
-        lineStroke      =   1;
-        length = distanceFormula(startPoint,endPoint);
+        this.lineStartPoint =   startPoint;
+        this.lineEndPoint   =   endPoint;
+        lineColor           =   Color.BLACK;
+        lineStroke          =   1;
 
-        //jStroke = new BasicStroke((float)lineStroke);
-        jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
+        doEveryInit();
     }
     public Line(Point startPoint, Point endPoint, Color lineColor, double lineStroke){
-        this.lineStartPoint = startPoint;
-        this.lineEndPoint = endPoint;
-        length = distanceFormula(startPoint,endPoint);
-
+        this.lineStartPoint =   startPoint;
+        this.lineEndPoint   =   endPoint;
         this.lineColor      =   lineColor;
         this.lineStroke     =   lineStroke;
 
-        jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
+        doEveryInit();
     }
+    private void doEveryInit(){
+
+        length = distanceFormula(lineStartPoint,lineEndPoint);
+        jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
+        solveMaxPoint();
+
+    }
+    private void solveMaxPoint(){
+        maxPoint = new Point((int) Math.max(lineStartPoint.getX(), lineEndPoint.getX()) , (int) Math.max(lineStartPoint.getY(), lineEndPoint.getY()));
+    }
+
     public static double solveSlope(Point startPointIn, Point endPointIn){
         double slope;
         // if the slope is zero, undefined, or a point
@@ -85,6 +93,7 @@ public class Line extends GraphicsObject {
         slopeDifference += Math.abs(solveSlope(lineStartPoint, lineEndPoint)-lineSlope);
         lineSlope = solveSlope(lineStartPoint, lineEndPoint);
         length = distanceFormula(lineStartPoint,endPoint);
+        solveMaxPoint();
     }
 
     public static double distanceFormula(Point pointOne, Point pointTwo){
@@ -105,6 +114,11 @@ public class Line extends GraphicsObject {
         g.setColor(lineColor);
         ((Graphics2D) g).setStroke(jStroke);
         g.drawLine(lineStartPoint.x, lineStartPoint.y, lineEndPoint.x, lineEndPoint.y);
+    }
+
+    @Override
+    public Point getMaxPoint() {
+        return maxPoint;
     }
 
     public Point getLastPoint() {
