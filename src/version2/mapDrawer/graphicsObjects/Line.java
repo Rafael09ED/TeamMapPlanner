@@ -42,7 +42,7 @@ public class Line extends GraphicsObject {
 
     }
     private void solveMaxPoint(){
-        maxPoint = new Point((int) Math.max(lineStartPoint.getX(), lineEndPoint.getX()) , (int) Math.max(lineStartPoint.getY(), lineEndPoint.getY()));
+        maxPoint = new Point((int) Math.max(lineStartPoint.getX(), lineEndPoint.getX()) + 1 , (int) Math.max(lineStartPoint.getY(), lineEndPoint.getY()) + 1);
     }
 
     public static double solveSlope(Point startPointIn, Point endPointIn){

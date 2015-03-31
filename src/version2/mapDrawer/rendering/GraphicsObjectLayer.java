@@ -2,6 +2,7 @@ package version2.mapDrawer.rendering;
 
 import version2.mapDrawer.graphicsObjects.GraphicsObject;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -19,8 +20,15 @@ public class GraphicsObjectLayer {
     private boolean objectAdded = false;
     private Point maxPointAdded;
     private List<GraphicsObject> objectsAdded;
+    private GraphicsObjectTracker graphicsObjectTracker;
+    private List<GraphicsObject> currentFrameGraphicsObjects;
+    private String layerName;
 
-    public GraphicsObjectLayer() {
+    public GraphicsObjectLayer(GraphicsObjectTracker graphicsObjectTracker, String layerName) {
+        this.graphicsObjectTracker = graphicsObjectTracker;
+        this.layerName = layerName;
+
+        currentFrameGraphicsObjects = new LinkedList<GraphicsObject>();
         graphicsObjects = Collections.synchronizedList(new ArrayList<GraphicsObject>());
         layerPrecomposed = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 
@@ -31,7 +39,7 @@ public class GraphicsObjectLayer {
 
     public void addGraphicsObject(GraphicsObject graphicsObjectIn) {
         graphicsObjects.add(graphicsObjectIn);
-        
+
         objectsAdded.add(graphicsObjectIn);
         maxPointAdded = solveSize(maxPointAdded, graphicsObjectIn.getMaxPoint());
         objectAdded = true;
@@ -48,7 +56,7 @@ public class GraphicsObjectLayer {
     }
 
     private Point solveSize(Point p1, Point p2) {
-        return new Point((int) Math.max(p1.getX(), p2.getX()) + 1, (int) Math.max(p1.getX(), p2.getX()) + 1);
+        return new Point((int) Math.max(p1.getX(), p2.getX()), (int) Math.max(p1.getY(), p2.getY()));
     }
 
     public boolean removeGraphicsObjects(GraphicsObject graphicsObjectIn) {
@@ -103,5 +111,24 @@ public class GraphicsObjectLayer {
         objectAdded = false;
 
         g.drawImage(layerPrecomposed, 0, 0, null);
+
+        for (Iterator<GraphicsObject> iterator = currentFrameGraphicsObjects.iterator(); iterator.hasNext(); ) {
+            iterator.next().paint(g);
+            iterator.remove();
+        }
+
+    }
+
+    public BufferedImage getPreRendered() {
+        return layerPrecomposed;
+    }
+
+    public String getName() {
+        return layerName;
+    }
+
+    public void addCurrentFrameGraphicsObject(GraphicsObject graphicsObjectIn) {
+        currentFrameGraphicsObjects.add(graphicsObjectIn);
+
     }
 }

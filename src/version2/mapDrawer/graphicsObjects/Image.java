@@ -24,7 +24,8 @@ public class Image extends GraphicsObject {
     @Override
     public void paint(Graphics g) {
         ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-        g.drawImage(image, pos.x, pos.y, (int) (scale * image.getWidth()) ,(int) (scale * image.getHeight()), null);
+        g.drawImage(image, pos.x, pos.y, (int) (scale * image.getWidth()), (int) (scale * image.getHeight()), null);
+        ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
     }
 
     @Override

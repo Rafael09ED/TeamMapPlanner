@@ -12,19 +12,17 @@ import java.util.List;
 public class GraphicsObjectTracker {
 
     private List<GraphicsObjectLayer> graphicsObjects;
-    private List<GraphicsObject> currentFrameGraphicsObjects;
     private int activeLayer = 0;
-
+    private static final String LAYER_NAME = "Layer ";
     public GraphicsObjectTracker() {
 
         graphicsObjects = new ArrayList<GraphicsObjectLayer>();
-        currentFrameGraphicsObjects = new LinkedList<GraphicsObject>();
         createNewLayer(0);
     }
 
-    private void createNewLayer(int index) {
+    public void createNewLayer(int index) {
         while (graphicsObjects.size() < index + 1) {
-            graphicsObjects.add(new GraphicsObjectLayer());
+            graphicsObjects.add(new GraphicsObjectLayer(this, LAYER_NAME + (graphicsObjects.size() + 1)));
         }
     }
 
@@ -32,12 +30,17 @@ public class GraphicsObjectTracker {
         graphicsObjects.get(activeLayer).addGraphicsObject(graphicsObjectIn);
     }
 
-    public void setActiveLayer(int layer) {
+    public GraphicsObjectLayer setActiveLayer(int layer) {
+        if (graphicsObjects.size() < layer + 1){
+            return null;
+        }
+
         activeLayer = layer;
+        return graphicsObjects.get(layer);
     }
 
     public void addCurrentFrameObject(GraphicsObject graphicsObjectIn) {
-        currentFrameGraphicsObjects.add(graphicsObjectIn);
+        graphicsObjects.get(activeLayer).addCurrentFrameGraphicsObject(graphicsObjectIn);
     }
 
     public boolean removeGraphicsObject(GraphicsObject graphicsObjectIn) {
@@ -58,13 +61,13 @@ public class GraphicsObjectTracker {
             synchronized (graphicsLayer) {
                 graphicsLayer.render(g);
             }
-            //System.out.println("Printing current Frame");
-            if (currentLayerToRender == activeLayer) {
-                for (Iterator<GraphicsObject> iterator = currentFrameGraphicsObjects.iterator(); iterator.hasNext(); ) {
-                    iterator.next().paint(g);
-                    iterator.remove();
-                }
-            }
         }
+    }
+
+    public GraphicsObjectLayer createNewLayer() {
+        GraphicsObjectLayer newLayer = new GraphicsObjectLayer(this, LAYER_NAME + (graphicsObjects.size() + 1));
+        graphicsObjects.add(newLayer);
+
+        return newLayer;
     }
 }

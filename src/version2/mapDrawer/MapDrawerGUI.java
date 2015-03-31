@@ -3,6 +3,8 @@ package version2.mapDrawer;
 import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.tools.MapDrawerTool;
 import version2.mapDrawer.tools.ToolsManager;
+import version2.mapDrawer.graphicsObjects.layers.LayersToolbar;
+import version2.mapDrawer.util.onlyOneJToggleDown;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,10 +23,12 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 	private List<Integer> activeKeys;
 	private List<JToggleButton> toolToggleButtons;
 
-	private JToolBar toolBar;
-	private selectOnlyOneToolbar selectOneTool;
+	private JToolBar toolToolBar;
+	private onlyOneJToggleDown selectOneTool;
 	private ToolsManager toolsManager;
     private GraphicsObjectTracker graphicsObjectTracker;
+
+	private LayersToolbar layerToolBar;
 
     private ActionListener toolButtonListener;
 
@@ -119,9 +123,15 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 
 		// Creates Java Toolbar
 
-		toolBar = new JToolBar();
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		contentPane.add(toolBar, BorderLayout.EAST);
+		toolToolBar = new JToolBar();
+		toolToolBar.setOrientation(SwingConstants.VERTICAL);
+		contentPane.add(toolToolBar, BorderLayout.WEST);
+
+		layerToolBar = new LayersToolbar(drawingCanvas);
+		contentPane.add(layerToolBar, BorderLayout.EAST);
+		layerToolBar.setVisible(true);
+
+
 
 		// creates Tools
 
@@ -129,7 +139,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
         newToolButton(toolsManager.getTool(0));
 
         // tool makes it so only one tool is selected at a time
-        selectOneTool = new selectOnlyOneToolbar(toolToggleButtons.get(0));
+        selectOneTool = new onlyOneJToggleDown(toolToggleButtons.get(0));
 
         // adds rest of tools
         for (int i = 1; toolsManager.getTool(i) != null; i++) {
@@ -142,7 +152,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
         tempTgglButton.setActionCommand(tool.getToolString());
         tempTgglButton.addActionListener(toolButtonListener);
         tempTgglButton.setFocusable(false);
-        toolBar.add(tempTgglButton);
+        toolToolBar.add(tempTgglButton);
 		toolToggleButtons.add(tempTgglButton);
 	}
 
@@ -180,23 +190,6 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// activeKeys.remove((Object) e.getKeyCode());
 		// TODO: Change this for lower fps
-	}
-
-
-	// Class that is used only here to keep only one selectedtoolbar:
-	private class selectOnlyOneToolbar {
-		public selectOnlyOneToolbar(JToggleButton buttonIn) {
-			buttonSelected = buttonIn;
-			buttonIn.setSelected(true);
-		}
-
-		private JToggleButton buttonSelected;
-
-		public void setSelectedTool(JToggleButton buttonIn) {
-			buttonSelected.setSelected(false);
-			buttonSelected = buttonIn;
-		}
-
 	}
 
 }

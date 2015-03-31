@@ -1,5 +1,6 @@
 package version2.mapDrawer;
 
+import version2.mapDrawer.rendering.GraphicsObjectLayer;
 import version2.mapDrawer.rendering.GraphicsObjectTracker;
 import version2.mapDrawer.tools.ToolsManager;
 import version2.mapDrawer.tools.toolBars.ToolToolBar;
@@ -94,5 +95,9 @@ public class DrawingCanvas extends Canvas {
 
     public MapDrawerGUI SuperGUI() {
         return mapDrawerGUI;
+    }
+
+    public GraphicsObjectTracker graphicsObjectTracker() {
+        return graphicsObjects;
     }
 }
