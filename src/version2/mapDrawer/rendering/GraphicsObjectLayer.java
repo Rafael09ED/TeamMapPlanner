@@ -2,7 +2,6 @@ package version2.mapDrawer.rendering;
 
 import version2.mapDrawer.graphicsObjects.GraphicsObject;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -12,10 +11,14 @@ import java.util.List;
  * Created by ADMIN on 3/30/2015.
  */
 public class GraphicsObjectLayer {
+    private static int layerCounter = 0;
+
     private boolean requiresRender = false;
     private List<GraphicsObject> graphicsObjects;
     private BufferedImage layerPrecomposed;
     private Point maxPoint;
+
+    private static final String LAYER_NAME = "Layer ";
 
     private boolean objectAdded = false;
     private Point maxPointAdded;
@@ -23,10 +26,13 @@ public class GraphicsObjectLayer {
     private GraphicsObjectTracker graphicsObjectTracker;
     private List<GraphicsObject> currentFrameGraphicsObjects;
     private String layerName;
+    private final int uniqueLayerCount = layerCounter;
 
-    public GraphicsObjectLayer(GraphicsObjectTracker graphicsObjectTracker, String layerName) {
+    public GraphicsObjectLayer(GraphicsObjectTracker graphicsObjectTracker) {
+        layerCounter++;
+
         this.graphicsObjectTracker = graphicsObjectTracker;
-        this.layerName = layerName;
+        layerName = LAYER_NAME + uniqueLayerCount;
 
         currentFrameGraphicsObjects = new LinkedList<GraphicsObject>();
         graphicsObjects = Collections.synchronizedList(new ArrayList<GraphicsObject>());
@@ -43,6 +49,9 @@ public class GraphicsObjectLayer {
         objectsAdded.add(graphicsObjectIn);
         maxPointAdded = solveSize(maxPointAdded, graphicsObjectIn.getMaxPoint());
         objectAdded = true;
+    }
+    public int getUniqueLayerID(){
+        return uniqueLayerCount;
     }
 
     private void setRenderQuality(Graphics g){

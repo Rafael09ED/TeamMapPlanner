@@ -1,6 +1,8 @@
 package version2.mapDrawer.rendering;
 
 import version2.mapDrawer.graphicsObjects.GraphicsObject;
+import version2.mapDrawer.graphicsObjects.layers.LayerGUIElement;
+import version2.mapDrawer.util.onlyOneJToggleDown;
 
 import java.awt.*;
 import java.util.*;
@@ -13,17 +15,10 @@ public class GraphicsObjectTracker {
 
     private List<GraphicsObjectLayer> graphicsObjects;
     private int activeLayer = 0;
-    private static final String LAYER_NAME = "Layer ";
     public GraphicsObjectTracker() {
 
         graphicsObjects = new ArrayList<GraphicsObjectLayer>();
-        createNewLayer(0);
-    }
-
-    public void createNewLayer(int index) {
-        while (graphicsObjects.size() < index + 1) {
-            graphicsObjects.add(new GraphicsObjectLayer(this, LAYER_NAME + (graphicsObjects.size() + 1)));
-        }
+        createNewLayer();
     }
 
     public void addGraphicsObject(GraphicsObject graphicsObjectIn) {
@@ -55,17 +50,26 @@ public class GraphicsObjectTracker {
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
                 RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 
-        int currentLayerToRender = 0;
-
         for (GraphicsObjectLayer graphicsLayer : graphicsObjects) {
             synchronized (graphicsLayer) {
                 graphicsLayer.render(g);
             }
         }
     }
+    public boolean removeGraphicsLayer(int uniqueIDToRemove){
+        for (Iterator<GraphicsObjectLayer> layerIterator = graphicsObjects.iterator(); layerIterator.hasNext(); ) {
 
+            GraphicsObjectLayer guiElement = layerIterator.next();
+
+            if (guiElement.getUniqueLayerID() == uniqueIDToRemove){
+                layerIterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
     public GraphicsObjectLayer createNewLayer() {
-        GraphicsObjectLayer newLayer = new GraphicsObjectLayer(this, LAYER_NAME + (graphicsObjects.size() + 1));
+        GraphicsObjectLayer newLayer = new GraphicsObjectLayer(this);
         graphicsObjects.add(newLayer);
 
         return newLayer;

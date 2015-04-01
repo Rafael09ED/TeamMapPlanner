@@ -13,6 +13,10 @@ public class onlyOneJToggleDown {
     public void setSelectedTool(JToggleButton buttonIn) {
         buttonSelected.setSelected(false);
         buttonSelected = buttonIn;
+        buttonSelected.setSelected(true);
+    }
+    public String getCurrentSelected(){
+        return buttonSelected.getActionCommand();
     }
 
 }

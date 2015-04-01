@@ -11,12 +11,15 @@ import java.awt.image.BufferedImage;
  */
 public class LayerGUIElement extends JToggleButton {
     private GraphicsObjectLayer graphicsObjectLayer;
-
     public LayerGUIElement(GraphicsObjectLayer graphicsObjectLayer) {
         super(graphicsObjectLayer.getName());
         this.graphicsObjectLayer = graphicsObjectLayer;
         setIcon(new ImageIcon(graphicsObjectLayer.getPreRendered()));
         setText(graphicsObjectLayer.getName());
+    }
+
+    public int getUniqueLayerID() {
+        return graphicsObjectLayer.getUniqueLayerID();
     }
 
     @Override
