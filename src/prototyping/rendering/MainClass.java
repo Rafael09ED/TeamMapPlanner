@@ -31,8 +31,7 @@ public class MainClass extends Canvas{
 
     public MainClass() {
         objectTracker = new ObjectTracker();
-        graphicsRenderer = new Renderer(objectTracker,this);
-
+        graphicsRenderer = new Renderer(objectTracker);
 
         Thread thread = new Thread(new Runnable() {
             @Override

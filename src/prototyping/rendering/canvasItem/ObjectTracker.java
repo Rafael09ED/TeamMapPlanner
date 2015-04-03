@@ -15,7 +15,6 @@ public class ObjectTracker {
     public ObjectTracker() {
         objectsToRender = new ArrayList<>();
         objectsToRender.add(new Line(new Point(10,10), new Point(100,100)));
-
     }
 
     public List<IRenderable> getObjectsToRender() {

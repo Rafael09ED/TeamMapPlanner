@@ -13,7 +13,7 @@ public class Renderer {
     private ObjectTracker objectTracker;
     private Graphics2DRenderer g2Drenderer;
 
-    public Renderer(ObjectTracker objectTracker, MainClass mainClass) {
+    public Renderer(ObjectTracker objectTracker) {
         this.objectTracker = objectTracker;
         g2Drenderer = new Graphics2DRenderer();
     }
