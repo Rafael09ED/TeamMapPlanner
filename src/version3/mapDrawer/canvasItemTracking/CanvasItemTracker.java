@@ -6,4 +6,7 @@ package version3.mapDrawer.canvasItemTracking;
 public class CanvasItemTracker {
     public CanvasItemTracker() {
     }
+
+    public void update() {
+    }
 }

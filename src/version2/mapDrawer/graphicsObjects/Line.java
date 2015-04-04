@@ -34,13 +34,14 @@ public class Line extends GraphicsObject {
 
         doEveryInit();
     }
+
     private void doEveryInit(){
 
         length = distanceFormula(lineStartPoint,lineEndPoint);
         jStroke = new BasicStroke((float)lineStroke, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
         solveMaxPoint();
-
     }
+
     private void solveMaxPoint(){
         maxPoint = new Point((int) Math.max(lineStartPoint.getX(), lineEndPoint.getX()) + 1 , (int) Math.max(lineStartPoint.getY(), lineEndPoint.getY()) + 1);
     }

@@ -10,6 +10,6 @@ public class MapDrawerRenderer {
 
     public MapDrawerRenderer(CanvasItemTracker itemTracker) {
         this.itemTracker = itemTracker;
-
     }
+
 }

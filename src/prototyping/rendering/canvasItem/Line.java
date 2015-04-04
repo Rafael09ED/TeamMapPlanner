@@ -14,7 +14,6 @@ public class Line implements IRenderable {
     public Line(Point startPoint, Point endPoint) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
-
     }
     @Override
     public void render(GraphicsRenderer graphicsRenderer) {
