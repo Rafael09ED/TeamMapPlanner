@@ -2,7 +2,7 @@ package version3.mapDrawer.canvasItemTracking.informationStorage;
 
 
 /**
- * Created by ADMIN on 4/3/2015.
+ * Created by Rafael on 4/3/2015.
  */
 public class BoundingBox2D {
     private Point2D topLeft, bottomRight;

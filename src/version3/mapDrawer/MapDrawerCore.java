@@ -12,7 +12,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by ADMIN on 4/2/2015.
+ * Created by Rafael on 4/2/2015.
  */
 public class MapDrawerCore {
     public static final String GUI_NAME = "Team Map Planner";
@@ -20,11 +20,6 @@ public class MapDrawerCore {
     public static void main(String[] args) {
         new MapDrawerCore();
     }
-
-    /*
-     * The main layout:
-     * http://i.imgur.com/dKA9b7Q.jpg
-     */
 
     private CanvasItemTracker itemTracker;
     private GUICanvasItemInterface itemGUIInterface;
@@ -34,16 +29,23 @@ public class MapDrawerCore {
     private InitializeSettings settingsSetter;
 
     public MapDrawerCore() {
-        itemTracker = new CanvasItemTracker();
 
-        itemGUIInterface = new GUICanvasItemInterface(itemTracker);
+        // sets the settings for the program
+        // currently does nothing
+        settingsSetter = new InitializeSettings();
+        //settingsSetter.setFilePath();
+        settingsSetter.importAndValidate();
+
+
+        itemTracker = new CanvasItemTracker();
         mapDrawerRenderer = new MapDrawerRenderer(itemTracker);
+        itemGUIInterface = new GUICanvasItemInterface(itemTracker, mapDrawerRenderer);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 synchronized (itemTracker) {
-                    mapDrawerGUI = new MapDrawerGUI(GUI_NAME, mapDrawerRenderer, itemGUIInterface);
+                    mapDrawerGUI = new MapDrawerGUI(GUI_NAME, itemGUIInterface);
                     itemTracker.notify();
                 }
             }
@@ -58,11 +60,6 @@ public class MapDrawerCore {
                 e.printStackTrace();
             }
         }
-        // sets the settings for the program
-        settingsSetter = new InitializeSettings();
-        //settingsSetter.setFilePath();
-        settingsSetter.importAndValidate();
-
 
         // creates the main logic loop.
         // updates anything that needs to be updated, and then renders.

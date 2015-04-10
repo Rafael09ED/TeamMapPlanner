@@ -2,14 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a243e56f-d0ef-4bb4-aa1c-37f56e94090d" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\ADMIN\Documents\GitHub\TeamMapPlanner\src\TesterClass.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\ADMIN\Documents\GitHub\TeamMapPlanner\src\version3\mapDrawer\GUI\mapDrawerGUI.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/GUI/MapDrawerGUI.java" />
+      <change type="DELETED" beforePath="D:\UserData\RafaelD\workspace\TeamMapPlanner\src\version3\mapDrawer\canvasItemTracking\canvasItems\CanvasItemTypes.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/BoundingBox2D.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/BoundingBox2D.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERAL_SETTINGS.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERAL_SETTINGS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Graphics2DRenderer.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Graphics2DRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectLayer.java" afterPath="$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectLayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/GraphicsRenderer.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/GraphicsRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/IRenderable.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/IRenderable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/IRenderable.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/IRenderable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Image.java" afterPath="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Image.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/settings/InitializeSettings.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/settings/InitializeSettings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayerGUIElement.java" afterPath="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayerGUIElement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/Line.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/Line.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Line.java" afterPath="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Line.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/MainClass.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/MainClass.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/MapDrawerRenderer.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/MapDrawerRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/ObjectTracker.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/ObjectTracker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version2/mapDrawer/tools/PictureTool.java" afterPath="$PROJECT_DIR$/src/version2/mapDrawer/tools/PictureTool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version2/mapDrawer/tools/toolBars/PictureToolBar.java" afterPath="$PROJECT_DIR$/src/version2/mapDrawer/tools/toolBars/PictureToolBar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2D.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2D.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/settings/RENDER_SETTINGS.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/settings/RENDER_SETTINGS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Renderer.java" afterPath="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Renderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/RenderingInterface.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/RenderingInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\UserData\RafaelD\workspace\TeamMapPlanner\src\version3\mapDrawer\GUI\mapDrawerGUI.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/GUI/MapDrawerGUI.java" />
+      <change type="MOVED" beforePath="D:\UserData\RafaelD\workspace\TeamMapPlanner\src\version3\mapDrawer\rendering\Graphics2DRenderer.java" afterPath="$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2D/Graphics2DRenderer.java" />
     </list>
     <ignored path="TeamMapPlanner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,15 +53,106 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MapDrawerCore.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java">
+      <file leaf-file-name="CanvasItemTracker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.573975">
-              <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+            <state vertical-scroll-proportion="-23.310345">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#654#655#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUICanvasItemInterface.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.50535077">
+              <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+              <folding>
+                <element signature="e#1014#1015#0" expanded="true" />
+                <element signature="e#1061#1062#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapDrawerGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/GUI/MapDrawerGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CI_Line.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasItems/CI_Line.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+              <folding>
+                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#1129#1130#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CanvasGroup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CanvasGroup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CG_Folder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Folder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#617#618#0" expanded="true" />
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#762#775#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CG_Layer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Layer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#799#800#0" expanded="true" />
+                <element signature="e#862#863#0" expanded="true" />
+                <element signature="e#902#903#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CanvasItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasItems/CanvasItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,58 +179,65 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectLayer.java" />
-        <option value="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayerGUIElement.java" />
-        <option value="$PROJECT_DIR$/src/version2/mapDrawer/util/onlyOneJToggleDown.java" />
-        <option value="$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectTracker.java" />
-        <option value="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayersToolbar.java" />
-        <option value="$PROJECT_DIR$/src/OtherCode/asd2.java" />
-        <option value="$PROJECT_DIR$/src/OtherCode/CubicCurveMouse.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/renderer.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/GraphicsRenderer.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/Graphics2DRenderer.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/IRenderable.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/Line.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/Renderer.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/ObjectTracker.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/ObjectTracker.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/CanvasItemTracking/CanvasItemTracker.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUI_CanvasItem_Interface.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/MainClass.java" />
-        <option value="$PROJECT_DIR$/src/OtherCode/TesterClass.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/Renderer.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/mapDrawerGUI.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/RENDER_SETTINGS.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/InitializeSettings.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/IRenderable.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/BoundingBox.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/PointInt2D.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItem.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2DInt.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2D.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/BoundingBox2D.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERA_LSETTINGS.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/GeneralSettings.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERAL_SETTINGS.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Renderer.java" />
         <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/RenderingTypes.java" />
         <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/CanvasItemEnums.java" />
         <option value="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/CanvasItemEnums.java" />
-        <option value="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/Line.java" />
         <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItemEnums.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItemTypes.java" />
         <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/CanvasItemsToGraphics2D.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasLine.java" />
         <option value="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Line.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/MapDrawerRenderer.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/RenderingInterface.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2DRenderer.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/MapDrawerGUI.java" />
-        <option value="$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java" />
         <option value="$PROJECT_DIR$/src/OtherCode/test.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/RENDER_SETTINGS.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/MainClass.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/Line.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/canvasItem/ObjectTracker.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Graphics2DRenderer.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/GraphicsRenderer.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/IRenderable.java" />
+        <option value="$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Renderer.java" />
+        <option value="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Image.java" />
+        <option value="$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayerGUIElement.java" />
+        <option value="$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectLayer.java" />
+        <option value="$PROJECT_DIR$/src/version2/mapDrawer/tools/PictureTool.java" />
+        <option value="$PROJECT_DIR$/src/version2/mapDrawer/tools/toolBars/PictureToolBar.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/mapDrawerGUI.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItemTypes.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasLine.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/BoundingBox2D.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2D.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/IRenderable.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/RenderingInterface.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERAL_SETTINGS.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/settings/InitializeSettings.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2DRenderer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasLayer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/Layer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/Layer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CanvasGroups.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItem.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/Layer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_LayerContent.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Content.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/MapDrawerGUI.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/CanvasGroupGraphicsData.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/CGGraphicsData.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2D/CGGraphicsData.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/rendering/MapDrawerRenderer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Folder.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Layer.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CanvasGroup.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasItems/CanvasItem.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasItems/CI_Line.java" />
+        <option value="$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="NamedScopeManager">
@@ -129,8 +246,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1296" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -155,8 +272,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -189,6 +306,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="version3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamMapPlanner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamMapPlanner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="mapDrawer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -207,25 +346,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mapDrawer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="settings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamMapPlanner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamMapPlanner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="version3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -251,6 +372,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="version3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapDrawer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rendering" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graphics2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamMapPlanner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamMapPlanner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="mapDrawer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -273,6 +428,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="version3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="mapDrawer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -295,29 +454,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mapDrawer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="canvasItemTracking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="informationStorage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamMapPlanner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamMapPlanner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="version3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -329,7 +466,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CanvasItems" />
+              <option name="myItemId" value="canvasItems" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -347,21 +484,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mapDrawer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamMapPlanner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamMapPlanner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="version3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -369,7 +492,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="graphicsObjects" />
+              <option name="myItemId" value="canvasItemTracking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canvasGroups" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,24 +528,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="OtherCode" />
+              <option name="myItemId" value="testingTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="true" />
   </component>
   <component name="RunManager" selected="Application.MapDrawerCore">
     <configuration default="false" name="MapDrawerGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -687,34 +817,60 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21102151" sideWeight="0.5025707" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18791947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25161812" sideWeight="0.492" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22172236" sideWeight="0.508" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26397514" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20807454" sideWeight="0.4974293" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54418606" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919356" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26397514" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21102151" sideWeight="0.5025707" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18791947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20833333" sideWeight="0.4974293" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20807454" sideWeight="0.4974293" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20308483" sideWeight="0.492" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20307444" sideWeight="0.492" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54418606" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22172236" sideWeight="0.508" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919356" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54435486" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -746,6 +902,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/tools/ToolsManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -788,13 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/tools/PictureTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/tools/toolBars/PenToolBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -806,34 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16157205">
           <caret line="348" column="0" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version1/application/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/tools/toolBars/PictureToolBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectLayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22186495">
-          <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="98" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/util/onlyOneJToggleDown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -865,52 +996,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayerGUIElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6386404">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OtherCode/CubicCurveMouse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayersToolbar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="71" selection-start-line="69" selection-start-column="71" selection-end-line="69" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectTracker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="115" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33519554">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/prototyping/TesterClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5223464">
           <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,7 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,86 +1018,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/settings/InitializeSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/IRenderable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/GraphicsObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2611732">
           <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERAL_SETTINGS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/settings/RENDER_SETTINGS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/GraphicsRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18994413">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/canvasItem/Line.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Image.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37988827">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Graphics2DRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/canvasItem/ObjectTracker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding>
-            <element signature="e#597#598#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1021,75 +1033,155 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/settings/RENDER_SETTINGS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/canvasItem/Line.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/canvasItem/ObjectTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Graphics2DRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/GraphicsRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/IRenderable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/prototyping/rendering/graphicsRendering/Renderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="9" selection-start-line="23" selection-start-column="8" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java">
+    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/Image.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding />
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2D.java">
+    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/graphicsObjects/layers/LayerGUIElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/rendering/GraphicsObjectLayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/tools/PictureTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version2/mapDrawer/tools/toolBars/PictureToolBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/BoundingBox2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#628#629#0" expanded="true" />
-          </folding>
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasLine.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/informationStorage/Point2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItemTypes.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/settings/GENERAL_SETTINGS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItems/CanvasItem.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/settings/InitializeSettings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version1/application/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version1/application/MapPlannerGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.110210694">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/RenderingInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17634855">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2D/Graphics2DRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42323652">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1098,69 +1190,128 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/IRenderable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
-          <folding />
+        <state vertical-scroll-proportion="0.16558442">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/RenderingInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
+          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/MapDrawerRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
           <folding>
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2DRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/rendering/Graphics2D/CGGraphicsData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2611732">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="48" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Folder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#617#618#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#762#775#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CanvasGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OtherCode/test.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasItems/CI_Line.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.060606062">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
-            <element signature="e#0#129#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1129#1130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasGroups/CG_Layer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#902#903#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/canvasItems/CanvasItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/GUI/MapDrawerGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/MapDrawerCore.java">
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/canvasItemTracking/CanvasItemTracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.573975">
-          <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+        <state vertical-scroll-proportion="-23.310345">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/version3/mapDrawer/GUI/GUICanvasItemInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50535077">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="e#1014#1015#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1194,6 +1345,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>org.apache.commons:commons-lang3:3.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1222,7 +1374,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

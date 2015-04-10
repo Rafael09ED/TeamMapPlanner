@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.Hashtable;
 
 /**
- * Created by ADMIN on 3/29/2015.
+ * Created by Rafael on 3/29/2015.
  */
 public class PictureToolBar extends ToolToolBar {
     private PictureTool pictureTool;

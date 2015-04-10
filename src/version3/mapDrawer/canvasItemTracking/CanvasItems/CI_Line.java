@@ -1,4 +1,4 @@
-package version3.mapDrawer.canvasItemTracking.CanvasItems;
+package version3.mapDrawer.canvasItemTracking.canvasItems;
 
 import version3.mapDrawer.canvasItemTracking.informationStorage.BoundingBox2D;
 import version3.mapDrawer.canvasItemTracking.informationStorage.Point2D;
@@ -8,9 +8,9 @@ import version3.mapDrawer.settings.GENERAL_SETTINGS;
 import java.awt.*;
 
 /**
- * Created by ADMIN on 4/3/2015.
+ * Created by Rafael on 4/3/2015.
  */
-public class CanvasLine extends CanvasItem {
+public class CI_Line extends CanvasItem {
     private Point2D startPoint, endPoint;
     private BoundingBox2D boundingBox;
     private double lineLength, lineSlope;
@@ -19,10 +19,11 @@ public class CanvasLine extends CanvasItem {
 
     private double totalSlopeModification = 0;
 
-    public CanvasLine(Point2D startPoint, Point2D endPoint) {
+    public CI_Line(Point2D startPoint, Point2D endPoint) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         boundingBox = new BoundingBox2D(startPoint, endPoint);
+        lineStroke = 1;
     }
 
 
@@ -32,8 +33,8 @@ public class CanvasLine extends CanvasItem {
     }
 
     @Override
-    public void render(RenderingInterface renderingInterface) {
-
+    public void render(RenderingInterface renderTo) {
+        renderTo.drawLine(startPoint, endPoint, lineStroke, StrokeEnd);
     }
 
     public boolean isPointAnExtension(Point2D pointIn) {

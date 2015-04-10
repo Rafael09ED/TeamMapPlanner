@@ -1,7 +1,7 @@
 package version3.mapDrawer.canvasItemTracking.informationStorage;
 
 /**
- * Created by ADMIN on 4/3/2015.
+ * Created by Rafael on 4/3/2015.
  */
 public class Point2D {
     private double x,y;

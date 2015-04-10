@@ -6,7 +6,7 @@ import prototyping.rendering.graphicsRendering.IRenderable;
 import java.awt.*;
 
 /**
- * Created by ADMIN on 4/1/2015.
+ * Created by Rafael on 4/1/2015.
  */
 public class Line implements IRenderable {
     private Point startPoint, endPoint;

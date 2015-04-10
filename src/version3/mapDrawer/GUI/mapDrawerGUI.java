@@ -1,23 +1,21 @@
 package version3.mapDrawer.GUI;
 
-import version3.mapDrawer.rendering.MapDrawerRenderer;
-
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by ADMIN on 4/3/2015.
+ * Created by Rafael on 4/3/2015.
  */
 public class MapDrawerGUI extends JFrame{
-    private MapDrawerRenderer drawerRenderer;
     private GUICanvasItemInterface itemInterface;
     private Canvas canvas;
 
-    public MapDrawerGUI(String title, MapDrawerRenderer drawerRenderer, GUICanvasItemInterface itemInterface) throws HeadlessException {
+    public MapDrawerGUI(String title, GUICanvasItemInterface itemInterface) throws HeadlessException {
         super(title);
 
-        this.drawerRenderer = drawerRenderer;
         this.itemInterface = itemInterface;
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         canvas = new Canvas();
         setSize(1000,500);
@@ -26,5 +24,6 @@ public class MapDrawerGUI extends JFrame{
 
     public void render() {
         //TODO: set up rendering code
+        itemInterface.setG2D( (Graphics2D) canvas.getGraphics() );
     }
 }

@@ -5,7 +5,7 @@ import prototyping.rendering.graphicsRendering.GraphicsRenderer;
 import java.awt.*;
 
 /**
- * Created by ADMIN on 4/1/2015.
+ * Created by Rafael on 4/1/2015.
  */
 public class Graphics2DRenderer implements GraphicsRenderer {
     private Graphics2D g;

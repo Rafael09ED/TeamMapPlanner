@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by ADMIN on 3/29/2015.
+ * Created by Rafael on 3/29/2015.
  */
 public class Image extends GraphicsObject {
     private BufferedImage image;

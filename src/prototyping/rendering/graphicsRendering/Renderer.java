@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.*;
 
 /**
- * Created by ADMIN on 4/1/2015.
+ * Created by Rafael on 4/1/2015.
  */
 public class Renderer {
     private ObjectTracker objectTracker;

@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by ADMIN on 4/1/2015.
+ * Created by Rafael on 4/1/2015.
  */
 public class MainClass extends Canvas{
     private ObjectTracker objectTracker;

@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.List;
 
 /**
- * Created by ADMIN on 3/30/2015.
+ * Created by Rafael on 3/30/2015.
  */
 public class GraphicsObjectLayer {
     private static int layerCounter = 0;

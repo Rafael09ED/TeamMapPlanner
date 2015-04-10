@@ -3,7 +3,7 @@ package version3.mapDrawer.settings;
 import java.nio.file.Path;
 
 /**
- * Created by ADMIN on 4/3/2015.
+ * Created by Rafael on 4/3/2015.
  */
 public class InitializeSettings {
     public InitializeSettings() {

@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by ADMIN on 3/31/2015.
+ * Created by Rafael on 3/31/2015.
  */
 public class LayerGUIElement extends JToggleButton {
     private GraphicsObjectLayer graphicsObjectLayer;
