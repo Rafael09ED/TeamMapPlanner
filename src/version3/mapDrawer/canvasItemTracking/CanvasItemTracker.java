@@ -26,7 +26,7 @@ public class CanvasItemTracker {
     public List<CanvasItem> getAllCanvasItems() {
         List<CanvasItem> allItems = new LinkedList<>();
         for (int i = 0; i < canvasGroups.size(); i++) {
-            allItems.addAll(canvasGroups.get(i).getAllCanvasItems());
+            allItems.addAll(canvasGroups.get(i).getAllSubCanvasItems());
         }
         return allItems;
     }

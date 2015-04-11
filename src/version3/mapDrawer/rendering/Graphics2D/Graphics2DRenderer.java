@@ -25,4 +25,6 @@ public class Graphics2DRenderer implements RenderingInterface {
         g.drawLine((int) startPoint.getX(), (int) startPoint.getY(), (int) endPoint.getX(), (int) endPoint.getY());
     }
 
+    //TODO: add other rendering object types
+
 }

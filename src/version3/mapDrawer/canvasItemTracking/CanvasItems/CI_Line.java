@@ -37,6 +37,8 @@ public class CI_Line extends CanvasItem {
         renderTo.drawLine(startPoint, endPoint, lineStroke, StrokeEnd);
     }
 
+    //TODO: add change end point
+
     public boolean isPointAnExtension(Point2D pointIn) {
 
         // if it makes the line shorter:

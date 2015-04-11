@@ -13,12 +13,16 @@ public abstract class CanvasGroup {
     public CanvasGroup() {}
     public abstract BoundingBox2D getBoundingBox();
 
-    // Obliviously I want to use as much memory and garbage collection as possible
+    // Obviously I want to use as much memory and garbage collection as possible
     // if you look at the following's implementation.
 
-    public abstract List<CanvasItem> getAllCanvasItems();
+    public abstract List<CanvasItem> getAllSubCanvasItems();
     public abstract List<CanvasGroup> getAllSubCanvasGroups();
     public abstract List<CG_Folder> getAllSubFolders();
-    public abstract List<CG_Layer> getAllLayers();
+
+    // methods that only relate to the current class's storage.
+    public abstract List<CanvasGroup> getCanvasGroups();
+    public abstract List<CG_Folder> getFolders();
+    public abstract List<CG_Layer> getLayers();
 
 }
