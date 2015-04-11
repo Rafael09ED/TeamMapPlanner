@@ -2,7 +2,7 @@ package version3.mapDrawer;
 
 import version3.mapDrawer.GUI.*;
 import version3.mapDrawer.canvasItemTracking.CanvasItemTracker;
-import version3.mapDrawer.rendering.MapDrawerRenderer;
+import version3.mapDrawer.rendering.Graphics2D.MapDrawerRenderer;
 import version3.mapDrawer.settings.InitializeSettings;
 import version3.mapDrawer.settings.RENDER_SETTINGS;
 

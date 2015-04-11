@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Created by Rafael on 4/3/2015.
  */
-public class CI_Line extends CanvasItem {
+public class CI_Line implements CanvasItem {
     private Point2D startPoint, endPoint;
     private BoundingBox2D boundingBox;
     private double lineLength, lineSlope;
@@ -28,7 +28,8 @@ public class CI_Line extends CanvasItem {
 
 
     @Override
-    BoundingBox2D getBoundingBox() {
+    public BoundingBox2D getBoundingBox() {
+        //TODO:
         return null;
     }
 

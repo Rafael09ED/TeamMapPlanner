@@ -6,10 +6,9 @@ import version3.mapDrawer.rendering.RenderingInterface;
 /**
  * Created by Rafael on 4/3/2015.
  */
-public abstract class CanvasItem{
+public interface CanvasItem{
 
-    abstract BoundingBox2D getBoundingBox();
-    abstract void render(RenderingInterface renderTo);
+    BoundingBox2D getBoundingBox();
+    void render(RenderingInterface renderTo);
 
-   //abstract CanvasItem getItems(); // wtf does this do?
 }

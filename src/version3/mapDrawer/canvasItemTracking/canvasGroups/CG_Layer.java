@@ -2,6 +2,7 @@ package version3.mapDrawer.canvasItemTracking.canvasGroups;
 
 import version3.mapDrawer.canvasItemTracking.canvasItems.CanvasItem;
 import version3.mapDrawer.canvasItemTracking.informationStorage.BoundingBox2D;
+import version3.mapDrawer.rendering.RenderingInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by Rafael on 4/7/2015.
  */
-public class CG_Layer extends CanvasGroup {
+public class CG_Layer implements CanvasGroup {
     private List<CanvasItem> canvasItems;
 
     public CG_Layer() {
@@ -45,14 +46,24 @@ public class CG_Layer extends CanvasGroup {
 
     @Override
     public List<CG_Folder> getFolders() {
-        //TODO
-        return null;
+        return new ArrayList<CG_Folder>();
     }
 
     @Override
     public List<CG_Layer> getLayers() {
-        //TODO
-        return null;
+        return new ArrayList<>();
     }
 
+    @Override
+    public void render(RenderingInterface renderTo){
+        for (int i = 0; i < canvasItems.size(); i++) {
+            canvasItems.get(i).render(renderTo);
+        }
+    }
+    public void addCanvasItem(CanvasItem canvasItem){
+        canvasItems.add(canvasItem);
+    }
+    public void removeCanvasItem(CanvasItem canvasItem){
+        canvasItems.remove(canvasItem);
+    }
 }
