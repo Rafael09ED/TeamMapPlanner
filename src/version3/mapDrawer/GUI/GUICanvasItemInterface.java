@@ -6,6 +6,7 @@ import version3.mapDrawer.canvasItemTracking.canvasGroups.CG_Layer;
 import version3.mapDrawer.canvasItemTracking.canvasGroups.CanvasGroup;
 import version3.mapDrawer.rendering.Graphics2D.CGGraphicsData;
 import version3.mapDrawer.rendering.MapDrawerRenderer;
+import version3.mapDrawer.rendering.RenderOptimizer;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -18,11 +19,13 @@ public class GUICanvasItemInterface {
     private MapDrawerRenderer drawerRenderer;
     private boolean totalRenderRequired = true;
     private HashMap<CanvasGroup, CGGraphicsData> layerToDataHM;
+    private RenderOptimizer optimizedRendering;
     //TODO: use CGGraphicsData to store bufferedImage and other info for rendering
 
     public GUICanvasItemInterface(CanvasItemTracker itemTracker, MapDrawerRenderer drawerRenderer) {
         this.itemTracker = itemTracker;
         this.drawerRenderer = drawerRenderer;
+        optimizedRendering = new RenderOptimizer(drawerRenderer);
         layerToDataHM = new HashMap<>();
     }
 

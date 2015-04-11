@@ -182,7 +182,7 @@ public class MapDrawerGUI extends JFrame implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		activeKeys.remove((Object) e.getKeyCode());
+		activeKeys.remove((Integer) e.getKeyCode());
 
 	}
 

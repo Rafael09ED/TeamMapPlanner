@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * Created by Rafael on 4/7/2015.
  */
-public abstract class CanvasGroup {
+public abstract class CanvasGroup extends CanvasItem {
 
-    public CanvasGroup() {}
+
     public abstract BoundingBox2D getBoundingBox();
 
     // Obviously I want to use as much memory and garbage collection as possible

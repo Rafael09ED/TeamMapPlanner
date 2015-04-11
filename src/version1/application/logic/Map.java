@@ -166,7 +166,7 @@ public class Map extends Canvas implements KeyListener, MouseListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        activeKeys.remove((Object) e.getKeyCode());
+        activeKeys.remove((Integer) e.getKeyCode());
     }
 
     @Override
