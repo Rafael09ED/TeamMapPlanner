@@ -1,6 +1,6 @@
 package prototyping;
 
-import version1.console.Console;
+import oldCode.version1.console.Console;
 
 import java.awt.*;
 import java.io.IOException;
