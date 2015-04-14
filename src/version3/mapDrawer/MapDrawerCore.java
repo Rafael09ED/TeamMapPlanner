@@ -81,8 +81,9 @@ public class MapDrawerCore {
             if (updatesPerSecond > 0) {
                 int delay_ms = (int) ((1 * 1000) / updatesPerSecond);
                 mainSchedulingLoop.scheduleAtFixedRate(mainLoop, initDelay, delay_ms, TimeUnit.MILLISECONDS);
+
             } else {
-                mainSchedulingLoop.scheduleWithFixedDelay(mainLoop, initDelay, 0, TimeUnit.MILLISECONDS);
+                mainSchedulingLoop.scheduleWithFixedDelay(mainLoop, initDelay, 1, TimeUnit.MILLISECONDS);
             }
 
         }

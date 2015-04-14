@@ -20,7 +20,7 @@ public class RenderOptimizer {
         layerToDataHM = new HashMap<>();
     }
 
-    void setHashMapData(CanvasGroup canvasGroup, CGGraphicsData hashMapData) {
+    public void setHashMapData(CanvasGroup canvasGroup, CGGraphicsData hashMapData) {
         layerToDataHM.put(canvasGroup,hashMapData);
     }
 
@@ -28,7 +28,7 @@ public class RenderOptimizer {
         return layerToDataHM.get(canvasGroup);
     }
 
-    BufferedImage render(CanvasGroup canvasGroup){
+    public BufferedImage render(CanvasGroup canvasGroup){
         CGGraphicsData data = layerToDataHM.get(canvasGroup);
         if (data != null){
             return data.render();

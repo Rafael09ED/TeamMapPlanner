@@ -4,10 +4,15 @@ import version3.mapDrawer.canvasItemTracking.CanvasItemTracker;
 import version3.mapDrawer.canvasItemTracking.canvasGroups.CG_Folder;
 import version3.mapDrawer.canvasItemTracking.canvasGroups.CG_Layer;
 import version3.mapDrawer.canvasItemTracking.canvasGroups.CanvasGroup;
-import version3.mapDrawer.rendering.Graphics2D.MapDrawerRenderer;
+import version3.mapDrawer.canvasItemTracking.canvasItems.CI_Line;
+import version3.mapDrawer.canvasItemTracking.informationStorage.Point2D;
+import version3.mapDrawer.rendering.DataTracking.CGGraphicsData;
+import version3.mapDrawer.rendering.DataTracking.HierarchyTracker;
 import version3.mapDrawer.rendering.DataTracking.RenderOptimizer;
+import version3.mapDrawer.rendering.Graphics2D.MapDrawerRenderer;
 
 import java.awt.*;
+
 
 /**
  * Created by Rafael on 4/3/2015.
@@ -27,6 +32,7 @@ public class GUICanvasItemInterface {
 
     public void setG2D(Graphics2D graphics) {
         drawerRenderer.setG2D(graphics);
+
     }
 
     public void moveCanvasGroup(CanvasGroup group, CG_Folder destination){
@@ -36,14 +42,47 @@ public class GUICanvasItemInterface {
     public void removeCanvasGroup(CanvasGroup group){
         //TODO: Remove CanvasGroups Code
     }
-    public void newFolder(){
-        //TODO: New Folder Code
+    public CG_Folder newFolder(CanvasGroup currentGroup){
+        HierarchyTracker currentGroupHierarchy = new HierarchyTracker(currentGroup);
+        if (currentGroup.findHierarchy(currentGroupHierarchy)){
+            CG_Folder parent = currentGroupHierarchy.getParent();
+            if (parent != null){
+                CG_Folder folder = new CG_Folder();
+                parent.addCanvasGroup(folder);
+                optimizedRendering.setHashMapData(folder, new CGGraphicsData(folder));
+                return folder;
+            }
+        }
+        return null;
     }
-    public void newLayer(){
-        //TODO: New Layer Code
+    public CG_Layer newLayer(CanvasGroup currentGroup){
+        HierarchyTracker currentGroupHierarchy = new HierarchyTracker(currentGroup);
+        if (currentGroup.findHierarchy(currentGroupHierarchy)){
+            CG_Folder parent = currentGroupHierarchy.getParent();
+            if (parent != null){
+                CG_Layer layer = new CG_Layer();
+                parent.addCanvasGroup(layer);
+                optimizedRendering.setHashMapData(layer, new CGGraphicsData(layer));
+                return layer;
+            }
+        }
+        return null;
     }
     public static void addLayerToFolder(CG_Layer layer, CG_Folder folder){
         folder.addCanvasGroup(layer);
 
+    }
+
+    public void renderAll() {
+        optimizedRendering.
+        //drawerRenderer.RenderAll();
+    }
+
+    public void TESTINGMETHOD_GENERATELINES() {
+        itemTracker.getAllSubLayers().get(0).addCanvasItem(new CI_Line(new Point2D(rndNum(),rndNum()), new Point2D(rndNum(), rndNum())));
+    }
+
+    private double rndNum() {
+        return (int)(Math.random()*1000);
     }
 }

@@ -2,6 +2,7 @@ package version3.mapDrawer.canvasItemTracking.canvasGroups;
 
 import version3.mapDrawer.canvasItemTracking.canvasItems.CanvasItem;
 import version3.mapDrawer.canvasItemTracking.informationStorage.BoundingBox2D;
+import version3.mapDrawer.rendering.DataTracking.HierarchyTracker;
 import version3.mapDrawer.rendering.RenderingInterface;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by Rafael on 4/7/2015.
  */
 public class CG_Folder implements CanvasGroup {
-    private List<CanvasGroup> canvasGroups;
+    protected final List<CanvasGroup> canvasGroups;
 
     public CG_Folder() {
         canvasGroups = new ArrayList<>();
@@ -61,6 +62,18 @@ public class CG_Folder implements CanvasGroup {
         return list;
     }
 
+    @Override
+    public List<CG_Layer> getAllSubLayers() {
+
+        List<CG_Layer> list = new ArrayList<CG_Layer>();
+        for (int i = 0; i < canvasGroups.size(); i++) {
+            CanvasGroup group = canvasGroups.get(i);
+            list.addAll(group.getAllSubLayers());
+        }
+
+        return list;
+    }
+
 
     @Override
     public List<CanvasGroup> getCanvasGroups() {
@@ -87,6 +100,24 @@ public class CG_Folder implements CanvasGroup {
             }
         }
         return list;
+    }
+
+    @Override
+    public boolean findHierarchy(HierarchyTracker hierarchyTracker) {
+        boolean found = false;
+
+        for (int i = 0; (i < canvasGroups.size()) && !found; i++) {
+            CanvasGroup canvasGroup = canvasGroups.get(i);
+            if (canvasGroup == hierarchyTracker.hierarchyOf()){
+                found = true;
+            } else {
+                found = canvasGroup.findHierarchy(hierarchyTracker);
+            }
+        }
+        if (found){
+            hierarchyTracker.addParent(this);
+        }
+        return found;
     }
 
     @Override
