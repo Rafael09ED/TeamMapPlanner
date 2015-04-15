@@ -5,4 +5,5 @@ package version4.SETTINGS;
  */
 public class GENERAL_SETTINGS {
     public static final String PROGRAM_TITLE = "Team Map Planner";
+    public static final double EPSILON = .00001;;
 }

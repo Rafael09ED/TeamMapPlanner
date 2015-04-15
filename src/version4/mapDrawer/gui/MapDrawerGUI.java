@@ -30,6 +30,14 @@ public class MapDrawerGUI extends JFrame {
 
         // show GUI
         setVisible(true);
+        canvas.setVisible(true);
+        revalidate();
     }
 
+    public void render() {
+        canvasItemRenderer.setGraphics2d( (Graphics2D) canvas.getGraphics() );
+        canvasItemRenderer.renderAll();
+        canvas.revalidate();
+        canvas.getGraphics().drawString("lolWorld",10,10);
+    }
 }
