@@ -14,6 +14,7 @@ public class CanvasItem_Line implements CanvasItem {
     private BoundingBox2D boundingBox;
     private double lineLength, lineSlope;
     private double lineStroke;
+    private Color color = Color.BLACK;
     private int StrokeEnd = BasicStroke.CAP_ROUND;
 
     private double totalSlopeModification = 0;
@@ -94,7 +95,7 @@ public class CanvasItem_Line implements CanvasItem {
 
     @Override
     public void render(RenderingInterface renderingInterface) {
-        renderingInterface.drawLine(startPoint, endPoint, lineStroke, StrokeEnd);
+        renderingInterface.drawLine(startPoint, endPoint, lineStroke, color , StrokeEnd);
     }
 
     @Override

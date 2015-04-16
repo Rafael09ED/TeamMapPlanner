@@ -9,23 +9,23 @@ import java.awt.image.BufferedImage;
  */
 public class CanvasGroupGraphicsData {
     private BufferedImage render;
-    private Point2D topLeftCorner;
+    private Point2D canvasOffset;
 
     public CanvasGroupGraphicsData() {
         render = new BufferedImage(10,10,BufferedImage.TYPE_INT_ARGB);
-        topLeftCorner = new Point2D();
+        canvasOffset = new Point2D();
     }
 
     public void setRender(BufferedImage render){
         this.render = render;
     }
 
-    public void setTopLeftCorner(Point2D topLeftCorner) {
-        this.topLeftCorner = topLeftCorner;
+    public void setCanvasOffset(Point2D canvasOffset) {
+        this.canvasOffset = canvasOffset;
     }
 
-    public Point2D getTopLeftCorner() {
-        return topLeftCorner;
+    public Point2D getCanvasOffset() {
+        return canvasOffset;
     }
 
     public BufferedImage getRender(){

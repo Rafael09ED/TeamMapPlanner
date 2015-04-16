@@ -15,27 +15,30 @@ public class Graphics2DRenderer implements RenderingInterface {
     private Point2D offset;
 
     public Graphics2DRenderer() {
-        offset = new Point2D();
+        offset = new Point2D(0);
     }
 
     public void setGraphicsToRenderTo(Graphics2D g) {
         this.g = g;
         RENDER_SETTINGS.SetRenderAA(g);
+
+
     }
 
     @Override
-    public void drawLine(Point2D startPoint, Point2D endPoint, double lineStroke, int EndType) {
+    public void drawLine(Point2D startPoint, Point2D endPoint, double lineStroke, Color color, int EndType) {
         startPoint = Point2D.pointWithOffset(startPoint, offset);
         endPoint = Point2D.pointWithOffset(endPoint, offset);
 
         Stroke jStroke = new BasicStroke((float) lineStroke, EndType, BasicStroke.JOIN_ROUND);
         g.setStroke(jStroke);
+        g.setColor(color);
         g.drawLine((int) startPoint.getX(), (int) startPoint.getY(), (int) endPoint.getX(), (int) endPoint.getY());
     }
 
     @Override
     public void drawImage(Point2D position, BufferedImage image, double scale, int alpha) {
-        g.drawImage(image, (int) position.getX(),(int) position.getY(), (int) (image.getWidth()*scale), (int) (image.getHeight()*scale), null);
+        g.drawImage(image, (int) position.getX() ,(int) position.getY(), (int) (image.getWidth()*scale), (int) (image.getHeight()*scale), null);
     }
 
     public void setOffset(Point2D offset) {

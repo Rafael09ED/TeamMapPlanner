@@ -3,7 +3,6 @@ package version4.mapDrawer.itemTracker.canvasGroups;
 
 import version4.mapDrawer.itemTracker.canvasItems.CanvasItem;
 import version4.mapDrawer.itemTracker.canvasItems.informationStorage.BoundingBox2D;
-import version4.mapDrawer.itemTracker.canvasItems.informationStorage.Point2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class CanvasGroupLayer implements CanvasGroup{
     public CanvasGroupLayer(CanvasGroupFolder parent) {
         canvasItems = new ArrayList<>();
         this.parent = parent;
-        boundingBox = new BoundingBox2D(new Point2D(0), new Point2D(1));
+        boundingBox = new BoundingBox2D();
     }
     public List<CanvasItem> getCanvasItems(){
         return canvasItems;
@@ -33,15 +32,17 @@ public class CanvasGroupLayer implements CanvasGroup{
     public boolean removeCanvasItem(CanvasItem canvasItem){
         boolean removed = canvasItems.remove(canvasItem);
         if (removed) {
-            boundingBox = new BoundingBox2D(new Point2D(), new Point2D());
-
-            for (int i = 0; i < canvasItems.size(); i++) {
-                CanvasItem item = canvasItems.get(i);
-
-                boundingBox.addBoundingBox(item.getBoundingBox());
-            }
+            recalculateBoundingBox();
         }
         return removed;
+    }
+    private void recalculateBoundingBox(){
+        boundingBox = new BoundingBox2D();
+
+        for (int i = 0; i < canvasItems.size(); i++) {
+            CanvasItem item = canvasItems.get(i);
+            boundingBox.addBoundingBox(item.getBoundingBox());
+        }
     }
 
     @Override

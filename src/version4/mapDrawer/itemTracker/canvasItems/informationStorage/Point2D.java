@@ -5,6 +5,7 @@ package version4.mapDrawer.itemTracker.canvasItems.informationStorage;
  */
 public class Point2D {
     private double x,y;
+    private boolean isPlaceholder = false;
 
     public Point2D(double x, double y) {
         this.x = x;
@@ -14,11 +15,16 @@ public class Point2D {
     public Point2D() {
         x = 0;
         y = 0;
+        isPlaceholder = true;
     }
 
     public Point2D(double number) {
         x = number;
         y = number;
+    }
+
+    public boolean isPlaceholder() {
+        return isPlaceholder;
     }
 
     public double getX() {

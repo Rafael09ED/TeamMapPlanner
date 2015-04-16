@@ -48,13 +48,13 @@ public class CanvasItemRenderer {
         for (int i = 0; i < canvasGroupLayers.size(); i++) {
 
             CanvasGroupLayer canvasGroupLayer = canvasGroupLayers.get(i);
-            CanvasGroupGraphicsData graphicsData = renderLayer(canvasGroupLayer);
+            CanvasGroupGraphicsData graphicsData = redoDataObject(canvasGroupLayer);
 
             layerToDataHM.put(canvasGroupLayer, graphicsData);
         }
     }
 
-    private static CanvasGroupGraphicsData renderLayer(CanvasGroupLayer layer) {
+    private static CanvasGroupGraphicsData redoDataObject(CanvasGroupLayer layer) {
         CanvasGroupGraphicsData graphicsData = new CanvasGroupGraphicsData();
 
         BoundingBox2D boundingBox = layer.getBoundingBox();
@@ -62,13 +62,17 @@ public class CanvasItemRenderer {
 
         Graphics2DRenderer renderer = new Graphics2DRenderer();
         renderer.setGraphicsToRenderTo((Graphics2D) image.getGraphics());
-        renderer.setOffset(boundingBox.getTopLeft());
+        renderer.setOffset(boundingBox.getOffsetAsInt());
+        graphicsData.setCanvasOffset(boundingBox.getOffsetAsInt());
+       // image.getGraphics().setColor(Color.BLACK);
+       // image.getGraphics().fillRect(0,0,boundingBox.getIntBoxWidth(),boundingBox.getIntBoxHeight());
 
         List<CanvasItem> canvasItems = layer.getCanvasItems();
         for (int i = 0; i < canvasItems.size(); i++) {
             CanvasItem canvasItem = canvasItems.get(i);
             canvasItem.render(renderer);
         }
+
         graphicsData.setRender(image);
         return graphicsData;
     }
@@ -80,13 +84,13 @@ public class CanvasItemRenderer {
         }
         Set<CanvasGroupLayer> listOfChangedLayers = itemTrackerInterface.changedSet(true);
         for (CanvasGroupLayer changedLayer : listOfChangedLayers) {
-            layerToDataHM.put(changedLayer, renderLayer(changedLayer));
+            layerToDataHM.put(changedLayer, redoDataObject(changedLayer));
         }
 
         for (int i = 0; i < preArrangedLayers.size(); i++) {
             CanvasGroupLayer canvasGroupLayer = preArrangedLayers.get(i);
             CanvasGroupGraphicsData gData = layerToDataHM.get(canvasGroupLayer);
-            renderingInterface.drawImage(gData.getTopLeftCorner(),gData.getRender(),1,1);
+            renderingInterface.drawImage( gData.getCanvasOffset(), gData.getRender(), 1, 1);
         }
     }
 }
