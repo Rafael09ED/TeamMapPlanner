@@ -8,6 +8,7 @@ public class BoundingBox2D {
     private Point2D topLeft, bottomRight;
 
     public BoundingBox2D(Point2D pointOne, Point2D pointTwo) {
+        // finds and sets the topLeft and bottomRight points from the two points passed
         topLeft = new Point2D(Math.min(pointOne.getX(), pointTwo.getX()), Math.min(pointOne.getY(), pointTwo.getY()));
         bottomRight = new Point2D(Math.max(pointOne.getX(), pointTwo.getX()), Math.max(pointOne.getY(), pointTwo.getY()));
     }
@@ -31,6 +32,7 @@ public class BoundingBox2D {
     public double getHeight(){
         return bottomRight.getY() - topLeft.getY();
     }
+
     public int getIntBoxWidth(){
         return (int) (bottomRight.getX() - topLeft.getX() ) + 1;
     }
@@ -38,13 +40,21 @@ public class BoundingBox2D {
         return (int) (bottomRight.getY() - topLeft.getY() ) + 1;
     }
 
+    /**
+     * Changes the bounding box to incorporate the passed bounding box.
+     * @param boundingBox   The bounding box that will be incorporated into the bounding box
+     */
     public void  addBoundingBox(BoundingBox2D boundingBox) {
+        // If the point currently stored is a place holder, ignore it's data
+        // Else find the new point that represents what it is (Max or Min)
+
         if (topLeft.isPlaceholder()) {
             topLeft = boundingBox.getTopLeft();
         } else {
             topLeft = new Point2D(Math.min(topLeft.getX(), boundingBox.getTopLeft().getX()),
                     Math.min(topLeft.getY(), boundingBox.getTopLeft().getY()));
         }
+
         if (bottomRight.isPlaceholder()) {
             bottomRight = boundingBox.getBottomRight();
         } else {
@@ -58,6 +68,10 @@ public class BoundingBox2D {
         return "BoundingBox2D:( TopLeft: ( " + topLeft.toString() + " ) BottomRight: ( " + bottomRight.toString() + " ))";
     }
 
+    /**
+     * Gets the offset point (top left) of the bounding box as an int
+     * @return  top left of bounding box as a truncated int
+     */
     public Point2D getOffsetAsInt() {
         return new Point2D((int) topLeft.getX(),(int) topLeft.getY());
     }

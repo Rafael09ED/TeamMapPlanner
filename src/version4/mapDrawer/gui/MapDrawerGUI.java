@@ -21,7 +21,7 @@ public class MapDrawerGUI extends JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (UnsupportedLookAndFeelException e) {
-            System.err.println("Unsupported Look and Feel, Using Default Java");
+            System.err.println("Unsupported Look and Feel, Using Java's Default, Hopefully");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,19 +51,21 @@ public class MapDrawerGUI extends JFrame {
     }
 
     public void render() {
-
         Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
         //Graphics2D g  = (Graphics2D) canvas.getGraphics();
 
+        // sets the background to white, prevents render stacking
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         canvasItemRenderer.setGraphics2d(g);
         canvasItemRenderer.renderAll();
 
+        //Renders "lolWorld" for testing the buffer
         g.setColor(Color.BLUE);
         g.drawString("lolWorld", 10, 10);
 
+        // disposes the graphics and shows the buffer
         g.dispose();
         strategy.show();
     }

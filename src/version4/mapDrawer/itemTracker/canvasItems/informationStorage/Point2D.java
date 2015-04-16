@@ -12,6 +12,11 @@ public class Point2D {
         this.y = y;
     }
 
+    /**
+     * Creates a default point that is a placeholder
+     * Being a placeholder means that it was created to not cause errors,
+     * but the data does not mean anything
+     */
     public Point2D() {
         x = 0;
         y = 0;

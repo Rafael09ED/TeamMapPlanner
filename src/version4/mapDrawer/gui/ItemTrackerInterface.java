@@ -34,7 +34,7 @@ public class ItemTrackerInterface {
 
         layersChanged = true;
     }
-    public boolean hasChanged(boolean resetChanged){
+    public boolean hasLayerOrderChanged(boolean resetChanged){
 
         boolean hasChangedToReturn = layersChanged;
         if (resetChanged){

@@ -25,17 +25,26 @@ public class CanvasGroupLayer implements CanvasGroup{
         return canvasItems;
     }
 
+    /**
+     * Adds a canvasItem to the canvasLayer canvasItems list
+     * Makes it a part of the layer
+     * @param canvasItem    The canvasItem that will be added to the Layer
+     */
     public void addCanvasItem(CanvasItem canvasItem){
         canvasItems.add(canvasItem);
         boundingBox.addBoundingBox(canvasItem.getBoundingBox());
     }
+
     public boolean removeCanvasItem(CanvasItem canvasItem){
         boolean removed = canvasItems.remove(canvasItem);
+
+        // if the canvasItem was in the list and hence removed
         if (removed) {
             recalculateBoundingBox();
         }
         return removed;
     }
+
     private void recalculateBoundingBox(){
         boundingBox = new BoundingBox2D();
 
@@ -54,6 +63,11 @@ public class CanvasGroupLayer implements CanvasGroup{
         return parent;
     }
 
+    /**
+     * TODO: Implement externally
+     * Sets the parent of the graphics object
+     * @param parent
+     */
     public void setParent(CanvasGroupFolder parent){
         this.parent = parent;
     }
