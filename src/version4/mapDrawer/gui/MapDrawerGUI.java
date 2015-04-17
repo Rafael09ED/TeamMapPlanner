@@ -29,7 +29,6 @@ public class MapDrawerGUI extends JFrame {
         this.itemTrackerInterface = itemTrackerInterface;
         this.canvasItemRenderer = canvasItemRenderer;
 
-        // initialization
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(1000, 500);
 
@@ -37,9 +36,7 @@ public class MapDrawerGUI extends JFrame {
         canvas = new Canvas();
         add(canvas);
 
-        // show GUI
         setVisible(true);
-        canvas.setVisible(true);
 
         // Set Canvas Buffer Strategy
         setStrategy();
@@ -56,6 +53,7 @@ public class MapDrawerGUI extends JFrame {
 
         // sets the background to white, prevents render stacking
         g.setColor(Color.WHITE);
+        // TODO: Find out if this can be optimized
         g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         canvasItemRenderer.setGraphics2d(g);

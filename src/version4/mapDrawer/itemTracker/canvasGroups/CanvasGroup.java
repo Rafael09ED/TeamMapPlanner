@@ -7,6 +7,6 @@ import java.util.List;
  */
 
 public interface CanvasGroup {
-    void getAllSubLayers(List<CanvasGroupLayer> allSubLayers);
+    void getAllSubLayersOrdered(List<CanvasGroupLayer> allSubLayers);
     CanvasGroupFolder getParent();
 }

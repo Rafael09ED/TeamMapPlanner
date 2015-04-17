@@ -55,7 +55,7 @@ public class CanvasGroupLayer implements CanvasGroup{
     }
 
     @Override
-    public void getAllSubLayers(List<CanvasGroupLayer> allSubLayers) {
+    public void getAllSubLayersOrdered(List<CanvasGroupLayer> allSubLayers) {
         allSubLayers.add(this);
     }
     @Override

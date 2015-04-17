@@ -18,6 +18,11 @@ public class Graphics2DRenderer implements RenderingInterface {
         offset = new Point2D(0);
     }
 
+    public Graphics2DRenderer(Graphics2D graphics, Point2D offsetAsInt) {
+        setGraphicsToRenderTo(graphics);
+        offset = offsetAsInt;
+    }
+
     public void setGraphicsToRenderTo(Graphics2D g) {
         this.g = g;
         RENDER_SETTINGS.SetRenderAA(g);

@@ -97,11 +97,11 @@ public class MapDrawerCore {
 
     private void TESTING_DoEvery() {
         List<CanvasGroupLayer> layers = new ArrayList<>();
-        canvasItemTracker.getAllSubLayers(layers);
+        canvasItemTracker.getAllSubLayersOrdered(layers);
 
         if (!(layers.size() > 0)) {
             itemTrackerInterface.newLayer(canvasItemTracker, false);
-            canvasItemTracker.getAllSubLayers(layers);
+            canvasItemTracker.getAllSubLayersOrdered(layers);
         }
 
         itemTrackerInterface.addCanvasItemTo(new CanvasItem_Line(rndPoint(), rndPoint()), layers.get(0));

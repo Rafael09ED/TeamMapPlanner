@@ -43,7 +43,7 @@ public class ItemTrackerInterface {
 
         return hasChangedToReturn;
     }
-    public Set<CanvasGroupLayer> changedSet(boolean resetChanged){
+    public Set<CanvasGroupLayer> getSetOfChangedLayers(boolean resetChanged){
         Set<CanvasGroupLayer> setToSend = changedLayers;
         if (resetChanged) {
             changedLayers = new HashSet<>();
