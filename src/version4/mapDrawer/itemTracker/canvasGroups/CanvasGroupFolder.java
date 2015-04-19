@@ -7,12 +7,17 @@ import java.util.List;
  * Created by Rafael on 4/14/2015.
  */
 public class CanvasGroupFolder implements CanvasGroup{
+    private static int folderCounter = 0;
+
     protected final List<CanvasGroup> canvasGroups;
     private CanvasGroupFolder parent;
+    private String canvasGroupName;
 
     public CanvasGroupFolder(CanvasGroupFolder parent) {
         this.parent = parent;
         canvasGroups = new ArrayList<>();
+        canvasGroupName = "Folder " + folderCounter;
+        folderCounter++;
     }
 
     @Override
@@ -22,8 +27,22 @@ public class CanvasGroupFolder implements CanvasGroup{
         }
     }
 
+    @Override
+    public void getChildren(List<CanvasGroup> immediateChildren) {
+        immediateChildren.addAll(canvasGroups);
+    }
+
     public CanvasGroupFolder getParent() {
         return parent;
+    }
+
+    @Override
+    public String getName() {
+        return canvasGroupName;
+    }
+    @Override
+    public void setName(String newName){
+        canvasGroupName = newName;
     }
 
     public void setParent(CanvasGroupFolder parent){

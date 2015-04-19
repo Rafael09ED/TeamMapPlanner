@@ -11,15 +11,19 @@ import java.util.List;
  * Created by Rafael on 4/14/2015.
  */
 public class CanvasGroupLayer implements CanvasGroup{
+    private static int layerCounter = 0;
 
     protected final List<CanvasItem> canvasItems;
     private CanvasGroupFolder parent;
     private BoundingBox2D boundingBox;
+    private String canvasGroupName;
 
     public CanvasGroupLayer(CanvasGroupFolder parent) {
         canvasItems = new ArrayList<>();
         this.parent = parent;
         boundingBox = new BoundingBox2D();
+        canvasGroupName = "Layer " + layerCounter;
+        layerCounter++;
     }
     public List<CanvasItem> getCanvasItems(){
         return canvasItems;
@@ -58,11 +62,25 @@ public class CanvasGroupLayer implements CanvasGroup{
     public void getAllSubLayersOrdered(List<CanvasGroupLayer> allSubLayers) {
         allSubLayers.add(this);
     }
+
+    @Override
+    public void getChildren(List<CanvasGroup> immediateChildren) {
+        return;
+    }
+
     @Override
     public CanvasGroupFolder getParent() {
         return parent;
     }
 
+    @Override
+    public String getName() {
+        return canvasGroupName;
+    }
+    @Override
+    public void setName(String newName){
+        canvasGroupName = newName;
+    }
     /**
      * TODO: Implement externally
      * Sets the parent of the graphics object

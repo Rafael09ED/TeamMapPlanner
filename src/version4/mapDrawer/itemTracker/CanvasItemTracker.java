@@ -1,5 +1,6 @@
 package version4.mapDrawer.itemTracker;
 
+import version4.SETTINGS.NAMING_SETTINGS;
 import version4.mapDrawer.itemTracker.canvasGroups.CanvasGroupFolder;
 
 /**
@@ -8,6 +9,7 @@ import version4.mapDrawer.itemTracker.canvasGroups.CanvasGroupFolder;
 public class CanvasItemTracker extends CanvasGroupFolder{
     public CanvasItemTracker() {
         super(null);
+        setName(NAMING_SETTINGS.rootFolderName);
     }
 
     @Override

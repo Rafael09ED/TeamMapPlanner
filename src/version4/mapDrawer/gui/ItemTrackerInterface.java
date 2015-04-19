@@ -56,4 +56,8 @@ public class ItemTrackerInterface {
         canvasGroupLayer.addCanvasItem(canvasItem);
         changedLayers.add(canvasGroupLayer);
     }
+
+    public CanvasGroupFolder getRoot() {
+        return canvasItemTracker;
+    }
 }

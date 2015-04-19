@@ -1,5 +1,6 @@
 package version4.mapDrawer.gui;
 
+import version4.mapDrawer.gui.panels.LayersPanel;
 import version4.mapDrawer.rendering.CanvasItemRenderer;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class MapDrawerGUI extends JFrame {
     private BufferStrategy strategy;
     private CanvasItemRenderer canvasItemRenderer;
     private ItemTrackerInterface itemTrackerInterface; // Will be used for tools and such
+    private LayersPanel layersPanel;
 
     public MapDrawerGUI(String title, ItemTrackerInterface itemTrackerInterface, CanvasItemRenderer canvasItemRenderer) {
         super(title);
@@ -40,6 +42,13 @@ public class MapDrawerGUI extends JFrame {
 
         // Set Canvas Buffer Strategy
         setStrategy();
+
+        layersPanel = new LayersPanel(canvasItemRenderer, itemTrackerInterface);
+        JFrame layersFrame = new JFrame("Layers");
+        layersFrame.setLocationRelativeTo(null);
+        layersFrame.setSize(300,300);
+        layersFrame.add(layersPanel);
+        layersFrame.setVisible(true);
     }
 
     private void setStrategy() {
@@ -66,5 +75,8 @@ public class MapDrawerGUI extends JFrame {
         // disposes the graphics and shows the buffer
         g.dispose();
         strategy.show();
+    }
+    public void update(){
+        layersPanel.update();
     }
 }

@@ -117,7 +117,7 @@ public class MapDrawerCore {
     }
 
     private void update() {
-        //Nothing yet
+        mapDrawerGUI.update();
     }
 
     private void TESTING_DoOnce() {
