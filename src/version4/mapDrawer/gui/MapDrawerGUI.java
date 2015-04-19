@@ -43,6 +43,9 @@ public class MapDrawerGUI extends JFrame {
         // Set Canvas Buffer Strategy
         setStrategy();
 
+        showGroupsPanel();
+    }
+    private void showGroupsPanel(){
         layersPanel = new LayersPanel(canvasItemRenderer, itemTrackerInterface);
         JFrame layersFrame = new JFrame("Layers");
         layersFrame.setLocationRelativeTo(null);

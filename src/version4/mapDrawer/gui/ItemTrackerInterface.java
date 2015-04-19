@@ -1,6 +1,7 @@
 package version4.mapDrawer.gui;
 
 import version4.mapDrawer.itemTracker.CanvasItemTracker;
+import version4.mapDrawer.itemTracker.canvasGroups.CanvasGroup;
 import version4.mapDrawer.itemTracker.canvasGroups.CanvasGroupFolder;
 import version4.mapDrawer.itemTracker.canvasGroups.CanvasGroupLayer;
 import version4.mapDrawer.itemTracker.canvasItems.CanvasItem;
@@ -59,5 +60,23 @@ public class ItemTrackerInterface {
 
     public CanvasGroupFolder getRoot() {
         return canvasItemTracker;
+    }
+
+    public boolean deleteCanvasGroup(CanvasGroup groupToDelete) {
+        if (groupToDelete == getRoot()){
+            return false;
+        }
+        CanvasGroupFolder parent = groupToDelete.getParent();
+        boolean hasDeleted = parent.removeChild(groupToDelete);
+
+        if (hasDeleted){
+            hasLayerOrderChanged(true);
+        }
+
+        return hasDeleted;
+    }
+
+    public void addLayer(CanvasGroupFolder canvasGroupFolder) {
+
     }
 }

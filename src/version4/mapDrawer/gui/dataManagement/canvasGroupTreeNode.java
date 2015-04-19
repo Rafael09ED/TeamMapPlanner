@@ -8,9 +8,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 /**
  * Created by Rafael on 4/18/2015.
  */
-public class canvasGroupTreeNode extends DefaultMutableTreeNode{
+public class CanvasGroupTreeNode extends DefaultMutableTreeNode{
     private final CanvasGroup canvasGroup;
-    public canvasGroupTreeNode(CanvasGroup canvasGroup) {
+    public CanvasGroupTreeNode(CanvasGroup canvasGroup) {
         super(canvasGroup, true);
         this.canvasGroup = canvasGroup;
     }

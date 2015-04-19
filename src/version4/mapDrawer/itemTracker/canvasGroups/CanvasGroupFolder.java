@@ -12,6 +12,7 @@ public class CanvasGroupFolder implements CanvasGroup{
     protected final List<CanvasGroup> canvasGroups;
     private CanvasGroupFolder parent;
     private String canvasGroupName;
+    // Could have had 3 lists tracking everything instead of having to collect the list every time
 
     public CanvasGroupFolder(CanvasGroupFolder parent) {
         this.parent = parent;
@@ -50,5 +51,10 @@ public class CanvasGroupFolder implements CanvasGroup{
     }
     public void addCanvasGroup(CanvasGroup canvasGroupLayer) {
         canvasGroups.add(canvasGroupLayer);
+    }
+
+    public boolean removeChild(CanvasGroup groupToDelete) {
+        boolean removed = canvasGroups.remove(groupToDelete);
+        return removed;
     }
 }
