@@ -30,7 +30,7 @@ public class CanvasGroupLayer implements CanvasGroup{
     }
 
     /**
-     * Adds a canvasItem to the canvasLayer canvasItems list
+     * Adds a canvasItem to the canvasLayer itemManagement list
      * Makes it a part of the layer
      * @param canvasItem    The canvasItem that will be added to the Layer
      */
