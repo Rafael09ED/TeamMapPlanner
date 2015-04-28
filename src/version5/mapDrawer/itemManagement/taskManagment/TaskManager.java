@@ -43,7 +43,9 @@ public class TaskManager {
 
     public boolean undoTask(){
         try {
-            taskQue.get(--taskIndex).unexecute();
+            int index = --taskIndex;
+            taskQue.get(index).unexecute();
+            itemManager.addToChangedSet(taskQue.get(index).getLayersChangedByTask());
             return true;
         }catch (Exception e){
             taskIndex++;

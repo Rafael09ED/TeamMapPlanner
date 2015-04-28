@@ -9,7 +9,7 @@ import version5.mapDrawer.rendering.RenderingWrapper;
  * Created by Rafael on 4/24/2015.
  */
 public class MapDrawerCore {
-    public static void main(){
+    public static void main(String[] args){
         new MapDrawerCore();
     }
 
@@ -19,10 +19,15 @@ public class MapDrawerCore {
 
     public MapDrawerCore() {
         renderingWrapper = initializeRenderingWrapper();
-        CanvasTracker canvasTracker = new CanvasTracker();
-        itemManager = initializeItemManager(renderingWrapper);
+        CanvasTracker canvasTracker = initializeCanvasTracker();
+        itemManager = initializeItemManager(renderingWrapper, canvasTracker);
         taskManager = initializeTaskManager(itemManager);
 
+    }
+
+    private static CanvasTracker initializeCanvasTracker() {
+        CanvasTracker TEMP_canvasTracker = new CanvasTracker();
+        return TEMP_canvasTracker;
     }
 
     private static RenderingWrapper initializeRenderingWrapper(){
@@ -31,8 +36,8 @@ public class MapDrawerCore {
     }
 
 
-    private static ItemManager initializeItemManager(RenderingWrapper renderingWrapper){
-        ItemManager TEMP_itemManager = new ItemManager(renderingWrapper);
+    private static ItemManager initializeItemManager(RenderingWrapper renderingWrapper, CanvasTracker canvasTracker){
+        ItemManager TEMP_itemManager = new ItemManager(canvasTracker, renderingWrapper);
         return TEMP_itemManager;
     }
 

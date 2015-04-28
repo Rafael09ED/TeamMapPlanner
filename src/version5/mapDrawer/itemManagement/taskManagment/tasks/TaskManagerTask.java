@@ -1,7 +1,9 @@
 package version5.mapDrawer.itemManagement.taskManagment.tasks;
 
+import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
 import version5.mapDrawer.itemManagement.taskManagment.TaskData;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -13,4 +15,5 @@ public interface TaskManagerTask{
     void notifyChanged();
     void unexecute();
     void reexecute();
+    List<CanvasGroupLayer> getLayersChangedByTask();
 }

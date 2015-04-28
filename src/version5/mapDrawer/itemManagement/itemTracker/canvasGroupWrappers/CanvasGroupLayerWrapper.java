@@ -2,6 +2,7 @@ package version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers;
 
 import version5.mapDrawer.itemManagement.infoTypes.BoundingBox2D;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
+import version5.mapDrawer.rendering.RenderingWrapper;
 
 import java.awt.image.BufferedImage;
 
@@ -9,11 +10,15 @@ import java.awt.image.BufferedImage;
  * Created by Rafael on 4/25/2015.
  */
 public class CanvasGroupLayerWrapper implements CanvasGroupWrapper {
+    private final CanvasGroupLayer canvasGroupLayer;
+    private RenderingWrapper renderingWrapper;
     private long timeLastChanged;
     private String displayName;
     private BoundingBox2D boundingBox2D;
 
-    public CanvasGroupLayerWrapper(CanvasGroupLayer canvasGroupLayer) {
+    public CanvasGroupLayerWrapper(CanvasGroupLayer canvasGroupLayer, RenderingWrapper renderingWrapper) {
+        this.canvasGroupLayer = canvasGroupLayer;
+        this.renderingWrapper = renderingWrapper;
         setDisplayName("Folder " + canvasGroupLayer.getLayerNumber());
         notifyOfChange();
     }
@@ -30,7 +35,7 @@ public class CanvasGroupLayerWrapper implements CanvasGroupWrapper {
 
     @Override
     public BufferedImage getCanvasGroupRender() {
-        return null;
+        return renderingWrapper.getRender(canvasGroupLayer);
     }
 
     @Override

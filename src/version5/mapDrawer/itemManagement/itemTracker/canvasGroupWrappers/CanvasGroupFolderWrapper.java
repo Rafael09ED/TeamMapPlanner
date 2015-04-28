@@ -1,6 +1,7 @@
 package version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers;
 
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupFolder;
+import version5.mapDrawer.rendering.RenderingWrapper;
 
 import java.awt.image.BufferedImage;
 
@@ -8,10 +9,14 @@ import java.awt.image.BufferedImage;
  * Created by Rafael on 4/25/2015.
  */
 public class CanvasGroupFolderWrapper implements CanvasGroupWrapper {
+    private final CanvasGroupFolder canvasGroupFolder;
+    private RenderingWrapper renderingWrapper;
     private long timeLastChanged;
     private String displayName;
 
-    public CanvasGroupFolderWrapper(CanvasGroupFolder canvasGroupFolder) {
+    public CanvasGroupFolderWrapper(CanvasGroupFolder canvasGroupFolder, RenderingWrapper renderingWrapper) {
+        this.canvasGroupFolder = canvasGroupFolder;
+        this.renderingWrapper = renderingWrapper;
         setDisplayName("Folder " + canvasGroupFolder.getFolderNumber());
         notifyOfChange();
     }
@@ -28,8 +33,7 @@ public class CanvasGroupFolderWrapper implements CanvasGroupWrapper {
 
     @Override
     public BufferedImage getCanvasGroupRender() {
-        //TODO
-        return null;
+        return renderingWrapper.getRender(canvasGroupFolder);
     }
 
     @Override
