@@ -1,14 +1,16 @@
 package version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers;
 
-import java.awt.image.BufferedImage;
+import version5.mapDrawer.interfacing.CanvasGroupTypeActionable;
+import version5.mapDrawer.rendering.optimization.RenderData;
 
 /**
  * Created by Rafael on 4/25/2015.
  */
 public interface CanvasGroupWrapper {
-    public String getDisplayName();
-    public void setDisplayName(String newDisplayName);
-    public BufferedImage getCanvasGroupRender();
-    public long getLastChangedTime();
+    String getDisplayName();
+    void setDisplayName(String newDisplayName);
+    RenderData getCanvasGroupRender();
+    long getLastChangedTime();
     void notifyOfChange();
+    void callTypeActionable(CanvasGroupTypeActionable canvasGroupTypeActionable);
 }

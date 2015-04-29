@@ -24,38 +24,47 @@ public class CanvasGroupRenderOptimizer {
 
     public CanvasGroupRenderOptimizer(RenderingWrapper renderingWrapper) {
         this.renderingWrapper = renderingWrapper;
+        canvasLayerToRenderData = new HashMap<>();
     }
-    public BufferedImage getRender(CanvasGroupFolder canvasGroupFolder) {
-        List<CanvasGroupLayer> canvasGroupLayers = new ArrayList<>();
-        canvasGroupFolder.getAllSubLayersOrdered(canvasGroupLayers);
-        return renderLayers(canvasGroupLayers);
-    }
+    private RenderData renderLayers(List<CanvasGroupLayer> canvasGroupLayers){
+        BoundingBox2D offsetBoundingBox = getBoundingBoxForLayer(canvasGroupLayers);
+        renderUpdatedRequiredLayers(canvasGroupLayers);
 
-    private BufferedImage renderLayers(List<CanvasGroupLayer> canvasGroupLayers){
-        BoundingBox2D offsetBoundingBox = renderRequired(canvasGroupLayers);
+        if (offsetBoundingBox.getIntBoxWidth()<=1||offsetBoundingBox.getIntBoxHeight()<=1) {
+            System.out.println("We Rendered Nothing");
+            return new RenderData(new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB),new BoundingBox2D());
+        }
 
         BufferedImage bufferedImage = new BufferedImage(
                 offsetBoundingBox.getIntBoxWidth(),
                 offsetBoundingBox.getIntBoxHeight(),
                 BufferedImage.TYPE_INT_ARGB);
 
+
+
         for (CanvasGroupLayer canvasGroupLayer : canvasGroupLayers) {
-            bufferedImage.getGraphics().drawImage(canvasLayerToRenderData.get(canvasGroupLayer).getCurrentRender(), 0, 0, null);
+            RenderData renderData = canvasLayerToRenderData.get(canvasGroupLayer);
+
+            bufferedImage.getGraphics().drawImage(
+                    renderData.getCurrentRender(),
+                    -renderData.getXCanvasOffset(),
+                    -renderData.getYCanvasOffset(),
+                    null);
         }
 
-        return bufferedImage;
+        RenderData returnRenderData = new RenderData(bufferedImage,offsetBoundingBox);
+        return returnRenderData;
     }
 
-    private BoundingBox2D renderRequired(List<CanvasGroupLayer> canvasGroupLayers){
-        BoundingBox2D canvasLayersListBoundingBox = new BoundingBox2D();
-
+    private void renderUpdatedRequiredLayers(List<CanvasGroupLayer> canvasGroupLayers){
         for (CanvasGroupLayer canvasGroupLayer : canvasGroupLayers) {
-            if (changedLayers.contains(canvasGroupLayer)){
+            if (changedLayers.contains(canvasGroupLayer)
+                    || canvasLayerToRenderData.get(canvasGroupLayer) == null
+                    || canvasLayerToRenderData.get(canvasGroupLayer).getCurrentRender() == null){
+
                 Graphics2DRenderer graphics2DRenderer = new Graphics2DRenderer();
 
                 BoundingBox2D canvasLayerBoundingBox = canvasGroupLayer.getBoundingBox();
-                canvasLayersListBoundingBox.addBoundingBox(canvasLayerBoundingBox);
-
                 BufferedImage bufferedImage = new BufferedImage(
                         canvasLayerBoundingBox.getIntBoxWidth(),
                         canvasLayerBoundingBox.getIntBoxHeight(),
@@ -68,19 +77,30 @@ public class CanvasGroupRenderOptimizer {
                     canvasItem.render(graphics2DRenderer);
                 }
 
-                canvasLayerToRenderData.get(canvasGroupLayer)
-                        .setNewRender(bufferedImage, canvasLayerBoundingBox.getTopLeft());
-
+                canvasLayerToRenderData.put(canvasGroupLayer, new RenderData(bufferedImage, canvasLayerBoundingBox));
                 changedLayers.remove(canvasGroupLayer);
             }
         }
-        return canvasLayersListBoundingBox;
     }
 
-    public BufferedImage getRender(CanvasGroupLayer canvasGroupLayer) {
+    public RenderData getRender(CanvasGroupFolder canvasGroupFolder) {
+        List<CanvasGroupLayer> canvasGroupLayers = new ArrayList<>();
+        canvasGroupFolder.getAllSubLayersOrdered(canvasGroupLayers);
+        return renderLayers(canvasGroupLayers);
+    }
+
+    public RenderData getRender(CanvasGroupLayer canvasGroupLayer) {
         List<CanvasGroupLayer> renderList =  new ArrayList<>();
         renderList.add(canvasGroupLayer);
         return renderLayers(renderList);
+    }
+
+    private BoundingBox2D getBoundingBoxForLayer(List<CanvasGroupLayer> canvasGroupLayers) {
+        BoundingBox2D boundingBox2D = new BoundingBox2D();
+        for (CanvasGroupLayer canvasGroupLayer : canvasGroupLayers) {
+            boundingBox2D.addBoundingBox(canvasGroupLayer.getBoundingBox());
+        }
+        return boundingBox2D;
     }
 
     public void setChangedLayers(Set<CanvasGroupLayer> changedLayers) {

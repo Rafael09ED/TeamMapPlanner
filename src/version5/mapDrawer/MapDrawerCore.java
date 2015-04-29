@@ -1,33 +1,38 @@
 package version5.mapDrawer;
 
+import version5.mapDrawer.gui.guiStart;
+import version5.mapDrawer.interfacing.DataGrabber;
+import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 import version5.mapDrawer.itemManagement.ItemManager;
-import version5.mapDrawer.itemManagement.itemTracker.CanvasTracker;
-import version5.mapDrawer.itemManagement.taskManagment.TaskManager;
+import version5.mapDrawer.itemManagement.itemTracker.CanvasRoot;
 import version5.mapDrawer.rendering.RenderingWrapper;
 
 /**
  * Created by Rafael on 4/24/2015.
  */
 public class MapDrawerCore {
+
     public static void main(String[] args){
         new MapDrawerCore();
     }
-
+    private final DataGrabber dataGrabber;
     private final ItemManager itemManager;
     private final RenderingWrapper renderingWrapper;
     private final TaskManager taskManager;
+    private final guiStart gui;
 
     public MapDrawerCore() {
         renderingWrapper = initializeRenderingWrapper();
-        CanvasTracker canvasTracker = initializeCanvasTracker();
-        itemManager = initializeItemManager(renderingWrapper, canvasTracker);
+        CanvasRoot canvasRoot = initializeCanvasTracker();
+        itemManager = initializeItemManager(renderingWrapper, canvasRoot);
         taskManager = initializeTaskManager(itemManager);
-
+        dataGrabber = initializeDataGrabber(itemManager);
+        gui = new guiStart(dataGrabber, taskManager);
     }
 
-    private static CanvasTracker initializeCanvasTracker() {
-        CanvasTracker TEMP_canvasTracker = new CanvasTracker();
-        return TEMP_canvasTracker;
+    private static CanvasRoot initializeCanvasTracker() {
+        CanvasRoot TEMP_canvasRoot = new CanvasRoot();
+        return TEMP_canvasRoot;
     }
 
     private static RenderingWrapper initializeRenderingWrapper(){
@@ -36,13 +41,14 @@ public class MapDrawerCore {
     }
 
 
-    private static ItemManager initializeItemManager(RenderingWrapper renderingWrapper, CanvasTracker canvasTracker){
-        ItemManager TEMP_itemManager = new ItemManager(canvasTracker, renderingWrapper);
+    private static ItemManager initializeItemManager(RenderingWrapper renderingWrapper, CanvasRoot canvasRoot){
+        ItemManager TEMP_itemManager = new ItemManager(canvasRoot, renderingWrapper);
         return TEMP_itemManager;
     }
 
-    private static void initializeDataGrabber(){
-
+    private static DataGrabber initializeDataGrabber(ItemManager itemManager){
+        DataGrabber TEMP_DataGrabber = new DataGrabber(itemManager);
+        return TEMP_DataGrabber;
     }
 
     private static TaskManager initializeTaskManager(ItemManager itemManager){

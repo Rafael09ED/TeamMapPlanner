@@ -1,9 +1,10 @@
 package version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers;
 
+import version5.mapDrawer.interfacing.CanvasGroupTypeActionable;
+import version5.mapDrawer.itemManagement.ItemManager;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupFolder;
 import version5.mapDrawer.rendering.RenderingWrapper;
-
-import java.awt.image.BufferedImage;
+import version5.mapDrawer.rendering.optimization.RenderData;
 
 /**
  * Created by Rafael on 4/25/2015.
@@ -11,12 +12,14 @@ import java.awt.image.BufferedImage;
 public class CanvasGroupFolderWrapper implements CanvasGroupWrapper {
     private final CanvasGroupFolder canvasGroupFolder;
     private RenderingWrapper renderingWrapper;
+    private final ItemManager itemManager;
     private long timeLastChanged;
     private String displayName;
 
-    public CanvasGroupFolderWrapper(CanvasGroupFolder canvasGroupFolder, RenderingWrapper renderingWrapper) {
+    public CanvasGroupFolderWrapper(CanvasGroupFolder canvasGroupFolder, RenderingWrapper renderingWrapper, ItemManager itemManager) {
         this.canvasGroupFolder = canvasGroupFolder;
         this.renderingWrapper = renderingWrapper;
+        this.itemManager = itemManager;
         setDisplayName("Folder " + canvasGroupFolder.getFolderNumber());
         notifyOfChange();
     }
@@ -32,7 +35,7 @@ public class CanvasGroupFolderWrapper implements CanvasGroupWrapper {
     }
 
     @Override
-    public BufferedImage getCanvasGroupRender() {
+    public RenderData getCanvasGroupRender() {
         return renderingWrapper.getRender(canvasGroupFolder);
     }
 
@@ -44,5 +47,10 @@ public class CanvasGroupFolderWrapper implements CanvasGroupWrapper {
     @Override
     public void notifyOfChange() {
         timeLastChanged = System.currentTimeMillis();
+    }
+
+    @Override
+    public void callTypeActionable(CanvasGroupTypeActionable canvasGroupTypeActionable) {
+        canvasGroupTypeActionable.doIfCanvasFolder(this);
     }
 }

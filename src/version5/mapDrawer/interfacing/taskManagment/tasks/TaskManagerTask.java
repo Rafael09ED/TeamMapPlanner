@@ -1,7 +1,7 @@
-package version5.mapDrawer.itemManagement.taskManagment.tasks;
+package version5.mapDrawer.interfacing.taskManagment.tasks;
 
+import version5.mapDrawer.interfacing.taskManagment.TaskData;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
-import version5.mapDrawer.itemManagement.taskManagment.TaskData;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,8 +12,8 @@ import java.util.NoSuchElementException;
 public interface TaskManagerTask{
     void execute() throws NoSuchElementException;
     TaskData getCanvasTaskData();
-    void notifyChanged();
     void unexecute();
     void reexecute();
     List<CanvasGroupLayer> getLayersChangedByTask();
+    void passUniqueTasks(UniqueTaskManagerTasks uniqueTaskManagerTasks);
 }

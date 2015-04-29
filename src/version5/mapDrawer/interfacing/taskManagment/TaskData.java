@@ -1,4 +1,4 @@
-package version5.mapDrawer.itemManagement.taskManagment;
+package version5.mapDrawer.interfacing.taskManagment;
 
 import version5.mapDrawer.itemManagement.ItemManager;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupFolderWrapper;
@@ -15,6 +15,7 @@ public class TaskData {
     private CanvasGroupLayerWrapper canvasGroupLayerWrapper;
     private CanvasGroupFolderWrapper canvasGroupFolderWrapper;
 
+    // TODO : Implement Better
     public TaskData() {
     }
 

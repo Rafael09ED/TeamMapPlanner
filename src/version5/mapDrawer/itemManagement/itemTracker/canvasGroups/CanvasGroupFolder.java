@@ -19,7 +19,9 @@ public class CanvasGroupFolder implements CanvasGroup {
 
     @Override
     public void getAllSubLayersOrdered(List<CanvasGroupLayer> allSubLayers) {
-
+        for (int i = 0; i < canvasGroups.size(); i++) {
+            canvasGroups.get(i).getAllSubLayersOrdered(allSubLayers);
+        }
     }
 
     @Override

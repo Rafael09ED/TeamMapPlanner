@@ -1,11 +1,10 @@
 package version5.mapDrawer.rendering;
 
-import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupFolderWrapper;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupFolder;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
 import version5.mapDrawer.rendering.optimization.CanvasGroupRenderOptimizer;
+import version5.mapDrawer.rendering.optimization.RenderData;
 
-import java.awt.image.BufferedImage;
 import java.util.Set;
 
 /**
@@ -20,15 +19,11 @@ public class RenderingWrapper {
          canvasGroupRenderOptimizer = new CanvasGroupRenderOptimizer(this);
     }
 
-    public BufferedImage getRender(CanvasGroupFolder canvasGroupFolder) {
+    public RenderData getRender(CanvasGroupFolder canvasGroupFolder) {
         return canvasGroupRenderOptimizer.getRender(canvasGroupFolder);
     }
-    public BufferedImage getRender(CanvasGroupLayer canvasGroupLayer) {
+    public RenderData getRender(CanvasGroupLayer canvasGroupLayer) {
         return canvasGroupRenderOptimizer.getRender(canvasGroupLayer);
-    }
-
-    public BufferedImage getRender(CanvasGroupFolderWrapper canvasGroupFolderWrapper) {
-        return null;
     }
 
     public void setChangedLayers(Set<CanvasGroupLayer> changedLayers) {
