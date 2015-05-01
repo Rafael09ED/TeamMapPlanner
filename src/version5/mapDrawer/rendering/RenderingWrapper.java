@@ -1,6 +1,7 @@
 package version5.mapDrawer.rendering;
 
 import version5.mapDrawer.itemManagement.infoTypes.BoundingBox2D;
+import version5.mapDrawer.itemManagement.infoTypes.Point2D;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupFolder;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
 import version5.mapDrawer.itemManagement.itemTracker.canvasItems.CanvasItem;
@@ -29,11 +30,12 @@ public class RenderingWrapper {
         if (true) {
             List<CanvasGroupLayer> canvasGroupLayers = new ArrayList<>();
             canvasGroupFolder.getAllSubLayersOrdered(canvasGroupLayers);
-
             BoundingBox2D boundingBox2D = new BoundingBox2D();
             for (CanvasGroupLayer canvasGroupLayer : canvasGroupLayers) {
                 boundingBox2D.addBoundingBox(canvasGroupLayer.getBoundingBox());
             }
+
+            boundingBox2D.addBoundingBox(new BoundingBox2D(new Point2D(0), new Point2D()));
 
             BufferedImage bufferedImage = new BufferedImage(
                     boundingBox2D.getIntBoxWidth(),

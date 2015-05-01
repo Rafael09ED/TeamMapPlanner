@@ -7,10 +7,21 @@ package version5.mapDrawer.itemManagement.infoTypes;
 public class BoundingBox2D {
     private Point2D topLeft, bottomRight;
 
-    public BoundingBox2D(Point2D pointOne, Point2D pointTwo) {
+    public BoundingBox2D(Point2D topLeft, Point2D bottomRight) {
         // finds and sets the topLeft and bottomRight points from the two points passed
-        topLeft = new Point2D(Math.min(pointOne.getX(), pointTwo.getX()), Math.min(pointOne.getY(), pointTwo.getY()));
-        bottomRight = new Point2D(Math.max(pointOne.getX(), pointTwo.getX()), Math.max(pointOne.getY(), pointTwo.getY()));
+        this.topLeft = topLeft;
+        this.bottomRight = bottomRight;
+    }
+    public BoundingBox2D(Point2D pointOne, Point2D pointTwo, boolean b) {
+        // finds and sets the topLeft and bottomRight points from the two points passed
+        if (b) {
+            //TODO: Create a fix eliminating the boolean
+            this.topLeft = new Point2D(Math.min(pointOne.getX(), pointTwo.getX()), Math.min(pointOne.getY(), pointTwo.getY()));
+            this.bottomRight = new Point2D(Math.max(pointOne.getX(), pointTwo.getX()), Math.max(pointOne.getY(), pointTwo.getY()));
+        } else {
+            this.topLeft = pointOne;
+            this.bottomRight = pointTwo;
+        }
     }
 
     public BoundingBox2D() {

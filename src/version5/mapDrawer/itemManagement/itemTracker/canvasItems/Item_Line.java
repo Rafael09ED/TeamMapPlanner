@@ -24,7 +24,7 @@ public class Item_Line implements CanvasItem {
     public Item_Line(Point2D startPoint, Point2D endPoint) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
-        boundingBox = new BoundingBox2D(startPoint, endPoint);
+        boundingBox = new BoundingBox2D(startPoint, endPoint, true);
         lineStroke = 1;
     }
 
