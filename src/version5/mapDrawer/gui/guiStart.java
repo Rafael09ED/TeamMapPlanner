@@ -110,7 +110,7 @@ public class guiStart extends JFrame {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
         RenderData renderData = dataGrabber.renderCanvas();
-        g.drawImage(renderData.getCurrentRender(),(int) renderData.getBoundingBoxOnCanvas().getTopLeft().getX(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getY(), null);
+        g.drawImage(renderData.getCurrentRender(),0, 0, null);
         g.dispose();
     }
 

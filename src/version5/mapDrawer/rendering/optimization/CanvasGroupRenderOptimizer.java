@@ -27,14 +27,14 @@ public class CanvasGroupRenderOptimizer {
         canvasLayerToRenderData = new HashMap<>();
     }
     private RenderData renderLayers(List<CanvasGroupLayer> canvasGroupLayers){
-        BoundingBox2D offsetBoundingBox = getBoundingBoxForLayer(canvasGroupLayers);
         renderUpdatedRequiredLayers(canvasGroupLayers);
+        BoundingBox2D offsetBoundingBox = getBoundingBoxForLayer(canvasGroupLayers);
 
         if (offsetBoundingBox.getIntBoxWidth()<=1||offsetBoundingBox.getIntBoxHeight()<=1) {
             System.out.println("We Rendered Nothing");
             return new RenderData(new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB),new BoundingBox2D());
         }
-
+        //TODO: BUG: OFFSETS are Doubled causing an incorrect render.
         BufferedImage bufferedImage = new BufferedImage(
                 offsetBoundingBox.getIntBoxWidth(),
                 offsetBoundingBox.getIntBoxHeight(),
@@ -47,9 +47,17 @@ public class CanvasGroupRenderOptimizer {
 
             bufferedImage.getGraphics().drawImage(
                     renderData.getCurrentRender(),
-                    -renderData.getXCanvasOffset(),
-                    -renderData.getYCanvasOffset(),
+                    -renderData.getXCanvasOffset()+(int)offsetBoundingBox.getTopLeft().getX(),
+                    -renderData.getYCanvasOffset()+(int)offsetBoundingBox.getTopLeft().getY(),
                     null);
+            BufferedImage bufferedImage1 = new BufferedImage(renderData.getBoundingBoxOnCanvas().getIntBoxWidth(),renderData.getBoundingBoxOnCanvas().getIntBoxHeight(),BufferedImage.TYPE_INT_ARGB);
+            Graphics2D graphics2D = (Graphics2D) bufferedImage1.getGraphics();
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.setComposite(AlphaComposite.SrcOver.derive(0.2f));
+
+            graphics2D.fillRect(0, 0, renderData.getBoundingBoxOnCanvas().getIntBoxWidth(), renderData.getBoundingBoxOnCanvas().getIntBoxHeight());
+            //graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+             bufferedImage.getGraphics().drawImage(bufferedImage1, -renderData.getXCanvasOffset()+(int)offsetBoundingBox.getTopLeft().getX(), -renderData.getYCanvasOffset()+(int)offsetBoundingBox.getTopLeft().getY(), null);
         }
 
         RenderData returnRenderData = new RenderData(bufferedImage,offsetBoundingBox);
