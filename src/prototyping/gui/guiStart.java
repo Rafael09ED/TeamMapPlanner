@@ -1,4 +1,4 @@
-package version5.mapDrawer.gui;
+package prototyping.gui;
 
 import version5.mapDrawer.interfacing.DataGrabber;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
@@ -82,7 +82,12 @@ public class guiStart extends JFrame {
                                 dataGrabber.getChildrenWrapped(dataGrabber.getRootWrapper()).get(0),
                                 new Item_Line(randomPointOnCanvas(), randomPointOnCanvas()))
                 );
-                validate();
+
+                if (strategy != null) {
+                    renderCanvas(strategy.getDrawGraphics());
+                    strategy.show();
+
+                }
             }
 
             Point2D randomPointOnCanvas() {
@@ -118,6 +123,13 @@ public class guiStart extends JFrame {
     public void validate() {
         super.validate();
         if (strategy != null) {
+            renderCanvas(strategy.getDrawGraphics());
+            strategy.show();
+        }
+    }
+    private class CanvasPanel extends Canvas{
+        @Override
+        public void paint(Graphics g) {
             renderCanvas(strategy.getDrawGraphics());
             strategy.show();
         }

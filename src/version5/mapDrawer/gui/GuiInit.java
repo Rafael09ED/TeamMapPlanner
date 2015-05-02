@@ -7,16 +7,16 @@ import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 /**
  * Created by Rafael on 4/30/2015.
  */
-public class CanvasGui {
+public class GuiInit {
     private final DataGrabber dataGrabber;
     private final TaskManager taskManager;
-    private final CanvasFrame canvasFrame;
+    private final GuiFrame GuiFrame;
 
-    public CanvasGui(DataGrabber dataGrabber, TaskManager taskManager) {
+    public GuiInit(DataGrabber dataGrabber, TaskManager taskManager) {
         this.dataGrabber = dataGrabber;
         this.taskManager = taskManager;
 
         String programTitle = GENERAL_SETTINGS.PROGRAM_TITLE;
-        canvasFrame = new CanvasFrame(programTitle,dataGrabber, taskManager);
+        GuiFrame = new GuiFrame(programTitle,dataGrabber, taskManager);
     }
 }

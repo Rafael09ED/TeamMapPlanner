@@ -1,6 +1,6 @@
 package version5.mapDrawer;
 
-import version5.mapDrawer.gui.guiStart;
+import version5.mapDrawer.gui.GuiInit;
 import version5.mapDrawer.interfacing.DataGrabber;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 import version5.mapDrawer.itemManagement.ItemManager;
@@ -19,7 +19,7 @@ public class MapDrawerCore {
     private final ItemManager itemManager;
     private final RenderingWrapper renderingWrapper;
     private final TaskManager taskManager;
-    private final guiStart gui;
+    private final GuiInit gui;
 
     public MapDrawerCore() {
         renderingWrapper = initializeRenderingWrapper();
@@ -27,7 +27,7 @@ public class MapDrawerCore {
         itemManager = initializeItemManager(renderingWrapper, canvasRoot);
         taskManager = initializeTaskManager(itemManager);
         dataGrabber = initializeDataGrabber(itemManager);
-        gui = new guiStart(dataGrabber, taskManager);
+        gui = new GuiInit(dataGrabber, taskManager);
     }
 
     private static CanvasRoot initializeCanvasTracker() {

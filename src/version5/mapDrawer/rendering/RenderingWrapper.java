@@ -47,15 +47,13 @@ public class RenderingWrapper {
 
                 Graphics2DRenderer graphics2DRenderer = new Graphics2DRenderer();
 
-
-
                 graphics2DRenderer.setGraphicsToRenderTo((Graphics2D) bufferedImage.getGraphics());
 
                 for (CanvasItem canvasItem : canvasGroupLayer.getCanvasItems()) {
                     canvasItem.render(graphics2DRenderer);
                 }
             }
-            return new RenderData(bufferedImage,boundingBox2D);
+            return new RenderData(bufferedImage, boundingBox2D);
         }
         return canvasGroupRenderOptimizer.getRender(canvasGroupFolder);
     }
