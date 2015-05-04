@@ -79,7 +79,7 @@ public class guiStart extends JFrame {
                 System.out.println("clicked");
                 taskManager.doNewTask(
                         new Task_AddCanvasItem((CanvasGroupLayerWrapper)
-                                dataGrabber.getChildrenWrapped(dataGrabber.getRootWrapper()).get(0),
+                                dataGrabber.getChildrenOfFolderWrapped(dataGrabber.getRootWrapper()).get(0),
                                 new Item_Line(randomPointOnCanvas(), randomPointOnCanvas()))
                 );
 
@@ -115,7 +115,7 @@ public class guiStart extends JFrame {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
         RenderData renderData = dataGrabber.renderCanvas();
-        g.drawImage(renderData.getCurrentRender(),0, 0, null);
+        g.drawImage(renderData.getRender(),0, 0, null);
         g.dispose();
     }
 

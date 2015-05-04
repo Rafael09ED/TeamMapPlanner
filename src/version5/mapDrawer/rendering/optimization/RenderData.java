@@ -17,7 +17,7 @@ public class RenderData {
         this.boundingBoxOnCanvas = boundingBoxOnCanvas;
     }
 
-    public BufferedImage getCurrentRender() {
+    public BufferedImage getRender() {
         return currentRender;
     }
 

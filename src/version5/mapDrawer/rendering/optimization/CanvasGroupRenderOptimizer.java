@@ -46,7 +46,7 @@ public class CanvasGroupRenderOptimizer {
             RenderData renderData = canvasLayerToRenderData.get(canvasGroupLayer);
 
             bufferedImage.getGraphics().drawImage(
-                    renderData.getCurrentRender(),
+                    renderData.getRender(),
                     -renderData.getXCanvasOffset()+(int)offsetBoundingBox.getTopLeft().getX(),
                     -renderData.getYCanvasOffset()+(int)offsetBoundingBox.getTopLeft().getY(),
                     null);
@@ -68,7 +68,7 @@ public class CanvasGroupRenderOptimizer {
         for (CanvasGroupLayer canvasGroupLayer : canvasGroupLayers) {
             if (changedLayers.contains(canvasGroupLayer)
                     || canvasLayerToRenderData.get(canvasGroupLayer) == null
-                    || canvasLayerToRenderData.get(canvasGroupLayer).getCurrentRender() == null){
+                    || canvasLayerToRenderData.get(canvasGroupLayer).getRender() == null){
 
                 Graphics2DRenderer graphics2DRenderer = new Graphics2DRenderer();
 

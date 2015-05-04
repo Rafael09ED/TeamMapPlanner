@@ -1,5 +1,6 @@
 package version5.mapDrawer.itemManagement;
 
+import version5.SETTINGS.GENERAL_SETTINGS;
 import version5.mapDrawer.interfacing.taskManagment.TaskData;
 import version5.mapDrawer.itemManagement.itemTracker.CanvasRoot;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupFolderWrapper;
@@ -28,6 +29,7 @@ public class ItemManager {
     public ItemManager(CanvasRoot canvasRoot, RenderingWrapper renderingWrapper) {
         this.canvasRoot = canvasRoot;
         canvasRootWrapper = new CanvasGroupFolderWrapper(canvasRoot, renderingWrapper, this);
+        canvasRootWrapper.setDisplayName(GENERAL_SETTINGS.DEFAULT_ROOT_NAME);
         this.renderingWrapper = renderingWrapper;
         folderWrapperTranslator = new HashMap<>();
         layerWrapperTranslator = new HashMap<>();

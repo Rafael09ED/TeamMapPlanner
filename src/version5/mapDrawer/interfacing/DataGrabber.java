@@ -17,13 +17,16 @@ public class DataGrabber {
     public DataGrabber(ItemManager itemManager) {
         this.itemManager = itemManager;
     }
+
     public CanvasGroupFolderWrapper getRootWrapper(){
         return itemManager.getRootWrapper();
     }
+
     public RenderData renderCanvas(){
         return itemManager.getRootWrapper().getCanvasGroupRender();
     }
-    public List<CanvasGroupWrapper> getChildrenWrapped(CanvasGroupFolderWrapper canvasGroupFolderWrapper){
+
+    public List<CanvasGroupWrapper> getChildrenOfFolderWrapped(CanvasGroupFolderWrapper canvasGroupFolderWrapper){
         List childrenUnwrapped = new ArrayList<>();
         itemManager.folderWrapperTranslator.get(canvasGroupFolderWrapper).getChildren(childrenUnwrapped);
         return itemManager.convertToWrapper(childrenUnwrapped);

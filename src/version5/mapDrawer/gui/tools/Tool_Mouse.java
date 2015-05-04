@@ -24,7 +24,7 @@ public class Tool_Mouse implements MapPlannerTool{
     public void mouseClicked(MouseEvent e) {
         //TODO: Remove Demo Code after testing is done
         System.out.println("clicked");
-        CanvasGroupWrapper firstInstance = toolsManager.guiFrame.dataGrabber.getChildrenWrapped(toolsManager.guiFrame.dataGrabber.getRootWrapper()).get(0);
+        CanvasGroupWrapper firstInstance = toolsManager.guiFrame.dataGrabber.getChildrenOfFolderWrapped(toolsManager.guiFrame.dataGrabber.getRootWrapper()).get(0);
         if (firstInstance instanceof CanvasGroupLayerWrapper) {
             toolsManager.guiFrame.taskManager.doNewTask(new Task_AddCanvasItem((CanvasGroupLayerWrapper) firstInstance,
                             new Item_Line(randomPointOnCanvas(), randomPointOnCanvas())));

@@ -14,7 +14,8 @@ public class UniqueTaskManagerTasks {
         this.itemManager = itemManager;
     }
     public CanvasGroupFolderWrapper createNewCanvasFolder(CanvasGroupFolderWrapper parentCanvasFolder){
-        return itemManager.createNewCanvasGroupFolder(parentCanvasFolder);
+        CanvasGroupFolderWrapper folderWrapper = itemManager.createNewCanvasGroupFolder(parentCanvasFolder);
+        return folderWrapper;
     }
     public CanvasGroupLayerWrapper createNewCanvasLayer(CanvasGroupFolderWrapper parentCanvasFolder){
         return itemManager.createNewCanvasGroupLayer(parentCanvasFolder);

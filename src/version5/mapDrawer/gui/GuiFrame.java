@@ -1,12 +1,13 @@
 package version5.mapDrawer.gui;
 
-import oldCode.version4.mapDrawer.itemTracker.canvasItems.informationStorage.BoundingBox2D;
-import oldCode.version4.mapDrawer.itemTracker.canvasItems.informationStorage.Point2D;
+
 import version5.mapDrawer.gui.actionManagement.GuiActionManager;
 import version5.mapDrawer.gui.panels.LayersTree;
 import version5.mapDrawer.gui.tools.ToolsManager;
 import version5.mapDrawer.interfacing.DataGrabber;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
+import version5.mapDrawer.itemManagement.infoTypes.BoundingBox2D;
+import version5.mapDrawer.itemManagement.infoTypes.Point2D;
 import version5.mapDrawer.rendering.optimization.RenderData;
 
 import javax.swing.*;
@@ -68,6 +69,7 @@ public class GuiFrame extends JFrame {
     public void renderCanvas(){
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         renderCanvas.paint(g);
+        layerTreePanel.updateTree();
         g.dispose();
         bufferStrategy.show();
     }
@@ -88,7 +90,7 @@ public class GuiFrame extends JFrame {
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
             RenderData renderData = dataGrabber.renderCanvas();
-            g.drawImage(renderData.getCurrentRender(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getX(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getY(), null);
+            g.drawImage(renderData.getRender(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getX(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getY(), null);
         }
     }
 
