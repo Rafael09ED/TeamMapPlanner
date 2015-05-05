@@ -1,7 +1,6 @@
 package version5.mapDrawer.itemManagement;
 
 import version5.SETTINGS.GENERAL_SETTINGS;
-import version5.mapDrawer.interfacing.taskManagment.TaskData;
 import version5.mapDrawer.itemManagement.itemTracker.CanvasRoot;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupFolderWrapper;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupLayerWrapper;
@@ -58,10 +57,6 @@ public class ItemManager {
                 = new CanvasGroupFolderWrapper(canvasGroupFolder, renderingWrapper, this);
         folderWrapperTranslator.put(canvasGroupFolderWrapper, canvasGroupFolder);
         return canvasGroupFolderWrapper;
-    }
-
-    public void fillData(TaskData canvasTaskData) {
-        canvasTaskData.grabData(this);
     }
 
     public void addToChangedSet(List<CanvasGroupLayer> layersChangedByTask) {

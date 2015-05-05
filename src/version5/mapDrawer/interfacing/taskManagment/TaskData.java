@@ -6,57 +6,46 @@ import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasG
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupFolder;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
 
+import java.util.Map;
+
 /**
  * Created by Rafael on 4/27/2015.
  */
 public class TaskData {
-    private CanvasGroupLayer canvasGroupLayer;
-    private CanvasGroupFolder canvasGroupFolder;
-    private CanvasGroupLayerWrapper canvasGroupLayerWrapper;
-    private CanvasGroupFolderWrapper canvasGroupFolderWrapper;
+    private final ItemManager itemManager;
 
     // TODO : Implement Better
-    public TaskData() {
+    public TaskData(ItemManager itemManager) {
+        this.itemManager = itemManager;
     }
 
-    public void setCanvasGroupLayer(CanvasGroupLayer canvasGroupLayer) {
-        this.canvasGroupLayer = canvasGroupLayer;
+    public CanvasGroupFolderWrapper getRootWrapped() {
+        return itemManager.getRootWrapper();
     }
 
-    public void setCanvasGroupFolder(CanvasGroupFolder canvasGroupFolder) {
-        this.canvasGroupFolder = canvasGroupFolder;
+    public CanvasGroupLayer getCanvasGroupLayer(CanvasGroupLayerWrapper canvasGroupLayerWrapper) {
+        return itemManager.layerWrapperTranslator.get(canvasGroupLayerWrapper);
     }
 
-    public void setCanvasGroupLayerWrapper(CanvasGroupLayerWrapper canvasGroupLayerWrapper) {
-        this.canvasGroupLayerWrapper = canvasGroupLayerWrapper;
+    public CanvasGroupFolder getCanvasGroupFolder(CanvasGroupFolderWrapper canvasGroupFolderWrapper) {
+        return itemManager.folderWrapperTranslator.get(canvasGroupFolderWrapper);
     }
 
-    public void setCanvasGroupFolderWrapper(CanvasGroupFolderWrapper canvasGroupFolderWrapper) {
-        this.canvasGroupFolderWrapper = canvasGroupFolderWrapper;
-    }
-    public void grabData(ItemManager itemManager){
-        if (canvasGroupFolderWrapper != null){
-            canvasGroupFolder = itemManager.folderWrapperTranslator.get(canvasGroupFolderWrapper);
+    public CanvasGroupLayerWrapper getCanvasGroupLayerWrapper(CanvasGroupLayer canvasGroupLayer) {
+        for (Map.Entry<CanvasGroupLayerWrapper, CanvasGroupLayer> entry : itemManager.layerWrapperTranslator.entrySet()) {
+            if (entry.getValue() == canvasGroupLayer){
+                return entry.getKey();
+            }
         }
-        if (canvasGroupLayerWrapper != null) {
-            canvasGroupLayer = itemManager.layerWrapperTranslator.get(canvasGroupLayerWrapper);
+        return null;
+    }
+
+    public CanvasGroupFolderWrapper getCanvasGroupFolderWrapper(CanvasGroupFolder canvasGroupFolder) {
+        for (Map.Entry<CanvasGroupFolderWrapper, CanvasGroupFolder> entry : itemManager.folderWrapperTranslator.entrySet()) {
+            if (entry.getValue() == canvasGroupFolder){
+                return entry.getKey();
+            }
         }
-
-    }
-
-    public CanvasGroupLayer getCanvasGroupLayer() {
-        return canvasGroupLayer;
-    }
-
-    public CanvasGroupFolder getCanvasGroupFolder() {
-        return canvasGroupFolder;
-    }
-
-    public CanvasGroupLayerWrapper getCanvasGroupLayerWrapper() {
-        return canvasGroupLayerWrapper;
-    }
-
-    public CanvasGroupFolderWrapper getCanvasGroupFolderWrapper() {
-        return canvasGroupFolderWrapper;
+        return null;
     }
 }

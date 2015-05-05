@@ -42,6 +42,11 @@ public class CanvasGroupLayer implements CanvasGroup{
         return;
     }
 
+    @Override
+    public CanvasGroupFolder findParent(CanvasGroup parent) {
+        return null;
+    }
+
     public int getLayerNumber() {
         return layerNumber;
     }

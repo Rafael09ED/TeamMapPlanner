@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  */
 public class Task_AddCanvasItem implements TaskManagerTask {
 
-    private final TaskData taskData;
+    private TaskData taskData;
     private final CanvasGroupLayerWrapper canvasGroupLayerWrapper;
     private CanvasGroupLayer canvasGroupLayer;
     private final CanvasItem canvasItem;
@@ -24,23 +24,21 @@ public class Task_AddCanvasItem implements TaskManagerTask {
         this.canvasGroupLayerWrapper = canvasGroupLayerWrapper;
         this.canvasItem = canvasItem;
         canvasGroupLayersChanged = new ArrayList<>();
-        taskData = new TaskData();
-        taskData.setCanvasGroupLayerWrapper(canvasGroupLayerWrapper);
     }
 
     @Override
     public void execute() throws NoSuchElementException{
-        if(taskData.getCanvasGroupLayer() == null) {
+        CanvasGroupLayer canvasGroupLayer = taskData.getCanvasGroupLayer(canvasGroupLayerWrapper);
+        if(canvasGroupLayer == null) {
             throw new NoSuchElementException("TaskData CanvasGroup was null");
         }
-        canvasGroupLayer = taskData.getCanvasGroupLayer();
         canvasGroupLayer.addCanvasItem(canvasItem);
         canvasGroupLayersChanged.add(canvasGroupLayer);
     }
 
     @Override
-    public TaskData getCanvasTaskData() {
-        return taskData;
+    public void passTaskData(TaskData taskData, UniqueTaskManagerTasks uniqueTasks) {
+        this.taskData = taskData;
     }
 
     @Override
@@ -57,9 +55,4 @@ public class Task_AddCanvasItem implements TaskManagerTask {
     public List<CanvasGroupLayer> getLayersChangedByTask() {
         return canvasGroupLayersChanged;
     }
-
-    @Override
-    public void passUniqueTasks(UniqueTaskManagerTasks uniqueTaskManagerTasks) {
-    }
-
 }

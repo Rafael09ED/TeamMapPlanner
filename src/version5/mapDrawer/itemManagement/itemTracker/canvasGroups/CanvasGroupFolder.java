@@ -29,6 +29,22 @@ public class CanvasGroupFolder implements CanvasGroup {
         immediateChildren.addAll(canvasGroups);
     }
 
+    @Override
+    public CanvasGroupFolder findParent(CanvasGroup child) {
+        for (CanvasGroup canvasGroup : canvasGroups) {
+            if (canvasGroup == child){
+                return this;
+            }
+        }
+        for (CanvasGroup canvasGroup : canvasGroups) {
+            CanvasGroupFolder parent = canvasGroup.findParent(child);
+            if (parent != null) {
+                return parent;
+            }
+        }
+        return null;
+    }
+
     public int getFolderNumber() {
         return folderNumber;
     }
@@ -40,8 +56,12 @@ public class CanvasGroupFolder implements CanvasGroup {
         canvasGroups.add(index, canvasGroupLayer);
     }
 
-    public boolean removeChild(CanvasGroup groupToDelete) {
-        boolean removed = canvasGroups.remove(groupToDelete);
-        return removed;
+    public int removeChild(CanvasGroup groupToDelete) {
+        int index = canvasGroups.indexOf(groupToDelete);
+        if (index < 0 ){
+            return -1;
+        }
+        canvasGroups.remove(index);
+        return index;
     }
 }

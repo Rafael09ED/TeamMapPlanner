@@ -11,9 +11,8 @@ import java.util.NoSuchElementException;
  */
 public interface TaskManagerTask{
     void execute() throws NoSuchElementException;
-    TaskData getCanvasTaskData();
+    void passTaskData(TaskData taskData, UniqueTaskManagerTasks uniqueTasks);
     void unexecute();
     void reexecute();
     List<CanvasGroupLayer> getLayersChangedByTask();
-    void passUniqueTasks(UniqueTaskManagerTasks uniqueTaskManagerTasks);
 }

@@ -26,8 +26,8 @@ public class Task_NewCanvasFolder implements TaskManagerTask {
     }
 
     @Override
-    public TaskData getCanvasTaskData() {
-        return new TaskData();
+    public void passTaskData(TaskData taskData, UniqueTaskManagerTasks uniqueTasks) {
+        uniqueTaskManagerTasks = uniqueTasks;
     }
 
     @Override
@@ -45,8 +45,4 @@ public class Task_NewCanvasFolder implements TaskManagerTask {
         return new ArrayList<>();
     }
 
-    @Override
-    public void passUniqueTasks(UniqueTaskManagerTasks uniqueTaskManagerTasks) {
-        this.uniqueTaskManagerTasks = uniqueTaskManagerTasks;
-    }
 }

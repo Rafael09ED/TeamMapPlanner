@@ -15,12 +15,10 @@ public class TaskManager {
     private final ItemManager itemManager;
     private List<TaskManagerTask> taskQue;
     private int taskIndex = 0;
-    private final UniqueTaskManagerTasks uniqueTasks;
 
     public TaskManager(ItemManager itemManager) {
         this.itemManager = itemManager;
         taskQue = new ArrayList<>();
-        uniqueTasks = new UniqueTaskManagerTasks(itemManager);
     }
 
     /**
@@ -34,8 +32,7 @@ public class TaskManager {
             taskQue.subList(taskIndex, taskQue.size() - 1).clear();
         }
         taskQue.add(taskManagerTask);
-        taskManagerTask.passUniqueTasks(uniqueTasks);
-        itemManager.fillData(taskManagerTask.getCanvasTaskData());
+        taskManagerTask.passTaskData(new TaskData(itemManager), new UniqueTaskManagerTasks(itemManager));
 
         try {
             taskManagerTask.execute();
