@@ -9,6 +9,7 @@ import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroup;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupFolder;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroups.CanvasGroupLayer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -57,7 +58,8 @@ public class Task_DeleteCanvasGroup implements TaskManagerTask {
 
     @Override
     public List<CanvasGroupLayer> getLayersChangedByTask() {
-        return null;
+        List<CanvasGroupLayer> canvasGroupLayersAffected = new ArrayList<>();
+        return canvasGroupLayersAffected;
     }
 
 

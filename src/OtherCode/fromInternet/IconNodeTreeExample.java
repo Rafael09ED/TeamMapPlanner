@@ -11,6 +11,7 @@ import java.util.Hashtable;
 
 /**
  * @version 1.0 01/12/99
+ * http://www.java2s.com/Code/Java/Swing-Components/IconNodeTreeExample.htm
  */
 public class IconNodeTreeExample extends JFrame {
     public IconNodeTreeExample() {

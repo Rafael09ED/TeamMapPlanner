@@ -19,7 +19,7 @@ public class CanvasGroupLayerWrapper implements CanvasGroupWrapper {
     public CanvasGroupLayerWrapper(CanvasGroupLayer canvasGroupLayer, RenderingWrapper renderingWrapper, ItemManager itemManager) {
         this.canvasGroupLayer = canvasGroupLayer;
         this.renderingWrapper = renderingWrapper;
-        setDisplayName("Folder " + canvasGroupLayer.getLayerNumber());
+        setDisplayName("Layer " + canvasGroupLayer.getLayerNumber());
         notifyOfChange();
     }
 

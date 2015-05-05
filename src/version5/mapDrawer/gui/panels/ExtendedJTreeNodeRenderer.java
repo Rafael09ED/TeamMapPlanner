@@ -8,8 +8,9 @@ import java.awt.*;
 import java.util.Hashtable;
 
 /**
- * Created by Rafael on 5/5/2015.
- * Code Copied from the internet
+ * File created by Rafael on 5/5/2015.
+ * Code from:
+ * http://www.java2s.com/Code/Java/Swing-Components/IconNodeTreeExample.htm
  */
 public class ExtendedJTreeNodeRenderer extends DefaultTreeCellRenderer{
     public Component getTreeCellRendererComponent(JTree tree, Object value,

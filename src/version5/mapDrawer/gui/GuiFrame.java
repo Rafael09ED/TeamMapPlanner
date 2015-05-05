@@ -69,7 +69,6 @@ public class GuiFrame extends JFrame {
     public void renderCanvas(){
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         renderCanvas.paint(g);
-        layerTreePanel.updateTree();
         g.dispose();
         bufferStrategy.show();
     }
