@@ -33,13 +33,16 @@ public class LayersTree extends JPanel {
     public LayersTree(GuiFrame guiFrame) {
         this.guiFrame = guiFrame;
         setLayout(new BorderLayout());
-        rightClickMenu = new TreeNodeRightClickMenu();
-        canvasGroupsTree = new JTree();
-        canvasGroupsTree.setCellRenderer(new ExtendedJTreeNodeRenderer());
+
         rootNode = new CanvasGroupTreeNode(guiFrame.dataGrabber.getRootWrapper());
+        canvasGroupsTree = new JTree(rootNode);
+        canvasGroupsTree.setCellRenderer(new ExtendedJTreeNodeRenderer());
+
+
+        rightClickMenu = new TreeNodeRightClickMenu();
         canvasGroupsTree.addMouseListener(treeMouseAdapter);
-        remakeTree();
-        {
+
+        { // Temp Tester Button
             JButton jButton = new JButton("Refresh");
             jButton.addActionListener(new ActionListener() {
                 @Override
@@ -49,8 +52,9 @@ public class LayersTree extends JPanel {
             });
             add(jButton, BorderLayout.NORTH);
         }
+
         add(canvasGroupsTree, BorderLayout.CENTER);
-        revalidate();
+        remakeTree();
     }
 
     public void remakeTree() {
@@ -61,6 +65,7 @@ public class LayersTree extends JPanel {
         new TreeNodeAction(rootNode);
         canvasGroupsTree.setModel(new DefaultTreeModel(rootNode));
         ((DefaultTreeModel) canvasGroupsTree.getModel()).nodeChanged(rootNode);
+        expandAllNodes(canvasGroupsTree);
         canvasGroupsTree.setVisible(true);
         revalidate();
         canvasGroupsTree.setBackground(Color.LIGHT_GRAY);
@@ -88,11 +93,6 @@ public class LayersTree extends JPanel {
             }
         }
     };
-
-    public CanvasGroupWrapper getSelectedGroup() {
-        //TODO: check for null BECAUSE THIS DOES HAPPEN
-        return ((CanvasGroupTreeNode)canvasGroupsTree.getSelectionPath().getLastPathComponent()).getCanvasGroupWrapper();
-    }
 
     private class NodeData {
         private final CanvasGroupTreeNode canvasGroupNode;
@@ -322,6 +322,23 @@ public class LayersTree extends JPanel {
                 }
             });
             return menuItem;
+        }
+    }
+
+    public CanvasGroupWrapper getSelectedGroup() {
+        //TODO: check for null BECAUSE THIS DOES HAPPEN
+        if (canvasGroupsTree.getSelectionPath() == null)
+            return null;
+        return ((CanvasGroupTreeNode)canvasGroupsTree.getSelectionPath().getLastPathComponent()).getCanvasGroupWrapper();
+    }
+
+    private void expandAllNodes(JTree tree) {
+        int j = tree.getRowCount();
+        int i = 0;
+        while(i < j) {
+            tree.expandRow(i);
+            i += 1;
+            j = tree.getRowCount();
         }
     }
 
