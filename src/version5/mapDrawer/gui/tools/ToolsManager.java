@@ -2,6 +2,11 @@ package version5.mapDrawer.gui.tools;
 
 import version5.mapDrawer.gui.GuiFrame;
 import version5.mapDrawer.gui.actionManagement.MouseEventPasser;
+import version5.mapDrawer.interfacing.taskManagment.tasks.Task_AddCanvasItem;
+import version5.mapDrawer.itemManagement.infoTypes.Point2D;
+import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupLayerWrapper;
+import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupWrapper;
+import version5.mapDrawer.itemManagement.itemTracker.canvasItems.Item_Line;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -31,16 +36,44 @@ public class ToolsManager {
 
         Tool_Mouse mouseTool = new Tool_Mouse(this);
         mouseEventPasser = new MouseEventPasser();
+        {
+            JButton jButtonToAdd;
+            jButtonToAdd = new JButton("TESTING RANDOM LINE");
+            jButtonToAdd.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CanvasGroupWrapper firstInstance = guiFrame.getSelectedGroup();
+                    if (firstInstance instanceof CanvasGroupLayerWrapper) {
+                        guiFrame.taskManager.doNewTask(new Task_AddCanvasItem((CanvasGroupLayerWrapper) firstInstance,
+                                new Item_Line(randomPointOnCanvas(), randomPointOnCanvas())));
+                        System.out.println("We added a line");
 
+                        guiFrame.renderCanvas();
+                    }
+                }
+            });
+            toolButtonBar.add(jButtonToAdd);
+
+
+        }
         createButton(mouseTool);
+
     }
-    private void createButton(MapPlannerTool mapPlannerTool){
-        JToggleButton jButton = new JToggleButton(mapPlannerTool.getDisplayName());
-        toolButtonBar.addJToggleButton(jButton);
-        toolHashMap.put(jButton,mapPlannerTool);
+
+    private Point2D randomPointOnCanvas() {
+        return new Point2D(Math.random() * guiFrame.getFrameBoundingBox().getWidth() - 1, Math.random() * guiFrame.getFrameBoundingBox().getHeight() - 1);
+    }
+
+    private void createButton(MapPlannerTool mapPlannerTool) {
+        JToggleButton jToggleButtonToAdd;
+        jToggleButtonToAdd = new JToggleButton(mapPlannerTool.getDisplayName());
+        toolButtonBar.addJToggleButton(jToggleButtonToAdd);
+        toolHashMap.put(jToggleButtonToAdd, mapPlannerTool);
+
         guiFrame.revalidate();
     }
-    private void setCurrentTool(MapPlannerTool mapPlannerTool){
+
+    private void setCurrentTool(MapPlannerTool mapPlannerTool) {
         mouseEventPasser.setToolToSendTo(mapPlannerTool);
 
     }

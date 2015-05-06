@@ -2,12 +2,14 @@ package version5.mapDrawer.gui.panels;
 
 import version5.mapDrawer.gui.GuiFrame;
 import version5.mapDrawer.interfacing.CanvasGroupTypeActionable;
+import version5.mapDrawer.interfacing.taskManagment.tasks.Task_DeleteCanvasGroup;
+import version5.mapDrawer.interfacing.taskManagment.tasks.Task_NewCanvasFolder;
+import version5.mapDrawer.interfacing.taskManagment.tasks.Task_NewCanvasLayer;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupFolderWrapper;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupLayerWrapper;
 import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupWrapper;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.awt.*;
@@ -24,32 +26,47 @@ import java.util.List;
 public class LayersTree extends JPanel {
     private final GuiFrame guiFrame;
     private final JTree canvasGroupsTree;
-    private final CanvasGroupTreeNode parentNode;
+    private final CanvasGroupTreeNode rootNode;
     private final TreeNodeRightClickMenu rightClickMenu;
 
     //Todo
     public LayersTree(GuiFrame guiFrame) {
         this.guiFrame = guiFrame;
+        setLayout(new BorderLayout());
         rightClickMenu = new TreeNodeRightClickMenu();
         canvasGroupsTree = new JTree();
-        parentNode = new CanvasGroupTreeNode(guiFrame.dataGrabber.getRootWrapper());
-        canvasGroupsTree.addMouseListener(mouseAdapter);
-        add(canvasGroupsTree);
-        updateTree();
+        canvasGroupsTree.setCellRenderer(new ExtendedJTreeNodeRenderer());
+        rootNode = new CanvasGroupTreeNode(guiFrame.dataGrabber.getRootWrapper());
+        canvasGroupsTree.addMouseListener(treeMouseAdapter);
+        remakeTree();
+        {
+            JButton jButton = new JButton("Refresh");
+            jButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    remakeTree();
+                }
+            });
+            add(jButton, BorderLayout.NORTH);
+        }
+        add(canvasGroupsTree, BorderLayout.CENTER);
+        revalidate();
     }
 
-    public void updateTree() {
+    public void remakeTree() {
+        //TODO: update tree node
+        //TODO: auto expand tree
         canvasGroupsTree.removeAll();
-
         CanvasGroupTreeNode rootNode = new CanvasGroupTreeNode(guiFrame.dataGrabber.getRootWrapper());
         new TreeNodeAction(rootNode);
         canvasGroupsTree.setModel(new DefaultTreeModel(rootNode));
         ((DefaultTreeModel) canvasGroupsTree.getModel()).nodeChanged(rootNode);
         canvasGroupsTree.setVisible(true);
         revalidate();
+        canvasGroupsTree.setBackground(Color.LIGHT_GRAY);
     }
 
-    private MouseAdapter mouseAdapter = new MouseAdapter() {
+    private MouseAdapter treeMouseAdapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             doMaybe(e);
@@ -61,23 +78,49 @@ public class LayersTree extends JPanel {
         }
 
         private void doMaybe(MouseEvent e) {
-            //todo fix
             if (e.isPopupTrigger()) {
                 TreePath rightClickedOnPath = canvasGroupsTree.getPathForLocation(e.getX(), e.getY());
                 if (rightClickedOnPath != null) {
                     Object object = rightClickedOnPath.getLastPathComponent();
                     CanvasGroupTreeNode canvasGroupNode = ((CanvasGroupTreeNode) object);
-                    rightClickMenu.show(canvasGroupNode, canvasGroupsTree, e.getX(), e.getY());
+                    rightClickMenu.show(new NodeData(canvasGroupNode,rightClickedOnPath), canvasGroupsTree, e.getX(), e.getY());
                 }
             }
         }
     };
 
-    private class CanvasGroupTreeNode extends DefaultMutableTreeNode {
+    public CanvasGroupWrapper getSelectedGroup() {
+        //TODO: check for null BECAUSE THIS DOES HAPPEN
+        return ((CanvasGroupTreeNode)canvasGroupsTree.getSelectionPath().getLastPathComponent()).getCanvasGroupWrapper();
+    }
+
+    private class NodeData {
+        private final CanvasGroupTreeNode canvasGroupNode;
+        private final TreePath rightClickedOnPath;
+
+        public NodeData(CanvasGroupTreeNode canvasGroupNode, TreePath rightClickedOnPath) {
+            this.canvasGroupNode = canvasGroupNode;
+            this.rightClickedOnPath = rightClickedOnPath;
+        }
+
+        public CanvasGroupTreeNode getCanvasGroupNode() {
+            return canvasGroupNode;
+        }
+
+        public TreePath getRightClickedOnPath() {
+            return rightClickedOnPath;
+        }
+        public CanvasGroupWrapper getNodeGroupWrapper(){
+            return canvasGroupNode.getCanvasGroupWrapper();
+        }
+    }
+
+    private class CanvasGroupTreeNode extends IconNode {
         private final CanvasGroupWrapper canvasGroupWrapper;
 
         public CanvasGroupTreeNode(CanvasGroupWrapper canvasGroupWrapper) {
-            super(canvasGroupWrapper, true);
+            super(canvasGroupWrapper.getDisplayName());
+            this.setIcon(new IconGetter(canvasGroupWrapper).getIcon());
             this.canvasGroupWrapper = canvasGroupWrapper;
         }
 
@@ -128,6 +171,7 @@ public class LayersTree extends JPanel {
 
     private class TreeNodeRightClickMenu implements CanvasGroupTypeActionable {
         private JPopupMenu menuToShow;
+        private NodeData selectedNodeData;
 
         public TreeNodeRightClickMenu() {
            setDefaultJPopup();
@@ -135,14 +179,12 @@ public class LayersTree extends JPanel {
 
         private void setDefaultJPopup() {
             menuToShow = new JPopupMenu("Default");
-            menuToShow.add("Error U failed: U never created the menu!");
+            menuToShow.add("Error: menu not initialized");
         }
-
-        private CanvasGroupTreeNode lastSelectedCanvasGroupTreeNode;
 
         @Override
         public void doIfCanvasLayer(CanvasGroupLayerWrapper canvasGroupLayerWrapper) {
-
+            menuToShow = new CanvasGroupLayerMenu(canvasGroupLayerWrapper);
         }
 
         @Override
@@ -150,10 +192,10 @@ public class LayersTree extends JPanel {
             menuToShow = new CanvasGroupFolderMenu(canvasGroupFolderWrapper);
         }
 
-        public void show(CanvasGroupTreeNode canvasGroupTreeNode, Component componentInvoker, int x, int y) {
+        public void show(NodeData nodeData, Component componentInvoker, int x, int y) {
             setDefaultJPopup();
-            lastSelectedCanvasGroupTreeNode = canvasGroupTreeNode;
-            canvasGroupTreeNode.getCanvasGroupWrapper().callTypeActionable(this);
+            selectedNodeData = nodeData;
+            selectedNodeData.getNodeGroupWrapper().callTypeActionable(this);
             menuToShow.show(componentInvoker, x, y);
         }
 
@@ -167,6 +209,61 @@ public class LayersTree extends JPanel {
             }
 
             private void createButtons() {
+                //todo
+                JMenuItem itemToAdd;
+
+                itemToAdd = createMenuItem_SelectGroup();
+                itemToAdd.setToolTipText("Selects the folder");
+                add(itemToAdd);
+
+                addSeparator();
+
+                itemToAdd = createMenuItem_DeleteGroup();
+                itemToAdd.setToolTipText("Deletes the folder and it's contents");
+                add(itemToAdd);
+
+                itemToAdd = createMenuItem_ShowRenderForGroup();
+                itemToAdd.setToolTipText("Opens a new window showing the render of the layer at the time of action");
+                add(itemToAdd);
+
+                addSeparator();
+
+                itemToAdd = new JMenuItem("Create Folder");
+                itemToAdd.setToolTipText("Creates a new Folder");
+                itemToAdd.addActionListener(addFolderAction);
+                add(itemToAdd);
+
+                itemToAdd = new JMenuItem("Create Layer");
+                itemToAdd.setToolTipText("Creates a new Layer");
+                itemToAdd.addActionListener(addLayerAction);
+                add(itemToAdd);
+            }
+            private ActionListener addFolderAction =  new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    guiFrame.taskManager.doNewTask(new Task_NewCanvasFolder(canvasGroupFolderWrapper));
+                    remakeTree();
+                }
+            };
+            private ActionListener addLayerAction =  new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    guiFrame.taskManager.doNewTask(new Task_NewCanvasLayer(canvasGroupFolderWrapper));
+                    remakeTree();
+                }
+            };
+        }
+        private class CanvasGroupLayerMenu extends JPopupMenu {
+            private final CanvasGroupLayerWrapper rightClickedOnLayerWrapped;
+
+            public CanvasGroupLayerMenu(CanvasGroupLayerWrapper rightClickedOnLayerWrapped) {
+                super("LayerPanelOperationsMenu");
+                this.rightClickedOnLayerWrapped = rightClickedOnLayerWrapped;
+                createButtons();
+            }
+
+            private void createButtons() {
+                //TODO
                 JMenuItem itemToAdd;
 
                 itemToAdd = createMenuItem_SelectGroup();
@@ -182,6 +279,7 @@ public class LayersTree extends JPanel {
                 itemToAdd = createMenuItem_ShowRenderForGroup();
                 itemToAdd.setToolTipText("Opens a new window showing the render of the layer at the time of action");
                 add(itemToAdd);
+
             }
 
         }
@@ -191,10 +289,12 @@ public class LayersTree extends JPanel {
             menuItem.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    CanvasGroupWrapper canvasGroupWrapper = lastSelectedCanvasGroupTreeNode.getCanvasGroupWrapper();
+                    CanvasGroupWrapper canvasGroupWrapper = selectedNodeData.getNodeGroupWrapper();
                     JFrame jFrame = new JFrame("Canvas Group: " + canvasGroupWrapper.getDisplayName() + " Render");
                     BufferedImage render = canvasGroupWrapper.getCanvasGroupRender().getRender();
                     jFrame.add(new JLabel(new ImageIcon(render)));
+                    jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    jFrame.setVisible(true);
                 }
             });
 
@@ -206,7 +306,8 @@ public class LayersTree extends JPanel {
             menuItem.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO
+                    guiFrame.taskManager.doNewTask(new Task_DeleteCanvasGroup(selectedNodeData.getNodeGroupWrapper()));
+                    remakeTree();
                 }
             });
             return menuItem;
@@ -217,10 +318,11 @@ public class LayersTree extends JPanel {
             menuItem.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO
+                    canvasGroupsTree.setSelectionPath(selectedNodeData.getRightClickedOnPath());
                 }
             });
             return menuItem;
         }
     }
+
 }

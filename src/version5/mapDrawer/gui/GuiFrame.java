@@ -8,6 +8,7 @@ import version5.mapDrawer.interfacing.DataGrabber;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 import version5.mapDrawer.itemManagement.infoTypes.BoundingBox2D;
 import version5.mapDrawer.itemManagement.infoTypes.Point2D;
+import version5.mapDrawer.itemManagement.itemTracker.canvasGroupWrappers.CanvasGroupWrapper;
 import version5.mapDrawer.rendering.optimization.RenderData;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ public class GuiFrame extends JFrame {
     private final ToolsManager toolsManager;
     private BufferStrategy bufferStrategy;
     private ToolsManager.ToolButtonBar toolButtonBar;
-    private LayersTree layerTreePanel;
+    private final LayersTree layerTreePanel;
     private GuiActionManager guiActionManager;
 
     public GuiFrame(String title, DataGrabber dataGrabber, TaskManager taskManager) {
@@ -49,7 +50,8 @@ public class GuiFrame extends JFrame {
         renderCanvas.createBufferStrategy(2);
         bufferStrategy = renderCanvas.getBufferStrategy();
 
-        createLayerTreePanel();
+        layerTreePanel = new LayersTree(this);
+        add(layerTreePanel, BorderLayout.EAST);
         renderCanvas();
 
         toolsManager = new ToolsManager(this);
@@ -61,11 +63,6 @@ public class GuiFrame extends JFrame {
         revalidate();
     }
 
-
-    private void createLayerTreePanel() {
-        layerTreePanel = new LayersTree(this);
-        add(layerTreePanel, BorderLayout.EAST);
-    }
     public void renderCanvas(){
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         renderCanvas.paint(g);
@@ -75,6 +72,10 @@ public class GuiFrame extends JFrame {
 
     public BoundingBox2D getFrameBoundingBox() {
         return new BoundingBox2D(new Point2D(0), new Point2D(renderCanvas.getWidth(), renderCanvas.getHeight()));
+    }
+
+    public CanvasGroupWrapper getSelectedGroup() {
+        return layerTreePanel.getSelectedGroup();
     }
 
 
