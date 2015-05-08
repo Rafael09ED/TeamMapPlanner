@@ -2,9 +2,9 @@ package version5.mapDrawer.gui;
 
 
 import version5.mapDrawer.gui.actionManagement.GuiActionManager;
-import version5.mapDrawer.gui.panels.LayersTree;
+import version5.mapDrawer.gui.panels.LayersPanel;
 import version5.mapDrawer.gui.tools.ToolsManager;
-import version5.mapDrawer.interfacing.DataGrabber;
+import version5.mapDrawer.interfacing.GroupDataInterface;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 import version5.mapDrawer.itemManagement.infoTypes.BoundingBox2D;
 import version5.mapDrawer.itemManagement.infoTypes.Point2D;
@@ -20,17 +20,17 @@ import java.awt.image.BufferStrategy;
  */
 public class GuiFrame extends JFrame {
     private final MapDrawerCanvas renderCanvas;
-    public final DataGrabber dataGrabber;
+    public final GroupDataInterface groupDataInterface;
     public final TaskManager taskManager;
     private final ToolsManager toolsManager;
     private BufferStrategy bufferStrategy;
     private ToolsManager.ToolButtonBar toolButtonBar;
-    private final LayersTree layerTreePanel;
+    private final LayersPanel layerTreePanel;
     private GuiActionManager guiActionManager;
 
-    public GuiFrame(String title, DataGrabber dataGrabber, TaskManager taskManager) {
+    public GuiFrame(String title, GroupDataInterface groupDataInterface, TaskManager taskManager) {
         super(title);
-        this.dataGrabber = dataGrabber;
+        this.groupDataInterface = groupDataInterface;
         this.taskManager = taskManager;
         try {
             // set the system's Look and Feel
@@ -50,7 +50,7 @@ public class GuiFrame extends JFrame {
         renderCanvas.createBufferStrategy(2);
         bufferStrategy = renderCanvas.getBufferStrategy();
 
-        layerTreePanel = new LayersTree(this);
+        layerTreePanel = new LayersPanel(this);
         add(layerTreePanel, BorderLayout.EAST);
         renderCanvas();
 
@@ -89,7 +89,7 @@ public class GuiFrame extends JFrame {
             Graphics2D g = (Graphics2D)graphics;
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
-            RenderData renderData = dataGrabber.renderCanvas();
+            RenderData renderData = groupDataInterface.renderCanvas();
             g.drawImage(renderData.getRender(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getX(), (int) renderData.getBoundingBoxOnCanvas().getTopLeft().getY(), null);
         }
     }

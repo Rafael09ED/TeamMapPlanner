@@ -1,7 +1,7 @@
 package version5.mapDrawer;
 
 import version5.mapDrawer.gui.GuiInit;
-import version5.mapDrawer.interfacing.DataGrabber;
+import version5.mapDrawer.interfacing.GroupDataInterface;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 import version5.mapDrawer.itemManagement.ItemManager;
 import version5.mapDrawer.itemManagement.itemTracker.CanvasRoot;
@@ -15,7 +15,7 @@ public class MapDrawerCore {
     public static void main(String[] args){
         new MapDrawerCore();
     }
-    private final DataGrabber dataGrabber;
+    private final GroupDataInterface groupDataInterface;
     private final ItemManager itemManager;
     private final RenderingWrapper renderingWrapper;
     private final TaskManager taskManager;
@@ -26,8 +26,8 @@ public class MapDrawerCore {
         CanvasRoot canvasRoot = initializeCanvasTracker();
         itemManager = initializeItemManager(renderingWrapper, canvasRoot);
         taskManager = initializeTaskManager(itemManager);
-        dataGrabber = initializeDataGrabber(itemManager);
-        gui = new GuiInit(dataGrabber, taskManager);
+        groupDataInterface = initializeDataGrabber(itemManager);
+        gui = new GuiInit(groupDataInterface, taskManager);
     }
 
     private static CanvasRoot initializeCanvasTracker() {
@@ -46,9 +46,9 @@ public class MapDrawerCore {
         return TEMP_itemManager;
     }
 
-    private static DataGrabber initializeDataGrabber(ItemManager itemManager){
-        DataGrabber TEMP_DataGrabber = new DataGrabber(itemManager);
-        return TEMP_DataGrabber;
+    private static GroupDataInterface initializeDataGrabber(ItemManager itemManager){
+        GroupDataInterface TEMP_Group_DataProcessor = new GroupDataInterface(itemManager);
+        return TEMP_Group_DataProcessor;
     }
 
     private static TaskManager initializeTaskManager(ItemManager itemManager){

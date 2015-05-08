@@ -1,6 +1,6 @@
 package prototyping.gui;
 
-import version5.mapDrawer.interfacing.DataGrabber;
+import version5.mapDrawer.interfacing.GroupDataInterface;
 import version5.mapDrawer.interfacing.taskManagment.TaskManager;
 import version5.mapDrawer.interfacing.taskManagment.tasks.Task_AddCanvasItem;
 import version5.mapDrawer.interfacing.taskManagment.tasks.Task_NewCanvasLayer;
@@ -21,13 +21,13 @@ import java.awt.image.BufferStrategy;
  * Created by Rafael on 4/28/2015.
  */
 public class guiStart extends JFrame {
-    private final DataGrabber dataGrabber;
+    private final GroupDataInterface groupDataInterface;
     private final TaskManager taskManager;
     private BufferStrategy strategy;
     private Canvas canva;
 
-    public guiStart(DataGrabber dataGrabber, TaskManager taskManager) {
-        this.dataGrabber = dataGrabber;
+    public guiStart(GroupDataInterface groupDataInterface, TaskManager taskManager) {
+        this.groupDataInterface = groupDataInterface;
         this.taskManager = taskManager;
 
         setSize(1000, 500);
@@ -65,7 +65,7 @@ public class guiStart extends JFrame {
 
         canva.addComponentListener(componentListener);
 
-        taskManager.doNewTask(new Task_NewCanvasLayer(dataGrabber.getRootWrapper()));
+        taskManager.doNewTask(new Task_NewCanvasLayer(groupDataInterface.getRootWrapper()));
 
 
         canva.addMouseListener(new MouseListener() {
@@ -79,7 +79,7 @@ public class guiStart extends JFrame {
                 System.out.println("clicked");
                 taskManager.doNewTask(
                         new Task_AddCanvasItem((CanvasGroupLayerWrapper)
-                                dataGrabber.getChildrenOfFolderWrapped(dataGrabber.getRootWrapper()).get(0),
+                                groupDataInterface.getChildrenOfFolderWrapped(groupDataInterface.getRootWrapper()).get(0),
                                 new Item_Line(randomPointOnCanvas(), randomPointOnCanvas()))
                 );
 
@@ -114,7 +114,7 @@ public class guiStart extends JFrame {
     private void renderCanvas(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
-        RenderData renderData = dataGrabber.renderCanvas();
+        RenderData renderData = groupDataInterface.renderCanvas();
         g.drawImage(renderData.getRender(),0, 0, null);
         g.dispose();
     }

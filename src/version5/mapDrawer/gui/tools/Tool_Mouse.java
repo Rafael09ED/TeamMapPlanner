@@ -12,7 +12,7 @@ public class Tool_Mouse implements MapPlannerTool{
     private final static String displayName = "Mouse";
     public Tool_Mouse(ToolsManager toolsManager) {
         this.toolsManager = toolsManager;
-        toolsManager.guiFrame.taskManager.doNewTask(new Task_NewCanvasLayer(toolsManager.guiFrame.dataGrabber.getRootWrapper()));
+        toolsManager.guiFrame.taskManager.doNewTask(new Task_NewCanvasLayer(toolsManager.guiFrame.groupDataInterface.getRootWrapper()));
     }
 
     @Override
